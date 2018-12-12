@@ -337,11 +337,147 @@ result = {u : None} # u trivally discovered
 DFS(g, u, result)
 ```
 
-#### Reconstructing a Path from u to v
+### Reconstructing a Path from u to v
 
 
 ```python
-
+def constrcuct_path(u,v,discovered):
+    path = []
+    if v in discovered:
+        path.append(v)
+        walk = v
+        while walk is not u:
+            e = discovered[walk]
+            parent = e.opposite(v)
+            path.append(parent)
+            walk = parent
+        path.reverse()
+    return path
 ```
+
+### Testing for connectivity
+
+- **connected:** check for an arbitrary vertex if len(discovered) = n.
+
+- **strongly connected:** for an arbitrary vertex s, do DFS traversal and loops through all incoming edges and all outgoing edges. If for these two traversals every vertex in the graph can reach s and is reachable from s, then G is strongly connected. This method runs in O(n+m) time. 
+
+### Computing all connected components
+
+When a graph is not connected, the next goal we may have is to identify all of the **connected components** of an undirected graph, or the **strongly connected components** of a directed graph.
+
+
+```python
+def DFS_complete(g):
+    forest = {}
+    for u in g.vertices():
+        if u not in forest:
+            forest[u] = None
+            DFS(g, u, forest)
+    return forest
+```
+
+This function runs in O(n+m) time
+
+### Detecting cycles wih DFS
+
+## 3.3 Breadth-First Search (BFS)
+
+BFS proceeds in rounds and subdivides the vertices into **levels**. 
+
+
+```python
+def BFS(g, s, discovered):
+    level = [s]
+    while len(level) > 0:
+        next_level = []
+        for u in level:
+            for e in g.incident_edges(u):
+                v = e.opposite(u)
+                if v not in discovered:
+                    discovered[v] = e
+                    next_level.append(v)
+        level = next_level
+```
+
+For BFS on an undirected graph, all nontree edges are cross edges, and for BFS on a directed graph, all nontree edges are either back edges or cross edges.
+
+### Properties of BFS
+
+- A path in a BFS tree rooted at vertex s to any other vertex v is guaranteed to be the shortest path.
+
+- The traversal visits all vertices of G that are reachable from s.
+
+- For each vertex v at level i, the path of the BFS tree T between s and v has i edges, and any other path of G from s to v has at least i edges. (same as shortest path property).
+
+- If (u,v) is an edge that is not in the BFS tree, then the level number of v can be at most 1 greater than the level number of u.
+
+- BFS takes O(n+m) time.
+
+### DFS vs. BFS
+
+BFS guarantees that those paths use as few edges as possible; DFS is suited for certain tasks such as finding a directed cycle in the graph or in identifying the strongly connected components. 
+
+# 4. Transitive Closure
+
+The **transitive closure** of a directed graph G is a directed graph G*, such that the vertices of G* are the same vertices of G, and whenever G has a path from u to v, G* has an edge (u,v).
+
+**Proposition:** For i=1,2,...,n, directed graph $G_k$ has an edge $(v_i, v_j)$ if and only if directed graph $G$ has a directed path from $v_i$ to $v_j$, whose intermediate vertices (if any) are in the set $\{v_1, ..., v_k\}$
+
+### Floyd-Warshall Algorithm
+
+An algorithm that computes transitive closure of a graph in $O(n^3)$ time. Well suited in an adjacency matrix. 
+
+
+```python
+def floyd_warshall(g):
+    
+    closure = deepcopy(g)
+    verts =list(closure.vertices())
+    n = len(verts)
+    for k in range(n):
+        for i in range(n):
+            if i!=k and closure.get_edge(verts[i], verts[k]) is not None:
+                for j in range(n):
+                    if i!=j!=k and closure.get_edge(verts[k], verts[j]) is not None:
+                        if closure.get_edge(vers[i], verts[j]) is not None:
+                            closure.insert_edges(verts[i], verts[j])
+    return closure
+```
+
+# 5. Directed Acyclic Graphs (DAG)
+
+## 5.1 Topological Ordering
+
+**topologival ordering** is an ordering such that any directed path in G traverses vertices in increasing order. A directed graph may have more than one topological ordering. 
+
+**Proposition**: G has a topological ordering if and only if it is acyclic.
+
+The algorithm for computing a topological ordering of a directed graph which we call **topological sorting**. 
+
+
+```python
+def topological_sort(g):
+    
+    topo = []
+    ready = []
+    incount = {}
+    for u in g.vertices():
+        incount[u] = g.degree(u, False)
+        if incount[u] == 0: # if u has no incoming edges
+            ready.append(u)
+    while len(ready)>0:
+        u = ready.pop()
+        topo.append(u)
+        for e in g.incident_edges(u):
+            v = e.opposite(u)
+            incount[v] -= 1
+            if incount[v] == 0:
+                ready.append(v)
+    return topo
+```
+
+it runs in O(n+m) time and using O(n) auxiliary space. 
+
+# 6. Shortest Paths
 
 (to be continue ...)
