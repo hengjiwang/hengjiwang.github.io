@@ -1,4 +1,3 @@
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
 ---
 title: Graph Algorithms
 date: 2018-12-11 16:26:47
@@ -9,6 +8,8 @@ tags:
 categories: 
 - programming
 ---
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+
 ## 1. Graphs
 
 ### Composed by 
