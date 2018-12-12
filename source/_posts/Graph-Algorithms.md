@@ -1,7 +1,12 @@
 ---
 title: Graph Algorithms
 date: 2018-12-11 16:26:47
-tags:
+tags: 
+- graph
+- data structure
+- algorithm
+categories: 
+- programming
 ---
 ## 1. Graphs
 
