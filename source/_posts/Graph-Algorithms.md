@@ -9,15 +9,15 @@ categories:
 - programming
 ---
 
-## 1. Graphs
+# 1. Graphs
 
-### Composed by 
+## Composed by 
 
 - vertices 
 
 - edges
 
-### Classified by
+## Classified by
 
 - undirected graph : all edges are undirected
 
@@ -27,7 +27,7 @@ categories:
 
 (* mixed graph can be represented by a directed graph where the undirected edge is divided to two directed edge)
 
-### Concepts - part 1
+## Concepts - part 1
 
 - The two vertices joined by an edge are called **end vertices(endpoints)** of the edge. If the edge is directed, the first endpoint is **origin** and the other is the **destination** of the edge
 
@@ -41,7 +41,7 @@ categories:
 
 - **in-degree** indeg(v); **out-degree** outdeg(v)
 
-### Concepts - part 2
+## Concepts - part 2
 
 - The definition of a graph refers to the group of edges as a **collection** rather than a **set**. So two edges can have the same endpoints, which are called **parallel edges** or **multiple edges**. 
 
@@ -51,13 +51,13 @@ categories:
 
 
 
-### Concepts - part 3
+## Concepts - part 3
 
 - A **path** is a sequence of alternating vertices and edges that starts at a vertex and ends at a vertex; a **cycle** is a path that starts and ends at the same vertex; we say a path (or cycle) is **simple** if each vertex in the cycle is distinct (except for the first and last one).
 
 - **directed path** and **directed cycle**
 
-### Concepts - part 4
+## Concepts - part 4
 
 - If there is a directed path from u to v, then we say u **reaches** v, or v is **reachable** from u. 
 
@@ -69,7 +69,7 @@ categories:
 
 - **forest**: a graph without cycles. A **tree** is a connected forest. A **spanning tree** of a graph is a spanning subgraph that is a tree. 
 
-### Propositions
+## Propositions
 
 - $$\sum_{v\ in\  V} deg(v) = 2m$$
 
@@ -86,7 +86,7 @@ $$m \leq n(n-1)$$
 
 - If G is a forest, then $m \leq n-1$
 
-### The Graph ADT
+## The Graph ADT
 
 Three data types: Vertex, Edge, Graph
 
@@ -112,7 +112,7 @@ Three data types: Vertex, Edge, Graph
     - remove_vertex(v)
     - remove_edge(e)
 
-## 2. Data Structures for Graphs
+# 2. Data Structures for Graphs
 
 - **edge list**
 - **adjacency list**
@@ -222,7 +222,7 @@ class Graph:
         self._incoming[v].pop(u)
 ```
 
-## 3. Graph Traversals
+# 3. Graph Traversals
 
 Problems for undirected graph G:
     
@@ -246,7 +246,7 @@ Problems for directed graph G:
 
 - Determine whther G is strongly connected. 
 
-### 3.1 Depth-First Search (DFS)
+## 3.1 Depth-First Search (DFS)
 
 **Algorithm** DFS(G,u): {We assume u has already been marked as visited}
 
@@ -262,7 +262,7 @@ Problems for directed graph G:
            
        - Recursively call DFS(G,v).
 
-#### Classifying Graph Edges with DFS:
+### Classifying Graph Edges with DFS:
 
   
 - **discovery edge (tree edge):** an edge is used to discover a new vertex v during the DFS algorithm  
@@ -281,7 +281,7 @@ For directed graph:
    
    - **cross edge:** nontree edge which connect a vertex that is neither its ancestor nor its descendant
 
-#### Properties of a DFS:
+### Properties of a DFS:
 
 Propositions:
 
@@ -289,7 +289,7 @@ Propositions:
 
 - Let G be a directed graph. DFS on G starting starting at a vertex s visits all vertices of G that are reachable from s. Also, the DFS tree contains directed paths from s to every vertex reachable from s. 
 
-#### Running Time of DFS:
+### Running Time of DFS:
 
 If G is directed, O(n+m) for: 
 
@@ -317,7 +317,7 @@ If G is undirected, O(n+m) for:
 
 - Computing the **transitive closure** of G.
 
-### 3.2 DFS Implementation and Extensions
+## 3.2 DFS Implementation and Extensions
 
 
 ```python
