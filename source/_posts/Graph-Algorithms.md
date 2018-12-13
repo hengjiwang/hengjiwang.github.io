@@ -3,27 +3,26 @@ title: Graph Algorithms
 date: 2018-12-11 16:26:47
 tags: 
 - graph
-- data structure
-- algorithm
 categories: 
-- programming
+- data structure
 ---
+
 
 # 1. Graphs
 
 ## Composed by 
 
-- vertices 
+- **vertices** 
 
-- edges
+- **edges**
 
 ## Classified by
 
-- undirected graph : all edges are undirected
+- **undirected graph** : all edges are undirected
 
-- directed graph : all edges are directed
+- **directed graph** : all edges are directed
 
-- mixed graph : otherwise
+- **mixed graph** : otherwise
 
 (* mixed graph can be represented by a directed graph where the undirected edge is divided to two directed edge)
 
@@ -339,7 +338,6 @@ DFS(g, u, result)
 
 ### Reconstructing a Path from u to v
 
-
 ```python
 def constrcuct_path(u,v,discovered):
     path = []
@@ -354,6 +352,7 @@ def constrcuct_path(u,v,discovered):
         path.reverse()
     return path
 ```
+
 
 ### Testing for connectivity
 
@@ -480,4 +479,179 @@ it runs in O(n+m) time and using O(n) auxiliary space.
 
 # 6. Shortest Paths
 
-(to be continue ...)
+## 6.1 Weighted Graphs
+
+A **weighted graph** is a graph that has a numeric label w(e) associated with each edge e, called the **weight** of edge e. For $e=(u,v)$ we let $w(u,v) = w(e)$. 
+
+### Defining shortest paths in a weighted gragh
+
+For path $P$, the **length** of P is defined as:
+
+$$w(P) = \sum_{i=0}^{k-1} w(v_i, v_{i+1})$$
+
+The **distance** between $u,v$ is denoted as $d(u,v)$, which is defined as the minimum-length path (shortest path) from u to v, if such path exists; otherwise we use the convention that $d(u,v)=\infty$
+
+If there is a cycle in G whose total weight is negative, the distance from u to v may not be defined. 
+
+## 6.2 Dijkstra's Algorithm
+
+Define a label $D[v]$ which denotes the distance from s to v.
+
+**Edge Relaxation:**
+
+   **if** $D[u] + w(u,v) < D[v]$ **then**
+   
+$$D[v] = D[u] + w(u,v)$$
+
+Dijksatra's Algorithm is a **greedy method** algorithm for solving shortest paths problem. 
+
+### Why it works?
+
+Whenver a vertex v is pulled into the cloud (out of the peiority Q), $D[v]$ is equal to $d(s,v)$.
+
+### Running time of Dijkstra's Algorithm
+
+Assume we are representing $G$ suing an adjacency list or adjacency map structure. 
+
+- If Q is an adaptable priority queue implemented as a heap, then is $O((n+m)\log n)$
+
+- If Q is an adaptable priority queue implemented as an unsorted sequence, then is $O(n^2)$
+
+- If Q is implemented as a Fibonacci heap, it is $O(m+n\log n)$
+
+### Python Implementation
+
+
+```python
+def shortest_path_lengths(g, src):
+    d = {}
+    cloud = {}
+    pq = AdaptableHeapPriorityQueue()
+    pqlocator = {}
+    
+    for v in g.vertices():
+        if v is src:
+            d[v] = 0
+        else:
+            d[v] = float('inf')
+        pqlocator[v] = pg.add(d[v], v)
+        
+    while not pq.is_empty():
+        key, u = pq.remove_min()
+        cloud[u] = key
+        del pqlocator[u]
+        for e in g.incident_edges(u):
+            v = e.opposite(u)
+            if v not in cloud:
+                wgt = e.element()
+                if d[u] + wgt < d[v]:
+                    d[v] = d[u] + wgt
+                    pq.update(pq[pqlocator[v]], d[v], v)
+                    
+    return cloud
+```
+
+### Reconstructing the shortest-path tree
+
+The collection of all shortest paths can be represented as a tree which is named **shortest-path tree**, because if a shortest path from s to v passes through an intermediate vertex u then it must begin with a shortest path from s to u. 
+
+
+```python
+def shortest_path_tree(g, s, d):
+    tree = {}
+    for v in d:
+        if v is not s:
+            for e in g.incident_edges(v):
+                u = e.opposite(v)
+                wgt = e.element()
+                if d[u] + wgt == d[v]:
+                    tree[v] = e
+    return tree
+```
+
+# 7. Minimum Spanning Trees (MST)
+
+The problem of computing a spanning tree T with smallest total weight is known as **minimum spanning tree (MST)** problem. 
+
+### A crucial fact
+
+Let G be a weighted connected graph, and let $V_1$ and $V_2$ be a partition of the vertices of G into two disjoint nonempty sets. Furthermore, let e be an edge in G with minimum weight from among those with one endpont in $V_1$ and the other in $V_2$. There is a minimum spanning tree T taht has e as one of its edges.
+
+## 7.1 Prim-Jarnik Algorithm
+
+
+```python
+def MST_PrimJarnik(g):
+    
+    d = {}
+    tree = []
+    pq = AdaptableHeapPriorityQueue()
+    pqlocator = {}
+    
+    for v in g.vertices():
+        if len(d) == 0:
+            d[v] = 0
+        else:
+            d[v] = float('inf')
+        pqlocator[v] = pq.add(d[v], (v,None))
+    
+    while not pq.is_empty():
+        key, value = pq.remove_min()
+        u,edge = value
+        if edge is not None:
+            tree.append(edge)
+        del pqlocator[u]
+        for link in g.incident_edges(u):
+            v = link.opposite(u)
+            if v in pqlocator:
+                wgt = link.element()
+                if wgt < d[v]:
+                    d[v] = wgt
+                    pq.update(pqlocator[v], d[v], (v,link))
+    return tree 
+```
+
+It runs in $O((n+m)\log n)$ for a heap-based priority queue, and runs in $O(n^2)$ for an unsorted list-based queue
+
+## 7.2 Kruskal's Algorithm
+
+
+```python
+def MST_Kruskal(g):
+    
+    tree = []
+    pq = HeapPriorityQueue()
+    forest = Partition()
+    position = {}
+    
+    for v in g.vertices():
+        position[v] = forest.make_group(v)
+    for e in g.edges():
+        pq.add(e.element(),e)
+    
+    size = g.vertex_count()
+    while len(tree) != size -1 and not pq.is_empty():
+        weight, edge = pq.remove_min()
+        u,v = edge.endpoints()
+        a = forest.find(position[u])
+        b = forest.find(position[v])
+        if a!= b:
+            tree.append(edge)
+            forest,union(a,b)
+            
+    return tree
+```
+
+It runs in $O(m\log n)$
+
+The Partition() used here can be implemented with tree data structure.
+
+## 7.3 Disjoint Partitions and Union-Find Structures
+
+### partition ADT
+
+- **make_group(x)**: create a singleton group containing new element x and return the position storing x.
+
+- **union(p,q):** Merge the group containing positions p and q
+
+- **find(p):** Return the position of the leader of the group containing position p. 
