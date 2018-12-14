@@ -44,20 +44,20 @@ of which dynamics can be analyzed in a 2D phase plane.
 ![](https://raw.githubusercontent.com/hengjiwang/blog_figures/master/phaseplane.png)
 
 - **Stability of Fixed points**
-  Move back to HH model. For a fixed point $(u_0, w_0)$, define $\bm{x} = (u-u_0, w-w_0)^T$, then the linearization is:
+  Move back to HH model. For a fixed point $(u_0, w_0)$, define $\bf{x} = (u-u_0, w-w_0)^T$, then the linearization is:
 
-  $$\frac{d\bm{x}}{dt} = \begin{bmatrix}
-   F_u & F_w \\
+  $$\frac{d\bf{x}}{dt} = \left(\begin{matrix}
+   F_u & F_w\\\ 
    G_u & G_w 
-  \end{bmatrix}\bm{x}$$
+  \end{matrix}\right)\bf{x}$$
 
   where derivatives $F_u, F_w, ...$ are evaluated at the fixed point. 
-  Assume $\bm{x} = C_1e^{\lambda_1t}\bm{e_1} + C_2e^{\lambda_2t}\bm{e_2}$, then the linearization can be formulated as 
+  Assume $\bf{x} = C_1e^{\lambda_1t}\bf{e_1} + C_2e^{\lambda_2t}\bf{e_2}$, then the linearization can be formulated as 
   $$\lambda^2 -(F_u+G_w)\lambda +(F_uG_w - F_wG_u)=0$$
   Solve it we get $$\lambda_1+\lambda_2 = (F_u + G_w)$$ $$\lambda_1\lambda_2 = F_uG_w - F_wG_u$$.
-  - **Stable:** $\lambda_1, \lambda_2 < 0$, which means $$F_u+G_w < 0 \text{ \ and \ } F_uG_w - F_wG_u>0$$
+  - **Stable:** $\lambda_1, \lambda_2 < 0$, which means $$F_u+G_w < 0 \text{  and  } F_uG_w - F_wG_u>0$$
   - **Unstable:** 
-    $$F_u+G_w > 0 \text{ \ and \ } F_uG_w - F_wG_u>0$$
+    $$F_u+G_w > 0 \text{  and  } F_uG_w - F_wG_u>0$$
   - **Saddle:** 
     $$F_uG_w -F_wG_u < 0$$
 
