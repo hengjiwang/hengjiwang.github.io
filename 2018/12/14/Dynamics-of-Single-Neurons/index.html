@@ -94,7 +94,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/HH.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/phaseplane.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/stable.png">
-<meta property="og:updated_time" content="2018-12-14T20:37:37.643Z">
+<meta property="og:updated_time" content="2018-12-14T20:49:06.028Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Dynamics of Single Neurons">
 <meta name="twitter:description" content="0. Hodgkin-Huxley Model– God said: Let there be spikes: and there was Hodgkin-Huxley model.  Hodgkin-Huxley (HH) model is a starting point for detailed modeling and dynamics analysis of single neurons">
@@ -379,12 +379,12 @@
 </ul>
 <p><img src="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/phaseplane.png" alt=""></p>
 <ul>
-<li><p><strong>Stability of Fixed points</strong><br>Move back to HH model. For a fixed point $(u_0, w_0)$, define $\bm{x} = (u-u_0, w-w_0)^T$, then the linearization is:</p>
-<p>$$\frac{d\bm{x}}{dt} = \begin{bmatrix}<br> F_u &amp; F_w \<br> G_u &amp; G_w<br>\end{bmatrix}\bm{x}$$</p>
-<p>where derivatives $F_u, F_w, …$ are evaluated at the fixed point.<br>Assume $\bm{x} = C_1e^{\lambda_1t}\bm{e_1} + C_2e^{\lambda_2t}\bm{e_2}$, then the linearization can be formulated as<br>$$\lambda^2 -(F_u+G_w)\lambda +(F_uG_w - F_wG_u)=0$$<br>Solve it we get $$\lambda_1+\lambda_2 = (F_u + G_w)$$ $$\lambda_1\lambda_2 = F_uG_w - F_wG_u$$.</p>
+<li><p><strong>Stability of Fixed points</strong><br>Move back to HH model. For a fixed point $(u_0, w_0)$, define $\bf{x} = (u-u_0, w-w_0)^T$, then the linearization is:</p>
+<p>$$\frac{d\bf{x}}{dt} = \left(\begin{matrix}<br> F_u &amp; F_w\\<br> G_u &amp; G_w<br>\end{matrix}\right)\bf{x}$$</p>
+<p>where derivatives $F_u, F_w, …$ are evaluated at the fixed point.<br>Assume $\bf{x} = C_1e^{\lambda_1t}\bf{e_1} + C_2e^{\lambda_2t}\bf{e_2}$, then the linearization can be formulated as<br>$$\lambda^2 -(F_u+G_w)\lambda +(F_uG_w - F_wG_u)=0$$<br>Solve it we get $$\lambda_1+\lambda_2 = (F_u + G_w)$$ $$\lambda_1\lambda_2 = F_uG_w - F_wG_u$$.</p>
 <ul>
-<li><strong>Stable:</strong> $\lambda_1, \lambda_2 &lt; 0$, which means $$F_u+G_w &lt; 0 \text{ \ and \ } F_uG_w - F_wG_u&gt;0$$</li>
-<li><strong>Unstable:</strong><br>$$F_u+G_w &gt; 0 \text{ \ and \ } F_uG_w - F_wG_u&gt;0$$</li>
+<li><strong>Stable:</strong> $\lambda_1, \lambda_2 &lt; 0$, which means $$F_u+G_w &lt; 0 \text{  and  } F_uG_w - F_wG_u&gt;0$$</li>
+<li><strong>Unstable:</strong><br>$$F_u+G_w &gt; 0 \text{  and  } F_uG_w - F_wG_u&gt;0$$</li>
 <li><strong>Saddle:</strong><br>$$F_uG_w -F_wG_u &lt; 0$$</li>
 </ul>
 <p>Another classification is by if $\lambda_1$ and $\lambda_2$ are true real numbers, checked with the sign of $(F_u+G_w)^2 - 4(F_uG_w - F_wG_u)$:</p>
