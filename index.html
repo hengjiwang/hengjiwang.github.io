@@ -356,98 +356,22 @@
       
         
           
-            <h1 id="1-Elements-of-Neuronal-Systems"><a href="#1-Elements-of-Neuronal-Systems" class="headerlink" title="1 Elements of Neuronal Systems"></a>1 Elements of Neuronal Systems</h1><ul>
-<li><p>We will consider: spiking neurons</p>
-</li>
-<li><p>We will neglect: glia cells, non-spiking neurons</p>
-</li>
-</ul>
-<h2 id="1-1-The-Ideal-Spiking-Neuron"><a href="#1-1-The-Ideal-Spiking-Neuron" class="headerlink" title="1.1 The Ideal Spiking Neuron"></a>1.1 The Ideal Spiking Neuron</h2><ul>
-<li><p>A neuron has three functional parts:</p>
-<ul>
-<li><strong>dendrites:</strong> ‘input device’ that collects signals from other neurons and transmit them to the soma</li>
-<li><strong>soma:</strong> ‘cpu’ that performs an non-linear processing step</li>
-<li><strong>axon:</strong> ‘output device’ that delivers the signal to other neurons</li>
-</ul>
-</li>
-<li><p><strong>synapse:</strong> the junction between two neurons </p>
-</li>
-</ul>
-<h2 id="1-2-Spike-Trains"><a href="#1-2-Spike-Trains" class="headerlink" title="1.2 Spike Trains"></a>1.2 Spike Trains</h2><ul>
-<li><p>Neuronal signal: short electrical <strong>pulses</strong> (<strong>action potentials</strong> or <strong>spikes</strong>), which is the elementary unit of signal transmission.</p>
-<ul>
-<li>typical amplitude: 100 mV</li>
-<li>typical duration 1-2 ms</li>
-</ul>
-</li>
-<li><p><strong>Spike trains:</strong> A chain of action potentials emitted by a single neuron. </p>
-</li>
-<li><p>What matters? </p>
-<ul>
-<li>The number and the timing of spikes of a spike train. </li>
-</ul>
-</li>
-<li><p>Spikes are separated: <font color="red">it’s impossible to excite a second spike during or immediately after a first one. </font>The minimal distance between two spikes is <strong>refractory period</strong>. </p>
-</li>
-</ul>
-<h2 id="1-3-Synapses"><a href="#1-3-Synapses" class="headerlink" title="1.3 Synapses"></a>1.3 Synapses</h2><ul>
-<li><p><strong>chemical synapses</strong></p>
-<ul>
-<li>axon $\rightarrow$ <strong>synaptic cleft</strong> $\rightarrow$ postsynaptic neuron</li>
-</ul>
-</li>
-<li><p><strong>electrical synapses (gap junctions)</strong></p>
-<ul>
-<li>not much is known</li>
-</ul>
-</li>
-</ul>
-<h1 id="2-Elements-of-Neuronal-Dynamics"><a href="#2-Elements-of-Neuronal-Dynamics" class="headerlink" title="2 Elements of Neuronal Dynamics"></a>2 Elements of Neuronal Dynamics</h1><h2 id="2-1-Postsynaptic-Potentials"><a href="#2-1-Postsynaptic-Potentials" class="headerlink" title="2.1 Postsynaptic Potentials"></a>2.1 Postsynaptic Potentials</h2><ul>
-<li><strong>PSP:</strong> postsynaptic potential<ul>
-<li><strong>EPSP:</strong> excitatory PSP</li>
-<li><strong>IPSP:</strong> inhibitory PSP</li>
-</ul>
-</li>
-</ul>
-<p>(* EPSP doesn’t strictly indicates a spike.)</p>
-<h2 id="2-2-Firing-Threshold-and-Action-Potential"><a href="#2-2-Firing-Threshold-and-Action-Potential" class="headerlink" title="2.2 Firing Threshold and Action Potential"></a>2.2 Firing Threshold and Action Potential</h2><ul>
-<li>When membrane potential of a neuron reaches a <strong>threshold</strong> there will be a spike. </li>
-</ul>
-<h1 id="3-Leaky-Integrate-And-Fire-Models-LIF"><a href="#3-Leaky-Integrate-And-Fire-Models-LIF" class="headerlink" title="3 Leaky-Integrate-And-Fire Models (LIF)"></a>3 Leaky-Integrate-And-Fire Models (LIF)</h1><p>Neuronal dynamics can be conceived as an ingegration process combined with a triggering-spike mechanism. </p>
-<h2 id="3-1-Model"><a href="#3-1-Model" class="headerlink" title="3.1 Model"></a>3.1 Model</h2><p><img src="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/intgrate_and_fire_model.png" alt="Integration-And-Fire model"></p>
-<p>$$I(t) = I_R + I_C = \frac{u(t) - u_{rest}}{R} + C\frac{du}{dt}$$<br>Then we get<br>$$RC \frac{du}{dt} = -(u(t) - u_{rest}) + RI(t)$$</p>
-<ul>
-<li>When u(t) reaches a threshold, we will assume there is a $\delta$ pulse and then immediately reset u(t) to a value $u_r$:</li>
-</ul>
-<p><img src="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/LIF.png" alt=""></p>
-<p>This turns to a time stepping problem that can be solved with python (use package <strong>brian2</strong> here):</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">%matplotlib inline</span><br><span class="line"><span class="keyword">import</span> brian2 <span class="keyword">as</span> b2</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> neurodynex.leaky_integrate_and_fire <span class="keyword">import</span> LIF</span><br><span class="line"><span class="keyword">from</span> neurodynex.tools <span class="keyword">import</span> input_factory, plot_tools</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">LIF.getting_started()</span><br><span class="line">LIF.print_default_parameters()</span><br></pre></td></tr></table></figure>
-<p>details and exercises here: <a href="https://neuronaldynamics-exercises.readthedocs.io/en/latest/exercises/leaky-integrate-and-fire.html" target="_blank" rel="noopener">https://neuronaldynamics-exercises.readthedocs.io/en/latest/exercises/leaky-integrate-and-fire.html</a></p>
-<h2 id="3-2-Liminations"><a href="#3-2-Liminations" class="headerlink" title="3.2 Liminations"></a>3.2 Liminations</h2><p>LIF model is an extremely simplified model.</p>
-<ul>
-<li><p>No memory of previous spikes is kept.</p>
-<ul>
-<li><p>cannot capture <strong>adaption</strong> which exhibits in <strong>regular-firing neurons</strong>; instead can model <strong>fast-spiking neurons</strong> well</p>
-</li>
-<li><p>More complex: <strong>bursting</strong> and <strong>stuttering</strong> neurons</p>
-</li>
-</ul>
-</li>
-<li><p>Shunting inhibition and reversal potential</p>
-<ul>
-<li><p><strong>PSC(postsynaptic current):</strong> an input current from the spikes emitted by the presynaptic neurons:<br>$$\text{PSC} \propto (u_0 - E_{syn}) $$</p>
-<p>where $E_{syn}$ is the <strong>reversal potential</strong> of the synapse.</p>
-</li>
-</ul>
-</li>
-<li>Conductanc echanges after a spike</li>
-<li>Spatial Structure</li>
-</ul>
-<h2 id="3-3-Benefits"><a href="#3-3-Benefits" class="headerlink" title="3.3 Benefits"></a>3.3 Benefits</h2><ul>
-<li>LIF model works accurately when predict precisely timed events in time, which is good for spike generation <em>in the soma.</em> But some parameters may need to be tuned. e.g. threshold depends on time. </li>
-</ul>
+          1 Elements of Neuronal Systems
+We will consider: spiking neurons
 
-          
+We will neglect: glia cells, non-spiking neurons
+
+
+1.1 The Ideal Spiking Neuron
+A ne
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/12/13/Leaky-Integrate-and-Fire-model/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -597,283 +521,26 @@
       
         
           
-            <h1 id="1-Graphs"><a href="#1-Graphs" class="headerlink" title="1. Graphs"></a>1. Graphs</h1><h2 id="Composed-by"><a href="#Composed-by" class="headerlink" title="Composed by"></a>Composed by</h2><ul>
-<li><p><strong>vertices</strong> </p>
-</li>
-<li><p><strong>edges</strong></p>
-</li>
-</ul>
-<h2 id="Classified-by"><a href="#Classified-by" class="headerlink" title="Classified by"></a>Classified by</h2><ul>
-<li><p><strong>undirected graph</strong> : all edges are undirected</p>
-</li>
-<li><p><strong>directed graph</strong> : all edges are directed</p>
-</li>
-<li><p><strong>mixed graph</strong> : otherwise</p>
-</li>
-</ul>
-<p>(* mixed graph can be represented by a directed graph where the undirected edge is divided to two directed edge)</p>
-<h2 id="Concepts-part-1"><a href="#Concepts-part-1" class="headerlink" title="Concepts - part 1"></a>Concepts - part 1</h2><ul>
-<li><p>The two vertices joined by an edge are called <strong>end vertices(endpoints)</strong> of the edge. If the edge is directed, the first endpoint is <strong>origin</strong> and the other is the <strong>destination</strong> of the edge</p>
-</li>
-<li><p>The two endpoints of an edge are said to be <strong>adjacent</strong>. </p>
-</li>
-<li><p>An edge is said to be <strong>incident</strong> to its endpoints.</p>
-</li>
-<li><p>origin -&gt; <strong>outcoming edge</strong>; destination &lt;- <strong>incoming edge</strong>. </p>
-</li>
-<li><p>The number of incident edges of a vertex v is called its <strong>degree</strong>, denoted as deg(v).</p>
-</li>
-<li><p><strong>in-degree</strong> indeg(v); <strong>out-degree</strong> outdeg(v)</p>
-</li>
-</ul>
-<h2 id="Concepts-part-2"><a href="#Concepts-part-2" class="headerlink" title="Concepts - part 2"></a>Concepts - part 2</h2><ul>
-<li><p>The definition of a graph refers to the group of edges as a <strong>collection</strong> rather than a <strong>set</strong>. So two edges can have the same endpoints, which are called <strong>parallel edges</strong> or <strong>multiple edges</strong>. </p>
-</li>
-<li><p>If two vertices coincide we call the edge <strong>self-loop</strong>.</p>
-</li>
-<li><p>Graphs that do not have parallel edges or self-loops are called <strong>simple</strong>. The edges of a simple graph are a <strong>set</strong> of vertex pairs. Usually we just assume a graph is simple.  </p>
-</li>
-</ul>
-<h2 id="Concepts-part-3"><a href="#Concepts-part-3" class="headerlink" title="Concepts - part 3"></a>Concepts - part 3</h2><ul>
-<li><p>A <strong>path</strong> is a sequence of alternating vertices and edges that starts at a vertex and ends at a vertex; a <strong>cycle</strong> is a path that starts and ends at the same vertex; we say a path (or cycle) is <strong>simple</strong> if each vertex in the cycle is distinct (except for the first and last one).</p>
-</li>
-<li><p><strong>directed path</strong> and <strong>directed cycle</strong></p>
-</li>
-</ul>
-<h2 id="Concepts-part-4"><a href="#Concepts-part-4" class="headerlink" title="Concepts - part 4"></a>Concepts - part 4</h2><ul>
-<li><p>If there is a directed path from u to v, then we say u <strong>reaches</strong> v, or v is <strong>reachable</strong> from u. </p>
-</li>
-<li><p>In an undirected graph, the notion of <strong>reachability</strong> is symmetric. </p>
-</li>
-<li><p>A graph is <strong>connected</strong> if for any two vertices there is a path between them, and is <strong>strongly connected</strong> if for any two vertices one can reach the other.</p>
-</li>
-<li><p><strong>subgraph</strong>; <strong>spanning subgraph</strong>: a subgraph of G that contains all the vertices of G; <strong>connected components</strong>: the maximal connected subgraphs of G.</p>
-</li>
-<li><p><strong>forest</strong>: a graph without cycles. A <strong>tree</strong> is a connected forest. A <strong>spanning tree</strong> of a graph is a spanning subgraph that is a tree. </p>
-</li>
-</ul>
-<h2 id="Propositions"><a href="#Propositions" class="headerlink" title="Propositions"></a>Propositions</h2><ul>
-<li><p>$$\sum_{v\ in\  V} deg(v) = 2m$$</p>
-</li>
-<li><p>$$\sum_{v\ in \ V} indeg(v) = \sum_{v\ in\ V} outdeg(v) = m$$</p>
-</li>
-<li><p>Graph G has n verticles and m edges, then if G is undirected,<br>$$m \leq n(n-1)/2$$<br>else if G is directed,<br>$$m \leq n(n-1)$$</p>
-</li>
-<li><p>If G is connected, then $m\geq n-1$</p>
-</li>
-<li><p>If G is a tree, then $m = n-1$</p>
-</li>
-<li><p>If G is a forest, then $m \leq n-1$</p>
-</li>
-</ul>
-<h2 id="The-Graph-ADT"><a href="#The-Graph-ADT" class="headerlink" title="The Graph ADT"></a>The Graph ADT</h2><p>Three data types: Vertex, Edge, Graph</p>
-<ul>
-<li><p>Vertex:</p>
-<ul>
-<li>element()</li>
-</ul>
-</li>
-<li><p>Edge:</p>
-<ul>
-<li>element()</li>
-<li>endpoints()</li>
-<li>opposite(v)</li>
-</ul>
-</li>
-<li><p>Graph:</p>
-<ul>
-<li>vertex_count()</li>
-<li>vertices()</li>
-<li>edge_count()</li>
-<li>edges()</li>
-<li>get_edge(u,v)</li>
-<li>degree(v, out=True)</li>
-<li>incident_edges(v, out=True)</li>
-<li>insert_vertex(x=None)</li>
-<li>insert_edge(u, v, x=None)</li>
-<li>remove_vertex(v)</li>
-<li>remove_edge(e)</li>
-</ul>
-</li>
-</ul>
-<h1 id="2-Data-Structures-for-Graphs"><a href="#2-Data-Structures-for-Graphs" class="headerlink" title="2. Data Structures for Graphs"></a>2. Data Structures for Graphs</h1><ul>
-<li><strong>edge list</strong></li>
-<li><strong>adjacency list</strong></li>
-<li><strong>adjacency map</strong></li>
-<li><strong>adjacency matrix</strong></li>
-</ul>
-<p>An implementation of graph with adjacency map:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Vertex</span>:</span></span><br><span class="line">    </span><br><span class="line">    __slots__ = <span class="string">'_elements'</span></span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,x)</span>:</span></span><br><span class="line">        self._element = x</span><br><span class="line">        </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">element</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.element</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__hash__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> hash(id(self))</span><br><span class="line">    </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Edge</span>:</span></span><br><span class="line">    </span><br><span class="line">    __slots__ = <span class="string">'_origin'</span>, <span class="string">'_destination'</span>, <span class="string">'_element'</span></span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, u, v, x)</span>:</span></span><br><span class="line">        self._origin = u</span><br><span class="line">        self._destination = v</span><br><span class="line">        self._element = x</span><br><span class="line">        </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">endpoints</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> (self._orgin, self._destination)</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">opposite</span><span class="params">(self, v)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self._destination <span class="keyword">if</span> v <span class="keyword">is</span> self._origin <span class="keyword">else</span> self._origin</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">element</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self._element</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__hash__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> hash((self._origin, self._destination))</span><br><span class="line">    </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Graph</span>:</span></span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, directed= False)</span>:</span></span><br><span class="line">        self._outgoing = &#123;&#125;</span><br><span class="line">        self._incoming = &#123;&#125; <span class="keyword">if</span> directed <span class="keyword">else</span> self._outgoing</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">is_directed</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self._incoming <span class="keyword">is</span> <span class="keyword">not</span> self._outgoing</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">vertex_count</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> len(self._outgoing)</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">vertices</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self._outgoing.keys()</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">edge_count</span><span class="params">(self)</span>:</span></span><br><span class="line">        total = sum(len(self_outgoing[v]) <span class="keyword">for</span> v <span class="keyword">in</span> self._outgoing)</span><br><span class="line">        <span class="keyword">return</span> total <span class="keyword">if</span> self.is_directed() <span class="keyword">else</span> total//<span class="number">2</span></span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">edges</span><span class="params">(self)</span>:</span></span><br><span class="line">        result = set()</span><br><span class="line">        <span class="keyword">for</span> secondary_map <span class="keyword">in</span> self._outgoing.values():</span><br><span class="line">            result.update(secondary_map.values())</span><br><span class="line">        <span class="keyword">return</span> result</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_edge</span><span class="params">(self, u, v)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self._outgoing[u].get(v)</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">degree</span><span class="params">(self, v, outgoing=True)</span>:</span></span><br><span class="line">        adj = self._outgoing <span class="keyword">if</span> outgoing <span class="keyword">else</span> self._incoming</span><br><span class="line">        <span class="keyword">return</span> len(adj[v])</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">incident_edges</span><span class="params">(self, v, outgoing=True)</span>:</span></span><br><span class="line">        adj = self._outgoing <span class="keyword">if</span> outgoing <span class="keyword">else</span> self._incoming</span><br><span class="line">        <span class="keyword">for</span> edge <span class="keyword">in</span> adj[v].values():</span><br><span class="line">            <span class="keyword">yield</span> edge</span><br><span class="line">            </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">insert_vertex</span><span class="params">(self, x=None)</span>:</span></span><br><span class="line">        v = self.Vertex(x)</span><br><span class="line">        self._outgoing[v] = &#123;&#125;</span><br><span class="line">        <span class="keyword">if</span> self.is_directed():</span><br><span class="line">            self._incoming[v] = &#123;&#125;</span><br><span class="line">        <span class="keyword">return</span> v</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">insert_edges</span><span class="params">(self, u, v, x=None)</span>:</span></span><br><span class="line">        e = self.Edge(x)</span><br><span class="line">        self._outgoing[u][v] = e</span><br><span class="line">        self._incoming[v][u] = e</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">remove_vertex</span><span class="params">(self, v)</span>:</span></span><br><span class="line">        <span class="keyword">for</span> edge <span class="keyword">in</span> self.incident_edges(v, outgoing=<span class="keyword">True</span>):</span><br><span class="line">            self._incoming[edge.opposite(v)].pop(v)</span><br><span class="line">        self._outgoing.pop(v)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> self.is_directed():</span><br><span class="line">            <span class="keyword">for</span> edge <span class="keyword">in</span> self.incident_edges(v, outgoing=<span class="keyword">False</span>):</span><br><span class="line">                self._outgoing[edge.opposite(v)].pop(v)</span><br><span class="line">            self._incoming.pop(v)       </span><br><span class="line">        </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">remove_edge</span><span class="params">(self, e)</span>:</span></span><br><span class="line">        u, v = e.endpoints()</span><br><span class="line">        self._outgoing[u].pop(v)</span><br><span class="line">        self._incoming[v].pop(u)</span><br></pre></td></tr></table></figure>
-<h1 id="3-Graph-Traversals"><a href="#3-Graph-Traversals" class="headerlink" title="3. Graph Traversals"></a>3. Graph Traversals</h1><p>Problems for undirected graph G:</p>
-<ul>
-<li><p>Computing a path from u to v or report no such path exists.</p>
-</li>
-<li><p>Give na vertex s, for every vertex v of G, a path with the minimum number of edges bewteen s and v, or reporting that no such path exists.</p>
-</li>
-<li><p>Testing whether G is connected.</p>
-</li>
-<li><p>Computing a spanning tree of G if G is connected.</p>
-</li>
-<li><p>Computing a cycle in G, or reporting that G has no cycles.</p>
-</li>
-</ul>
-<p>Problems for directed graph G:</p>
-<ul>
-<li><p>Computing a directed path from vertex to vertex v, or reporting no such path exists. </p>
-</li>
-<li><p>Finding all the vertices of G that are reachablefrom a given vertex s.</p>
-</li>
-<li><p>Determine whether G is acyclic.</p>
-</li>
-<li><p>Determine whther G is strongly connected. </p>
-</li>
-</ul>
-<h2 id="3-1-Depth-First-Search-DFS"><a href="#3-1-Depth-First-Search-DFS" class="headerlink" title="3.1 Depth-First Search (DFS)"></a>3.1 Depth-First Search (DFS)</h2><p><strong>Algorithm</strong> DFS(G,u): {We assume u has already been marked as visited}</p>
-<p>   <strong>Input:</strong> A graph G and a vertex u of G</p>
-<p>   <strong>Output:</strong> A collection of vertices reachable from u, with their discovery edges</p>
-<p>   <strong>for</strong> each outgoing edge e = (u,v) of u <strong>do</strong></p>
-<ul>
-<li><p><strong>if</strong> vertex v has not been visited <strong>then</strong></p>
-<ul>
-<li><p>Mark vertex v as visited (via edge e).</p>
-</li>
-<li><p>Recursively call DFS(G,v).</p>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="Classifying-Graph-Edges-with-DFS"><a href="#Classifying-Graph-Edges-with-DFS" class="headerlink" title="Classifying Graph Edges with DFS:"></a>Classifying Graph Edges with DFS:</h3><ul>
-<li><p><strong>discovery edge (tree edge):</strong> an edge is used to discover a new vertex v during the DFS algorithm  </p>
-</li>
-<li><p><strong>nontree edge:</strong> an edge that is not a tree edge during the excution of DFS</p>
-</li>
-</ul>
-<p>For undirected graph:</p>
-<ul>
-<li><strong>back edge:</strong> nontree edge which connect a vertex to ana ancestor in the DFS tree</li>
-</ul>
-<p>For directed graph:</p>
-<ul>
-<li><p><strong>back edge:</strong> nontree edge which connect a vertex to ana ancestor in the DFS tree</p>
-</li>
-<li><p><strong>forward edge:</strong> nontree edge which connect a vertex to a descendant in the DFS tree</p>
-</li>
-<li><p><strong>cross edge:</strong> nontree edge which connect a vertex that is neither its ancestor nor its descendant</p>
-</li>
-</ul>
-<h3 id="Properties-of-a-DFS"><a href="#Properties-of-a-DFS" class="headerlink" title="Properties of a DFS:"></a>Properties of a DFS:</h3><p>Propositions:</p>
-<ul>
-<li><p>DFS traversal visits all vertices in the connected component of starting vertex s, and the discovery edges form a spanning tree of the connected component of s.</p>
-</li>
-<li><p>Let G be a directed graph. DFS on G starting starting at a vertex s visits all vertices of G that are reachable from s. Also, the DFS tree contains directed paths from s to every vertex reachable from s. </p>
-</li>
-</ul>
-<h3 id="Running-Time-of-DFS"><a href="#Running-Time-of-DFS" class="headerlink" title="Running Time of DFS:"></a>Running Time of DFS:</h3><p>If G is directed, O(n+m) for: </p>
-<ul>
-<li><p>DFS traversal</p>
-</li>
-<li><p>Computing a path bewtween two given vertices of G if one exists. </p>
-</li>
-<li><p>Computing a soanning tree of G if G is connected.</p>
-</li>
-<li><p>Computing the connected components of G.</p>
-</li>
-<li><p>Computing a cycle in G, or reporting that there is no cycles.</p>
-</li>
-</ul>
-<p>If G is undirected, O(n+m) for:</p>
-<ul>
-<li><p>DFS traversal</p>
-</li>
-<li><p>Computing a directed path between two given vertices of G, if one exists.</p>
-</li>
-<li><p>Computing the set of vertices of G that are reachable from a given vertex s. </p>
-</li>
-<li><p>Testing whether G is strongly connected.</p>
-</li>
-<li><p>Computing a directed cycle in G or reporting G is acyclic.</p>
-</li>
-<li><p>Computing the <strong>transitive closure</strong> of G.</p>
-</li>
-</ul>
-<h2 id="3-2-DFS-Implementation-and-Extensions"><a href="#3-2-DFS-Implementation-and-Extensions" class="headerlink" title="3.2 DFS Implementation and Extensions"></a>3.2 DFS Implementation and Extensions</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">DFS</span><span class="params">(g,u,discovered)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> e <span class="keyword">in</span> g.incident_edges(u):</span><br><span class="line">        v = e.opposite(u)</span><br><span class="line">        <span class="keyword">if</span> v <span class="keyword">not</span> <span class="keyword">in</span> discovered:</span><br><span class="line">            discovered[v] = e</span><br><span class="line">            DFS(g,v,discovered)</span><br></pre></td></tr></table></figure>
-<p>The caller should start as follows:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">result = &#123;u : <span class="keyword">None</span>&#125; <span class="comment"># u trivally discovered</span></span><br><span class="line">DFS(g, u, result)</span><br></pre></td></tr></table></figure>
-<h3 id="Reconstructing-a-Path-from-u-to-v"><a href="#Reconstructing-a-Path-from-u-to-v" class="headerlink" title="Reconstructing a Path from u to v"></a>Reconstructing a Path from u to v</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">constrcuct_path</span><span class="params">(u,v,discovered)</span>:</span></span><br><span class="line">    path = []</span><br><span class="line">    <span class="keyword">if</span> v <span class="keyword">in</span> discovered:</span><br><span class="line">        path.append(v)</span><br><span class="line">        walk = v</span><br><span class="line">        <span class="keyword">while</span> walk <span class="keyword">is</span> <span class="keyword">not</span> u:</span><br><span class="line">            e = discovered[walk]</span><br><span class="line">            parent = e.opposite(v)</span><br><span class="line">            path.append(parent)</span><br><span class="line">            walk = parent</span><br><span class="line">        path.reverse()</span><br><span class="line">    <span class="keyword">return</span> path</span><br></pre></td></tr></table></figure>
-<h3 id="Testing-for-connectivity"><a href="#Testing-for-connectivity" class="headerlink" title="Testing for connectivity"></a>Testing for connectivity</h3><ul>
-<li><p><strong>connected:</strong> check for an arbitrary vertex if len(discovered) = n.</p>
-</li>
-<li><p><strong>strongly connected:</strong> for an arbitrary vertex s, do DFS traversal and loops through all incoming edges and all outgoing edges. If for these two traversals every vertex in the graph can reach s and is reachable from s, then G is strongly connected. This method runs in O(n+m) time. </p>
-</li>
-</ul>
-<h3 id="Computing-all-connected-components"><a href="#Computing-all-connected-components" class="headerlink" title="Computing all connected components"></a>Computing all connected components</h3><p>When a graph is not connected, the next goal we may have is to identify all of the <strong>connected components</strong> of an undirected graph, or the <strong>strongly connected components</strong> of a directed graph.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">DFS_complete</span><span class="params">(g)</span>:</span></span><br><span class="line">    forest = &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> u <span class="keyword">in</span> g.vertices():</span><br><span class="line">        <span class="keyword">if</span> u <span class="keyword">not</span> <span class="keyword">in</span> forest:</span><br><span class="line">            forest[u] = <span class="keyword">None</span></span><br><span class="line">            DFS(g, u, forest)</span><br><span class="line">    <span class="keyword">return</span> forest</span><br></pre></td></tr></table></figure>
-<p>This function runs in O(n+m) time</p>
-<h3 id="Detecting-cycles-wih-DFS"><a href="#Detecting-cycles-wih-DFS" class="headerlink" title="Detecting cycles wih DFS"></a>Detecting cycles wih DFS</h3><h2 id="3-3-Breadth-First-Search-BFS"><a href="#3-3-Breadth-First-Search-BFS" class="headerlink" title="3.3 Breadth-First Search (BFS)"></a>3.3 Breadth-First Search (BFS)</h2><p>BFS proceeds in rounds and subdivides the vertices into <strong>levels</strong>. </p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">BFS</span><span class="params">(g, s, discovered)</span>:</span></span><br><span class="line">    level = [s]</span><br><span class="line">    <span class="keyword">while</span> len(level) &gt; <span class="number">0</span>:</span><br><span class="line">        next_level = []</span><br><span class="line">        <span class="keyword">for</span> u <span class="keyword">in</span> level:</span><br><span class="line">            <span class="keyword">for</span> e <span class="keyword">in</span> g.incident_edges(u):</span><br><span class="line">                v = e.opposite(u)</span><br><span class="line">                <span class="keyword">if</span> v <span class="keyword">not</span> <span class="keyword">in</span> discovered:</span><br><span class="line">                    discovered[v] = e</span><br><span class="line">                    next_level.append(v)</span><br><span class="line">        level = next_level</span><br></pre></td></tr></table></figure>
-<p>For BFS on an undirected graph, all nontree edges are cross edges, and for BFS on a directed graph, all nontree edges are either back edges or cross edges.</p>
-<h3 id="Properties-of-BFS"><a href="#Properties-of-BFS" class="headerlink" title="Properties of BFS"></a>Properties of BFS</h3><ul>
-<li><p>A path in a BFS tree rooted at vertex s to any other vertex v is guaranteed to be the shortest path.</p>
-</li>
-<li><p>The traversal visits all vertices of G that are reachable from s.</p>
-</li>
-<li><p>For each vertex v at level i, the path of the BFS tree T between s and v has i edges, and any other path of G from s to v has at least i edges. (same as shortest path property).</p>
-</li>
-<li><p>If (u,v) is an edge that is not in the BFS tree, then the level number of v can be at most 1 greater than the level number of u.</p>
-</li>
-<li><p>BFS takes O(n+m) time.</p>
-</li>
-</ul>
-<h3 id="DFS-vs-BFS"><a href="#DFS-vs-BFS" class="headerlink" title="DFS vs. BFS"></a>DFS vs. BFS</h3><p>BFS guarantees that those paths use as few edges as possible; DFS is suited for certain tasks such as finding a directed cycle in the graph or in identifying the strongly connected components. </p>
-<h1 id="4-Transitive-Closure"><a href="#4-Transitive-Closure" class="headerlink" title="4. Transitive Closure"></a>4. Transitive Closure</h1><p>The <strong>transitive closure</strong> of a directed graph G is a directed graph G<em>, such that the vertices of G</em> are the same vertices of G, and whenever G has a path from u to v, G* has an edge (u,v).</p>
-<p><strong>Proposition:</strong> For i=1,2,…,n, directed graph $G_k$ has an edge $(v_i, v_j)$ if and only if directed graph $G$ has a directed path from $v_i$ to $v_j$, whose intermediate vertices (if any) are in the set ${v_1, …, v_k}$</p>
-<h3 id="Floyd-Warshall-Algorithm"><a href="#Floyd-Warshall-Algorithm" class="headerlink" title="Floyd-Warshall Algorithm"></a>Floyd-Warshall Algorithm</h3><p>An algorithm that computes transitive closure of a graph in $O(n^3)$ time. Well suited in an adjacency matrix. </p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">floyd_warshall</span><span class="params">(g)</span>:</span></span><br><span class="line">    </span><br><span class="line">    closure = deepcopy(g)</span><br><span class="line">    verts =list(closure.vertices())</span><br><span class="line">    n = len(verts)</span><br><span class="line">    <span class="keyword">for</span> k <span class="keyword">in</span> range(n):</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">            <span class="keyword">if</span> i!=k <span class="keyword">and</span> closure.get_edge(verts[i], verts[k]) <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>:</span><br><span class="line">                <span class="keyword">for</span> j <span class="keyword">in</span> range(n):</span><br><span class="line">                    <span class="keyword">if</span> i!=j!=k <span class="keyword">and</span> closure.get_edge(verts[k], verts[j]) <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>:</span><br><span class="line">                        <span class="keyword">if</span> closure.get_edge(vers[i], verts[j]) <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>:</span><br><span class="line">                            closure.insert_edges(verts[i], verts[j])</span><br><span class="line">    <span class="keyword">return</span> closure</span><br></pre></td></tr></table></figure>
-<h1 id="5-Directed-Acyclic-Graphs-DAG"><a href="#5-Directed-Acyclic-Graphs-DAG" class="headerlink" title="5. Directed Acyclic Graphs (DAG)"></a>5. Directed Acyclic Graphs (DAG)</h1><h2 id="5-1-Topological-Ordering"><a href="#5-1-Topological-Ordering" class="headerlink" title="5.1 Topological Ordering"></a>5.1 Topological Ordering</h2><p><strong>topologival ordering</strong> is an ordering such that any directed path in G traverses vertices in increasing order. A directed graph may have more than one topological ordering. </p>
-<p><strong>Proposition</strong>: G has a topological ordering if and only if it is acyclic.</p>
-<p>The algorithm for computing a topological ordering of a directed graph which we call <strong>topological sorting</strong>. </p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">topological_sort</span><span class="params">(g)</span>:</span></span><br><span class="line">    </span><br><span class="line">    topo = []</span><br><span class="line">    ready = []</span><br><span class="line">    incount = &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> u <span class="keyword">in</span> g.vertices():</span><br><span class="line">        incount[u] = g.degree(u, <span class="keyword">False</span>)</span><br><span class="line">        <span class="keyword">if</span> incount[u] == <span class="number">0</span>: <span class="comment"># if u has no incoming edges</span></span><br><span class="line">            ready.append(u)</span><br><span class="line">    <span class="keyword">while</span> len(ready)&gt;<span class="number">0</span>:</span><br><span class="line">        u = ready.pop()</span><br><span class="line">        topo.append(u)</span><br><span class="line">        <span class="keyword">for</span> e <span class="keyword">in</span> g.incident_edges(u):</span><br><span class="line">            v = e.opposite(u)</span><br><span class="line">            incount[v] -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> incount[v] == <span class="number">0</span>:</span><br><span class="line">                ready.append(v)</span><br><span class="line">    <span class="keyword">return</span> topo</span><br></pre></td></tr></table></figure>
-<p>it runs in O(n+m) time and using O(n) auxiliary space. </p>
-<h1 id="6-Shortest-Paths"><a href="#6-Shortest-Paths" class="headerlink" title="6. Shortest Paths"></a>6. Shortest Paths</h1><h2 id="6-1-Weighted-Graphs"><a href="#6-1-Weighted-Graphs" class="headerlink" title="6.1 Weighted Graphs"></a>6.1 Weighted Graphs</h2><p>A <strong>weighted graph</strong> is a graph that has a numeric label w(e) associated with each edge e, called the <strong>weight</strong> of edge e. For $e=(u,v)$ we let $w(u,v) = w(e)$. </p>
-<h3 id="Defining-shortest-paths-in-a-weighted-gragh"><a href="#Defining-shortest-paths-in-a-weighted-gragh" class="headerlink" title="Defining shortest paths in a weighted gragh"></a>Defining shortest paths in a weighted gragh</h3><p>For path $P$, the <strong>length</strong> of P is defined as:</p>
-<p>$$w(P) = \sum_{i=0}^{k-1} w(v_i, v_{i+1})$$</p>
-<p>The <strong>distance</strong> between $u,v$ is denoted as $d(u,v)$, which is defined as the minimum-length path (shortest path) from u to v, if such path exists; otherwise we use the convention that $d(u,v)=\infty$</p>
-<p>If there is a cycle in G whose total weight is negative, the distance from u to v may not be defined. </p>
-<h2 id="6-2-Dijkstra’s-Algorithm"><a href="#6-2-Dijkstra’s-Algorithm" class="headerlink" title="6.2 Dijkstra’s Algorithm"></a>6.2 Dijkstra’s Algorithm</h2><p>Define a label $D[v]$ which denotes the distance from s to v.</p>
-<p><strong>Edge Relaxation:</strong></p>
-<p>   <strong>if</strong> $D[u] + w(u,v) &lt; D[v]$ <strong>then</strong></p>
-<p>$$D[v] = D[u] + w(u,v)$$</p>
-<p>Dijksatra’s Algorithm is a <strong>greedy method</strong> algorithm for solving shortest paths problem. </p>
-<h3 id="Why-it-works"><a href="#Why-it-works" class="headerlink" title="Why it works?"></a>Why it works?</h3><p>Whenver a vertex v is pulled into the cloud (out of the peiority Q), $D[v]$ is equal to $d(s,v)$.</p>
-<h3 id="Running-time-of-Dijkstra’s-Algorithm"><a href="#Running-time-of-Dijkstra’s-Algorithm" class="headerlink" title="Running time of Dijkstra’s Algorithm"></a>Running time of Dijkstra’s Algorithm</h3><p>Assume we are representing $G$ suing an adjacency list or adjacency map structure. </p>
-<ul>
-<li><p>If Q is an adaptable priority queue implemented as a heap, then is $O((n+m)\log n)$</p>
-</li>
-<li><p>If Q is an adaptable priority queue implemented as an unsorted sequence, then is $O(n^2)$</p>
-</li>
-<li><p>If Q is implemented as a Fibonacci heap, it is $O(m+n\log n)$</p>
-</li>
-</ul>
-<h3 id="Python-Implementation"><a href="#Python-Implementation" class="headerlink" title="Python Implementation"></a>Python Implementation</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">shortest_path_lengths</span><span class="params">(g, src)</span>:</span></span><br><span class="line">    d = &#123;&#125;</span><br><span class="line">    cloud = &#123;&#125;</span><br><span class="line">    pq = AdaptableHeapPriorityQueue()</span><br><span class="line">    pqlocator = &#123;&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> v <span class="keyword">in</span> g.vertices():</span><br><span class="line">        <span class="keyword">if</span> v <span class="keyword">is</span> src:</span><br><span class="line">            d[v] = <span class="number">0</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            d[v] = float(<span class="string">'inf'</span>)</span><br><span class="line">        pqlocator[v] = pg.add(d[v], v)</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">not</span> pq.is_empty():</span><br><span class="line">        key, u = pq.remove_min()</span><br><span class="line">        cloud[u] = key</span><br><span class="line">        <span class="keyword">del</span> pqlocator[u]</span><br><span class="line">        <span class="keyword">for</span> e <span class="keyword">in</span> g.incident_edges(u):</span><br><span class="line">            v = e.opposite(u)</span><br><span class="line">            <span class="keyword">if</span> v <span class="keyword">not</span> <span class="keyword">in</span> cloud:</span><br><span class="line">                wgt = e.element()</span><br><span class="line">                <span class="keyword">if</span> d[u] + wgt &lt; d[v]:</span><br><span class="line">                    d[v] = d[u] + wgt</span><br><span class="line">                    pq.update(pq[pqlocator[v]], d[v], v)</span><br><span class="line">                    </span><br><span class="line">    <span class="keyword">return</span> cloud</span><br></pre></td></tr></table></figure>
-<h3 id="Reconstructing-the-shortest-path-tree"><a href="#Reconstructing-the-shortest-path-tree" class="headerlink" title="Reconstructing the shortest-path tree"></a>Reconstructing the shortest-path tree</h3><p>The collection of all shortest paths can be represented as a tree which is named <strong>shortest-path tree</strong>, because if a shortest path from s to v passes through an intermediate vertex u then it must begin with a shortest path from s to u. </p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">shortest_path_tree</span><span class="params">(g, s, d)</span>:</span></span><br><span class="line">    tree = &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> v <span class="keyword">in</span> d:</span><br><span class="line">        <span class="keyword">if</span> v <span class="keyword">is</span> <span class="keyword">not</span> s:</span><br><span class="line">            <span class="keyword">for</span> e <span class="keyword">in</span> g.incident_edges(v):</span><br><span class="line">                u = e.opposite(v)</span><br><span class="line">                wgt = e.element()</span><br><span class="line">                <span class="keyword">if</span> d[u] + wgt == d[v]:</span><br><span class="line">                    tree[v] = e</span><br><span class="line">    <span class="keyword">return</span> tree</span><br></pre></td></tr></table></figure>
-<h1 id="7-Minimum-Spanning-Trees-MST"><a href="#7-Minimum-Spanning-Trees-MST" class="headerlink" title="7. Minimum Spanning Trees (MST)"></a>7. Minimum Spanning Trees (MST)</h1><p>The problem of computing a spanning tree T with smallest total weight is known as <strong>minimum spanning tree (MST)</strong> problem. </p>
-<h3 id="A-crucial-fact"><a href="#A-crucial-fact" class="headerlink" title="A crucial fact"></a>A crucial fact</h3><p>Let G be a weighted connected graph, and let $V_1$ and $V_2$ be a partition of the vertices of G into two disjoint nonempty sets. Furthermore, let e be an edge in G with minimum weight from among those with one endpont in $V_1$ and the other in $V_2$. There is a minimum spanning tree T taht has e as one of its edges.</p>
-<h2 id="7-1-Prim-Jarnik-Algorithm"><a href="#7-1-Prim-Jarnik-Algorithm" class="headerlink" title="7.1 Prim-Jarnik Algorithm"></a>7.1 Prim-Jarnik Algorithm</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">MST_PrimJarnik</span><span class="params">(g)</span>:</span></span><br><span class="line">    </span><br><span class="line">    d = &#123;&#125;</span><br><span class="line">    tree = []</span><br><span class="line">    pq = AdaptableHeapPriorityQueue()</span><br><span class="line">    pqlocator = &#123;&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> v <span class="keyword">in</span> g.vertices():</span><br><span class="line">        <span class="keyword">if</span> len(d) == <span class="number">0</span>:</span><br><span class="line">            d[v] = <span class="number">0</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            d[v] = float(<span class="string">'inf'</span>)</span><br><span class="line">        pqlocator[v] = pq.add(d[v], (v,<span class="keyword">None</span>))</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">not</span> pq.is_empty():</span><br><span class="line">        key, value = pq.remove_min()</span><br><span class="line">        u,edge = value</span><br><span class="line">        <span class="keyword">if</span> edge <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>:</span><br><span class="line">            tree.append(edge)</span><br><span class="line">        <span class="keyword">del</span> pqlocator[u]</span><br><span class="line">        <span class="keyword">for</span> link <span class="keyword">in</span> g.incident_edges(u):</span><br><span class="line">            v = link.opposite(u)</span><br><span class="line">            <span class="keyword">if</span> v <span class="keyword">in</span> pqlocator:</span><br><span class="line">                wgt = link.element()</span><br><span class="line">                <span class="keyword">if</span> wgt &lt; d[v]:</span><br><span class="line">                    d[v] = wgt</span><br><span class="line">                    pq.update(pqlocator[v], d[v], (v,link))</span><br><span class="line">    <span class="keyword">return</span> tree</span><br></pre></td></tr></table></figure>
-<p>It runs in $O((n+m)\log n)$ for a heap-based priority queue, and runs in $O(n^2)$ for an unsorted list-based queue</p>
-<h2 id="7-2-Kruskal’s-Algorithm"><a href="#7-2-Kruskal’s-Algorithm" class="headerlink" title="7.2 Kruskal’s Algorithm"></a>7.2 Kruskal’s Algorithm</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">MST_Kruskal</span><span class="params">(g)</span>:</span></span><br><span class="line">    </span><br><span class="line">    tree = []</span><br><span class="line">    pq = HeapPriorityQueue()</span><br><span class="line">    forest = Partition()</span><br><span class="line">    position = &#123;&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> v <span class="keyword">in</span> g.vertices():</span><br><span class="line">        position[v] = forest.make_group(v)</span><br><span class="line">    <span class="keyword">for</span> e <span class="keyword">in</span> g.edges():</span><br><span class="line">        pq.add(e.element(),e)</span><br><span class="line">    </span><br><span class="line">    size = g.vertex_count()</span><br><span class="line">    <span class="keyword">while</span> len(tree) != size <span class="number">-1</span> <span class="keyword">and</span> <span class="keyword">not</span> pq.is_empty():</span><br><span class="line">        weight, edge = pq.remove_min()</span><br><span class="line">        u,v = edge.endpoints()</span><br><span class="line">        a = forest.find(position[u])</span><br><span class="line">        b = forest.find(position[v])</span><br><span class="line">        <span class="keyword">if</span> a!= b:</span><br><span class="line">            tree.append(edge)</span><br><span class="line">            forest,union(a,b)</span><br><span class="line">            </span><br><span class="line">    <span class="keyword">return</span> tree</span><br></pre></td></tr></table></figure>
-<p>It runs in $O(m\log n)$</p>
-<p>The Partition() used here can be implemented with tree data structure.</p>
-<h2 id="7-3-Disjoint-Partitions-and-Union-Find-Structures"><a href="#7-3-Disjoint-Partitions-and-Union-Find-Structures" class="headerlink" title="7.3 Disjoint Partitions and Union-Find Structures"></a>7.3 Disjoint Partitions and Union-Find Structures</h2><h3 id="partition-ADT"><a href="#partition-ADT" class="headerlink" title="partition ADT"></a>partition ADT</h3><ul>
-<li><p><strong>make_group(x)</strong>: create a singleton group containing new element x and return the position storing x.</p>
-</li>
-<li><p><strong>union(p,q):</strong> Merge the group containing positions p and q</p>
-</li>
-<li><p><strong>find(p):</strong> Return the position of the leader of the group containing position p. </p>
-</li>
-</ul>
+          1. GraphsComposed by
+vertices 
 
-          
+edges
+
+
+Classified by
+undirected graph : all edges are undirected
+
+directed graph : all edges are directed
+
+mixed grap
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/12/11/Graph-Algorithms/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
