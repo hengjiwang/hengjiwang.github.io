@@ -15,11 +15,10 @@ categories:
 
 ![](https://raw.githubusercontent.com/hengjiwang/blog_figures/master/HH.png)
 
-$$I = C_m \frac{du}{dt} + \bar{g}_K n^4 (u-E_K) + \bar{g}_{Na} m^3 h(u-E_{Na}) + \bar{g}_L (u-E_L)\\
-\frac{dn}{dt} = \alpha_n(u)(1-n) - \beta_n(u)n\\
-\frac{dm}{dt} = \alpha_m(u)(1-m) - \beta_m(u)m\\
-\frac{dh}{dt} = \alpha_h(u)(1-h) - \beta_h(u)h
-$$
+$$I = C_m \frac{du}{dt} + \bar{g}_K n^4 (u-E_K) + \bar{g}_{Na} m^3 h(u-E_{Na}) + \bar{g}_L (u-E_L)$$
+$$\frac{dn}{dt} = \alpha_n(u)(1-n) - \beta_n(u)n$$
+$$\frac{dm}{dt} = \alpha_m(u)(1-m) - \beta_m(u)m$$
+$$\frac{dh}{dt} = \alpha_h(u)(1-h) - \beta_h(u)h$$
 where $\alpha_p(u)$ and $\beta_p(u)$ are related to activation and inactivation rates which are derived from Bolzmann equations. 
 
 # 1. Phase plane analysis
