@@ -63,7 +63,7 @@ categories:
 
 # 3 Leaky-Integrate-And-Fire Models (LIF)
 
-Neuronal dynamics can be conceived as an ingegration process combined with a triggering-spike mechanism. 
+Neuronal dynamics can be conceived as an integration process combined with a triggering-spike mechanism. 
 
 ## 3.1 Model
 
