@@ -83,19 +83,21 @@
 
 
 
-<meta name="description" content="0. Hodgkin-Huxley ModelHodgkin-Huxley (HH) model is a starting point for detailed modeling and dynamics analysis of single neurons.   $$I=C_m\frac{du}{dt}+g_Kn^4(u-E_K)+g_{Na}m^3h(u-E_{Na})+g_L(u-E_L)">
+<meta name="description" content="0. Hodgkin-Huxley Model– God said: Let there be spikes: and there was Hodgkin-Huxley model.  Hodgkin-Huxley (HH) model is a starting point for detailed modeling and dynamics analysis of single neurons">
 <meta name="keywords" content="neurons,dynamics,applied math">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Dynamics of Single Neurons">
 <meta property="og:url" content="http://yoursite.com/2018/12/14/Dynamics-of-Single-Neurons/index.html">
 <meta property="og:site_name" content="Hengji Wang&#39;s Blog">
-<meta property="og:description" content="0. Hodgkin-Huxley ModelHodgkin-Huxley (HH) model is a starting point for detailed modeling and dynamics analysis of single neurons.   $$I=C_m\frac{du}{dt}+g_Kn^4(u-E_K)+g_{Na}m^3h(u-E_{Na})+g_L(u-E_L)">
+<meta property="og:description" content="0. Hodgkin-Huxley Model– God said: Let there be spikes: and there was Hodgkin-Huxley model.  Hodgkin-Huxley (HH) model is a starting point for detailed modeling and dynamics analysis of single neurons">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/HH.png">
-<meta property="og:updated_time" content="2018-12-14T09:30:21.405Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/phaseplane.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/stable.png">
+<meta property="og:updated_time" content="2018-12-14T20:37:37.643Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Dynamics of Single Neurons">
-<meta name="twitter:description" content="0. Hodgkin-Huxley ModelHodgkin-Huxley (HH) model is a starting point for detailed modeling and dynamics analysis of single neurons.   $$I=C_m\frac{du}{dt}+g_Kn^4(u-E_K)+g_{Na}m^3h(u-E_{Na})+g_L(u-E_L)">
+<meta name="twitter:description" content="0. Hodgkin-Huxley Model– God said: Let there be spikes: and there was Hodgkin-Huxley model.  Hodgkin-Huxley (HH) model is a starting point for detailed modeling and dynamics analysis of single neurons">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/HH.png">
 
 
@@ -358,10 +360,41 @@
       
 
       
-        <h1 id="0-Hodgkin-Huxley-Model"><a href="#0-Hodgkin-Huxley-Model" class="headerlink" title="0. Hodgkin-Huxley Model"></a>0. Hodgkin-Huxley Model</h1><p><strong>Hodgkin-Huxley (HH)</strong> model is a starting point for detailed modeling and dynamics analysis of single neurons. </p>
+        <h1 id="0-Hodgkin-Huxley-Model"><a href="#0-Hodgkin-Huxley-Model" class="headerlink" title="0. Hodgkin-Huxley Model"></a>0. Hodgkin-Huxley Model</h1><p>– <em>God said: Let there be spikes: and there was Hodgkin-Huxley model.</em></p>
+<ul>
+<li><strong>Hodgkin-Huxley (HH)</strong> model is a starting point for detailed modeling and dynamics analysis of single neurons. </li>
+</ul>
 <p><img src="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/HH.png" alt=""></p>
-<p>$$I=C_m\frac{du}{dt}+g_Kn^4(u-E_K)+g_{Na}m^3h(u-E_{Na})+g_L(u-E_L)$$<br>$$\frac{dn}{dt} = \alpha_n(u)(1-n) - \beta_n(u)n$$<br>$$\frac{dm}{dt} = \alpha_m(u)(1-m) - \beta_m(u)m$$<br>$$\frac{dh}{dt} = \alpha_h(u)(1-h) - \beta_h(u)h$$<br>where $\alpha_p(u)$ and $\beta_p(u)$ are related to activation and inactivation rates which are derived from Bolzmann equations. </p>
-<h1 id="1-Phase-plane-analysis"><a href="#1-Phase-plane-analysis" class="headerlink" title="1. Phase plane analysis"></a>1. Phase plane analysis</h1><h1 id="2-Type-I-and-Type-II-neuron-models"><a href="#2-Type-I-and-Type-II-neuron-models" class="headerlink" title="2. Type I and Type II neuron models"></a>2. Type I and Type II neuron models</h1><p>(to be continued…)</p>
+<p>$$I=C_m\frac{du}{dt}+g_Kn^4(u-E_K)+g_{Na}m^3h(u-E_{Na})+g_L(u-E_L)$$<br>$$\frac{dn}{dt} = \alpha_n(u)(1-n) - \beta_n(u)n$$<br>$$\frac{dm}{dt} = \alpha_m(u)(1-m) - \beta_m(u)m$$<br>$$\frac{dh}{dt} = \alpha_h(u)(1-h) - \beta_h(u)h$$<br>where $\alpha_p(u)$ and $\beta_p(u)$ are related to activation and inactivation rates which are derived from Bolzmann equations (details in <a href="https://en.wikipedia.org/wiki/Hodgkin%E2%80%93Huxley_model" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Hodgkin%E2%80%93Huxley_model</a>)</p>
+<h1 id="1-Phase-plane-analysis"><a href="#1-Phase-plane-analysis" class="headerlink" title="1. Phase plane analysis"></a>1. Phase plane analysis</h1><h2 id="1-1-Reduction-to-2D"><a href="#1-1-Reduction-to-2D" class="headerlink" title="1.1 Reduction to 2D"></a>1.1 Reduction to 2D</h2><ul>
+<li>The four-dimensional HH model can be reduced to a two-dimensional model (details in <a href="https://link.springer.com/article/10.1007/BF00197717" target="_blank" rel="noopener">T. B. Kepler (1992)</a>):</li>
+</ul>
+<p>$$\frac{du}{dt} = \frac{1}{\tau}[F(u,w) + RI]$$<br>$$\frac{dw}{dt} = \frac{1}{\tau_w}G(u,w)$$</p>
+<p>of which dynamics can be analyzed in a 2D phase plane.</p>
+<h2 id="1-2-Phase-plane-analysis"><a href="#1-2-Phase-plane-analysis" class="headerlink" title="1.2 Phase plane analysis"></a>1.2 Phase plane analysis</h2><ul>
+<li><p><strong>Nullclines:</strong> On the phase cline, the set of points with $\dot{u}=0$ ($\dot{w}=0$) is called the u-nullcline (w-nullcline). The direction of flow on the u-nullcline (w-nullcline) is $(0, \dot{w})^T$ ($(0, \dot{u})^T$).</p>
+</li>
+<li><p><strong>Fixed point:</strong> The points in the phase plane with $\dot{u} = \dot{w} = 0$, which is the intersection of u-nullcline and w-nullcline. </p>
+</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/phaseplane.png" alt=""></p>
+<ul>
+<li><p><strong>Stability of Fixed points</strong><br>Move back to HH model. For a fixed point $(u_0, w_0)$, define $\bm{x} = (u-u_0, w-w_0)^T$, then the linearization is:</p>
+<p>$$\frac{d\bm{x}}{dt} = \begin{bmatrix}<br> F_u &amp; F_w \<br> G_u &amp; G_w<br>\end{bmatrix}\bm{x}$$</p>
+<p>where derivatives $F_u, F_w, …$ are evaluated at the fixed point.<br>Assume $\bm{x} = C_1e^{\lambda_1t}\bm{e_1} + C_2e^{\lambda_2t}\bm{e_2}$, then the linearization can be formulated as<br>$$\lambda^2 -(F_u+G_w)\lambda +(F_uG_w - F_wG_u)=0$$<br>Solve it we get $$\lambda_1+\lambda_2 = (F_u + G_w)$$ $$\lambda_1\lambda_2 = F_uG_w - F_wG_u$$.</p>
+<ul>
+<li><strong>Stable:</strong> $\lambda_1, \lambda_2 &lt; 0$, which means $$F_u+G_w &lt; 0 \text{ \ and \ } F_uG_w - F_wG_u&gt;0$$</li>
+<li><strong>Unstable:</strong><br>$$F_u+G_w &gt; 0 \text{ \ and \ } F_uG_w - F_wG_u&gt;0$$</li>
+<li><strong>Saddle:</strong><br>$$F_uG_w -F_wG_u &lt; 0$$</li>
+</ul>
+<p>Another classification is by if $\lambda_1$ and $\lambda_2$ are true real numbers, checked with the sign of $(F_u+G_w)^2 - 4(F_uG_w - F_wG_u)$:</p>
+<ul>
+<li><strong>Node:</strong> $\lambda_1$ and $\lambda_2$ are true reals$$(F_u+G_w)^2 - 4(F_uG_w - F_wG_u) &gt; 0$$</li>
+<li><strong>Spiral:</strong> $\lambda_1$ and $\lambda_2$ are complex numbers$$(F_u+G_w)^2 - 4(F_uG_w - F_wG_u) &lt; 0$$<br>So put together is:<br><img src="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/stable.png" alt=""></li>
+</ul>
+</li>
+</ul>
+<h1 id="2-Type-I-and-Type-II-neuron-models"><a href="#2-Type-I-and-Type-II-neuron-models" class="headerlink" title="2. Type I and Type II neuron models"></a>2. Type I and Type II neuron models</h1><p>(to be continued…)</p>
 
       
     </div>
@@ -546,7 +579,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0-Hodgkin-Huxley-Model"><span class="nav-text">0. Hodgkin-Huxley Model</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Phase-plane-analysis"><span class="nav-text">1. Phase plane analysis</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Type-I-and-Type-II-neuron-models"><span class="nav-text">2. Type I and Type II neuron models</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0-Hodgkin-Huxley-Model"><span class="nav-text">0. Hodgkin-Huxley Model</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Phase-plane-analysis"><span class="nav-text">1. Phase plane analysis</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-Reduction-to-2D"><span class="nav-text">1.1 Reduction to 2D</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-Phase-plane-analysis"><span class="nav-text">1.2 Phase plane analysis</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Type-I-and-Type-II-neuron-models"><span class="nav-text">2. Type I and Type II neuron models</span></a></li></ol></div>
             
 
           </div>
