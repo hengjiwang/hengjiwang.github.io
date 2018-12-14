@@ -72,7 +72,7 @@
 
 
 
-  <meta name="keywords" content="neurons,dynamics,">
+  <meta name="keywords" content="neurons,dynamics,applied math,">
 
 
 
@@ -83,21 +83,20 @@
 
 
 
-<meta name="description" content="1 Elements of Neuronal Systems We will consider: spiking neurons  We will neglect: glia cells, non-spiking neurons   1.1 The Ideal Spiking Neuron A neuron has three functional parts:  dendrites: ‘inpu">
-<meta name="keywords" content="neurons,dynamics">
+<meta name="description" content="0. Hodgkin-Huxley ModelHodgkin-Huxley (HH) model is a starting point for detailed modeling and dynamics analysis of single neurons.   $$I = C_m \frac{du}{dt} + \bar{g}_K n^4 (u-E_K) + \bar{g}{Na} m^3">
+<meta name="keywords" content="neurons,dynamics,applied math">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Leaky-Integrate-and-Fire Neurons">
-<meta property="og:url" content="http://yoursite.com/2018/12/13/Leaky-Integrate-and-Fire-model/index.html">
+<meta property="og:title" content="Dynamics of Single Neurons">
+<meta property="og:url" content="http://yoursite.com/2018/12/14/Dynamics-of-Single-Neurons/index.html">
 <meta property="og:site_name" content="Hengji Wang&#39;s Blog">
-<meta property="og:description" content="1 Elements of Neuronal Systems We will consider: spiking neurons  We will neglect: glia cells, non-spiking neurons   1.1 The Ideal Spiking Neuron A neuron has three functional parts:  dendrites: ‘inpu">
+<meta property="og:description" content="0. Hodgkin-Huxley ModelHodgkin-Huxley (HH) model is a starting point for detailed modeling and dynamics analysis of single neurons.   $$I = C_m \frac{du}{dt} + \bar{g}_K n^4 (u-E_K) + \bar{g}{Na} m^3">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/intgrate_and_fire_model.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/LIF.png">
-<meta property="og:updated_time" content="2018-12-14T07:45:41.868Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/HH.png">
+<meta property="og:updated_time" content="2018-12-14T09:14:55.384Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Leaky-Integrate-and-Fire Neurons">
-<meta name="twitter:description" content="1 Elements of Neuronal Systems We will consider: spiking neurons  We will neglect: glia cells, non-spiking neurons   1.1 The Ideal Spiking Neuron A neuron has three functional parts:  dendrites: ‘inpu">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/intgrate_and_fire_model.png">
+<meta name="twitter:title" content="Dynamics of Single Neurons">
+<meta name="twitter:description" content="0. Hodgkin-Huxley ModelHodgkin-Huxley (HH) model is a starting point for detailed modeling and dynamics analysis of single neurons.   $$I = C_m \frac{du}{dt} + \bar{g}_K n^4 (u-E_K) + \bar{g}{Na} m^3">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/HH.png">
 
 
 
@@ -127,13 +126,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/12/13/Leaky-Integrate-and-Fire-model/">
+  <link rel="canonical" href="http://yoursite.com/2018/12/14/Dynamics-of-Single-Neurons/">
 
 
 
 
 
-  <title>Leaky-Integrate-and-Fire Neurons | Hengji Wang's Blog</title>
+  <title>Dynamics of Single Neurons | Hengji Wang's Blog</title>
   
 
 
@@ -260,7 +259,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/13/Leaky-Integrate-and-Fire-model/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/14/Dynamics-of-Single-Neurons/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Hengji Wang">
@@ -277,7 +276,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Leaky-Integrate-and-Fire Neurons</h1>
+          <h1 class="post-title" itemprop="name headline">Dynamics of Single Neurons</h1>
         
 
         <div class="post-meta">
@@ -289,8 +288,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-13T20:58:48-08:00">
-                2018-12-13
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-14T00:03:20-08:00">
+                2018-12-14
               </time>
             
 
@@ -330,8 +329,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/12/13/Leaky-Integrate-and-Fire-model/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/12/13/Leaky-Integrate-and-Fire-model/" itemprop="commentCount"></span>
+                <a href="/2018/12/14/Dynamics-of-Single-Neurons/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/12/14/Dynamics-of-Single-Neurons/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -359,96 +358,10 @@
       
 
       
-        <h1 id="1-Elements-of-Neuronal-Systems"><a href="#1-Elements-of-Neuronal-Systems" class="headerlink" title="1 Elements of Neuronal Systems"></a>1 Elements of Neuronal Systems</h1><ul>
-<li><p>We will consider: spiking neurons</p>
-</li>
-<li><p>We will neglect: glia cells, non-spiking neurons</p>
-</li>
-</ul>
-<h2 id="1-1-The-Ideal-Spiking-Neuron"><a href="#1-1-The-Ideal-Spiking-Neuron" class="headerlink" title="1.1 The Ideal Spiking Neuron"></a>1.1 The Ideal Spiking Neuron</h2><ul>
-<li><p>A neuron has three functional parts:</p>
-<ul>
-<li><strong>dendrites:</strong> ‘input device’ that collects signals from other neurons and transmit them to the soma</li>
-<li><strong>soma:</strong> ‘cpu’ that performs an non-linear processing step</li>
-<li><strong>axon:</strong> ‘output device’ that delivers the signal to other neurons</li>
-</ul>
-</li>
-<li><p><strong>synapse:</strong> the junction between two neurons </p>
-</li>
-</ul>
-<h2 id="1-2-Spike-Trains"><a href="#1-2-Spike-Trains" class="headerlink" title="1.2 Spike Trains"></a>1.2 Spike Trains</h2><ul>
-<li><p>Neuronal signal: short electrical <strong>pulses</strong> (<strong>action potentials</strong> or <strong>spikes</strong>), which is the elementary unit of signal transmission.</p>
-<ul>
-<li>typical amplitude: 100 mV</li>
-<li>typical duration 1-2 ms</li>
-</ul>
-</li>
-<li><p><strong>Spike trains:</strong> A chain of action potentials emitted by a single neuron. </p>
-</li>
-<li><p>What matters? </p>
-<ul>
-<li>The number and the timing of spikes of a spike train. </li>
-</ul>
-</li>
-<li><p>Spikes are separated: <font color="red">it’s impossible to excite a second spike during or immediately after a first one. </font>The minimal distance between two spikes is <strong>refractory period</strong>. </p>
-</li>
-</ul>
-<h2 id="1-3-Synapses"><a href="#1-3-Synapses" class="headerlink" title="1.3 Synapses"></a>1.3 Synapses</h2><ul>
-<li><p><strong>chemical synapses</strong></p>
-<ul>
-<li>axon $\rightarrow$ <strong>synaptic cleft</strong> $\rightarrow$ postsynaptic neuron</li>
-</ul>
-</li>
-<li><p><strong>electrical synapses (gap junctions)</strong></p>
-<ul>
-<li>not much is known</li>
-</ul>
-</li>
-</ul>
-<h1 id="2-Elements-of-Neuronal-Dynamics"><a href="#2-Elements-of-Neuronal-Dynamics" class="headerlink" title="2 Elements of Neuronal Dynamics"></a>2 Elements of Neuronal Dynamics</h1><h2 id="2-1-Postsynaptic-Potentials"><a href="#2-1-Postsynaptic-Potentials" class="headerlink" title="2.1 Postsynaptic Potentials"></a>2.1 Postsynaptic Potentials</h2><ul>
-<li><strong>PSP:</strong> postsynaptic potential<ul>
-<li><strong>EPSP:</strong> excitatory PSP</li>
-<li><strong>IPSP:</strong> inhibitory PSP</li>
-</ul>
-</li>
-</ul>
-<p>(* EPSP doesn’t strictly indicates a spike.)</p>
-<h2 id="2-2-Firing-Threshold-and-Action-Potential"><a href="#2-2-Firing-Threshold-and-Action-Potential" class="headerlink" title="2.2 Firing Threshold and Action Potential"></a>2.2 Firing Threshold and Action Potential</h2><ul>
-<li>When membrane potential of a neuron reaches a <strong>threshold</strong> there will be a spike. </li>
-</ul>
-<h1 id="3-Leaky-Integrate-And-Fire-Models-LIF"><a href="#3-Leaky-Integrate-And-Fire-Models-LIF" class="headerlink" title="3 Leaky-Integrate-And-Fire Models (LIF)"></a>3 Leaky-Integrate-And-Fire Models (LIF)</h1><p>Neuronal dynamics can be conceived as an ingegration process combined with a triggering-spike mechanism. </p>
-<h2 id="3-1-Model"><a href="#3-1-Model" class="headerlink" title="3.1 Model"></a>3.1 Model</h2><p><img src="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/intgrate_and_fire_model.png" alt="Integration-And-Fire model"></p>
-<p>$$I(t) = I_R + I_C = \frac{u(t) - u_{rest}}{R} + C\frac{du}{dt}$$<br>Then we get<br>$$RC \frac{du}{dt} = -(u(t) - u_{rest}) + RI(t)$$</p>
-<ul>
-<li>When u(t) reaches a threshold, we will assume there is a $\delta$ pulse and then immediately reset u(t) to a value $u_r$:</li>
-</ul>
-<p><img src="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/LIF.png" alt=""></p>
-<p>This turns to a time stepping problem that can be solved with python (use package <strong>brian2</strong> here):</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">%matplotlib inline</span><br><span class="line"><span class="keyword">import</span> brian2 <span class="keyword">as</span> b2</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> neurodynex.leaky_integrate_and_fire <span class="keyword">import</span> LIF</span><br><span class="line"><span class="keyword">from</span> neurodynex.tools <span class="keyword">import</span> input_factory, plot_tools</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">LIF.getting_started()</span><br><span class="line">LIF.print_default_parameters()</span><br></pre></td></tr></table></figure>
-<p>details and exercises here: <a href="https://neuronaldynamics-exercises.readthedocs.io/en/latest/exercises/leaky-integrate-and-fire.html" target="_blank" rel="noopener">https://neuronaldynamics-exercises.readthedocs.io/en/latest/exercises/leaky-integrate-and-fire.html</a></p>
-<h2 id="3-2-Liminations"><a href="#3-2-Liminations" class="headerlink" title="3.2 Liminations"></a>3.2 Liminations</h2><p>LIF model is an extremely simplified model.</p>
-<ul>
-<li><p>No memory of previous spikes is kept.</p>
-<ul>
-<li><p>cannot capture <strong>adaption</strong> which exhibits in <strong>regular-firing neurons</strong>; instead can model <strong>fast-spiking neurons</strong> well</p>
-</li>
-<li><p>More complex: <strong>bursting</strong> and <strong>stuttering</strong> neurons</p>
-</li>
-</ul>
-</li>
-<li><p>Shunting inhibition and reversal potential</p>
-<ul>
-<li><p><strong>PSC(postsynaptic current):</strong> an input current from the spikes emitted by the presynaptic neurons:<br>$$\text{PSC} \propto (u_0 - E_{syn}) $$</p>
-<p>where $E_{syn}$ is the <strong>reversal potential</strong> of the synapse.</p>
-</li>
-</ul>
-</li>
-<li>Conductanc echanges after a spike</li>
-<li>Spatial Structure</li>
-</ul>
-<h2 id="3-3-Benefits"><a href="#3-3-Benefits" class="headerlink" title="3.3 Benefits"></a>3.3 Benefits</h2><ul>
-<li>LIF model works accurately when predict precisely timed events in time, which is good for spike generation <em>in the soma.</em> But some parameters may need to be tuned. e.g. threshold depends on time. </li>
-</ul>
+        <h1 id="0-Hodgkin-Huxley-Model"><a href="#0-Hodgkin-Huxley-Model" class="headerlink" title="0. Hodgkin-Huxley Model"></a>0. Hodgkin-Huxley Model</h1><p><strong>Hodgkin-Huxley (HH)</strong> model is a starting point for detailed modeling and dynamics analysis of single neurons. </p>
+<p><img src="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/HH.png" alt=""></p>
+<p>$$I = C_m \frac{du}{dt} + \bar{g}_K n^4 (u-E_K) + \bar{g}<em>{Na} m^3 h(u-E</em>{Na}) + \bar{g}_L (u-E_L)\<br>\frac{dn}{dt} = \alpha_n(u)(1-n) - \beta_n(u)n\<br>\frac{dm}{dt} = \alpha_m(u)(1-m) - \beta_m(u)m\<br>\frac{dh}{dt} = \alpha_h(u)(1-h) - \beta_h(u)h<br>$$<br>where $\alpha_p(u)$ and $\beta_p(u)$ are related to activation and inactivation rates which are derived from Bolzmann equations. </p>
+<h1 id="1-Phase-plane-analysis"><a href="#1-Phase-plane-analysis" class="headerlink" title="1. Phase plane analysis"></a>1. Phase plane analysis</h1><h1 id="2-Type-I-and-Type-II-neuron-models"><a href="#2-Type-I-and-Type-II-neuron-models" class="headerlink" title="2. Type I and Type II neuron models"></a>2. Type I and Type II neuron models</h1><p>(to be continued…)</p>
 
       
     </div>
@@ -470,6 +383,8 @@
           
             <a href="/tags/dynamics/" rel="tag"># dynamics</a>
           
+            <a href="/tags/applied-math/" rel="tag"># applied math</a>
+          
         </div>
       
 
@@ -481,7 +396,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/12/13/Nonlinear-Dynamics-of-Single-Neurons/" rel="next" title="Leaky-Integrate-and-Fire Neurons">
+              <a href="/2018/12/13/Leaky-Integrate-and-Fire-model/" rel="next" title="Leaky-Integrate-and-Fire Neurons">
                 <i class="fa fa-chevron-left"></i> Leaky-Integrate-and-Fire Neurons
               </a>
             
@@ -490,10 +405,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/12/14/Dynamics-of-Single-Neurons/" rel="prev" title="Dynamics of Single Neurons">
-                Dynamics of Single Neurons <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -635,7 +546,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Elements-of-Neuronal-Systems"><span class="nav-text">1 Elements of Neuronal Systems</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-The-Ideal-Spiking-Neuron"><span class="nav-text">1.1 The Ideal Spiking Neuron</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-Spike-Trains"><span class="nav-text">1.2 Spike Trains</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-Synapses"><span class="nav-text">1.3 Synapses</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Elements-of-Neuronal-Dynamics"><span class="nav-text">2 Elements of Neuronal Dynamics</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-Postsynaptic-Potentials"><span class="nav-text">2.1 Postsynaptic Potentials</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-Firing-Threshold-and-Action-Potential"><span class="nav-text">2.2 Firing Threshold and Action Potential</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-Leaky-Integrate-And-Fire-Models-LIF"><span class="nav-text">3 Leaky-Integrate-And-Fire Models (LIF)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-Model"><span class="nav-text">3.1 Model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-Liminations"><span class="nav-text">3.2 Liminations</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-Benefits"><span class="nav-text">3.3 Benefits</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0-Hodgkin-Huxley-Model"><span class="nav-text">0. Hodgkin-Huxley Model</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Phase-plane-analysis"><span class="nav-text">1. Phase plane analysis</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Type-I-and-Type-II-neuron-models"><span class="nav-text">2. Type I and Type II neuron models</span></a></li></ol></div>
             
 
           </div>
@@ -798,9 +709,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2018/12/13/Leaky-Integrate-and-Fire-model/';
-          this.page.identifier = '2018/12/13/Leaky-Integrate-and-Fire-model/';
-          this.page.title = 'Leaky-Integrate-and-Fire Neurons';
+          this.page.url = 'http://yoursite.com/2018/12/14/Dynamics-of-Single-Neurons/';
+          this.page.identifier = '2018/12/14/Dynamics-of-Single-Neurons/';
+          this.page.title = 'Dynamics of Single Neurons';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://.disqus.com/embed.js';
