@@ -111,9 +111,9 @@ menu_icons:
 # ---------------------------------------------------------------
 
 # Schemes
-#scheme: Muse
+scheme: Muse
 #scheme: Mist
-scheme: Pisces
+#scheme: Pisces
 #scheme: Gemini
 
 
@@ -347,7 +347,7 @@ mathjax:
   cdn: //cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML
 
 # Han Support docs: https://hanzi.pro/
-han: false
+han: true
 
 # Swiftype Search API Key
 #swiftype_key:
