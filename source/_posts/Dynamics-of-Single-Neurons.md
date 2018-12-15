@@ -26,7 +26,7 @@ where $\alpha_p(u)$ and $\beta_p(u)$ are related to activation and inactivation 
 
 # 1. Phase plane analysis
 
--- _analyzing in 2D_
+-- _we as humans prefer analyzing eveything in 2D_
 
 ## 1.1 Reduction to 2D
 
@@ -106,9 +106,31 @@ In this case, the limit cycle appears before a saddle-node bifurcation forms thu
   - **Supercritical Hopf-bifurcation:** 
     - the emerged oscillation solution at the Hopf Bifurcation point is stable. 
     - small-amplitude oscillations close to the bifurcation point
-    - <font color=red>subthreshold oscillations, so not linked to a neuronal firing.</font>
+    - <font color=red>subthreshold oscillations, so not linked to neuronal firing.</font>
 
     Conclusion: Subcritical Hopf bifurcation exhibit a gain function of type II.
 
 # 3. Threshold and excitability
-(to be continued...)
+
+-- _how a spike appears?_
+
+- **Excitable systems:** _For weak stimuli, the voltage trace returns more or less directly to the resting potentials. For stronger stimuli it makes a large detour, that is, the model emits a spike._
+
+**Type I:**
+
+![](https://raw.githubusercontent.com/hengjiwang/blog_figures/master/type1exc.png)
+
+For input currents which are just above threshold, the action potential occurs, however, with an extremely long delay.
+
+**Hopf-bifurcation:**
+
+![](https://raw.githubusercontent.com/hengjiwang/blog_figures/master/hopfexc.png)
+
+Hyperpolarization appears.
+
+**with slower $w$ dynamics...**
+
+![](https://raw.githubusercontent.com/hengjiwang/blog_figures/master/slowerw.png)
+
+A plateau appears because of the low dynamics of $w$.
+We can say in this case the model has been reduced to 1D. 
