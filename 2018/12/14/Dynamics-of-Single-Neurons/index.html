@@ -94,7 +94,10 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/HH.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/phaseplane.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/stable.png">
-<meta property="og:updated_time" content="2018-12-14T20:49:06.028Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/type12.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/typeI.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/typeII.png">
+<meta property="og:updated_time" content="2018-12-15T00:14:14.444Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Dynamics of Single Neurons">
 <meta name="twitter:description" content="0. Hodgkin-Huxley Model– God said: Let there be spikes: and there was Hodgkin-Huxley model.  Hodgkin-Huxley (HH) model is a starting point for detailed modeling and dynamics analysis of single neurons">
@@ -366,7 +369,8 @@
 </ul>
 <p><img src="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/HH.png" alt=""></p>
 <p>$$I=C_m\frac{du}{dt}+g_Kn^4(u-E_K)+g_{Na}m^3h(u-E_{Na})+g_L(u-E_L)$$<br>$$\frac{dn}{dt} = \alpha_n(u)(1-n) - \beta_n(u)n$$<br>$$\frac{dm}{dt} = \alpha_m(u)(1-m) - \beta_m(u)m$$<br>$$\frac{dh}{dt} = \alpha_h(u)(1-h) - \beta_h(u)h$$<br>where $\alpha_p(u)$ and $\beta_p(u)$ are related to activation and inactivation rates which are derived from Bolzmann equations (details in <a href="https://en.wikipedia.org/wiki/Hodgkin%E2%80%93Huxley_model" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Hodgkin%E2%80%93Huxley_model</a>)</p>
-<h1 id="1-Phase-plane-analysis"><a href="#1-Phase-plane-analysis" class="headerlink" title="1. Phase plane analysis"></a>1. Phase plane analysis</h1><h2 id="1-1-Reduction-to-2D"><a href="#1-1-Reduction-to-2D" class="headerlink" title="1.1 Reduction to 2D"></a>1.1 Reduction to 2D</h2><ul>
+<h1 id="1-Phase-plane-analysis"><a href="#1-Phase-plane-analysis" class="headerlink" title="1. Phase plane analysis"></a>1. Phase plane analysis</h1><p>– <em>analyzing in 2D</em></p>
+<h2 id="1-1-Reduction-to-2D"><a href="#1-1-Reduction-to-2D" class="headerlink" title="1.1 Reduction to 2D"></a>1.1 Reduction to 2D</h2><ul>
 <li>The four-dimensional HH model can be reduced to a two-dimensional model (details in <a href="https://link.springer.com/article/10.1007/BF00197717" target="_blank" rel="noopener">T. B. Kepler (1992)</a>):</li>
 </ul>
 <p>$$\frac{du}{dt} = \frac{1}{\tau}[F(u,w) + RI]$$<br>$$\frac{dw}{dt} = \frac{1}{\tau_w}G(u,w)$$</p>
@@ -381,20 +385,56 @@
 <ul>
 <li><p><strong>Stability of Fixed points</strong><br>Move back to HH model. For a fixed point $(u_0, w_0)$, define $\bf{x} = (u-u_0, w-w_0)^T$, then the linearization is:</p>
 <p>$$\frac{d\bf{x}}{dt} = \left(\begin{matrix}<br> F_u &amp; F_w\\<br> G_u &amp; G_w<br>\end{matrix}\right)\bf{x}$$</p>
-<p>where derivatives $F_u, F_w, …$ are evaluated at the fixed point.<br>Assume $\bf{x} = C_1e^{\lambda_1t}\bf{e_1} + C_2e^{\lambda_2t}\bf{e_2}$, then the linearization can be formulated as<br>$$\lambda^2 -(F_u+G_w)\lambda +(F_uG_w - F_wG_u)=0$$<br>Solve it we get $$\lambda_1+\lambda_2 = (F_u + G_w)$$ $$\lambda_1\lambda_2 = F_uG_w - F_wG_u$$.</p>
+<p>where derivatives $F_u, F_w, …$ are evaluated at the fixed point.<br>Assume $\bf{x} = C_1e^{\lambda_1t}\bf{e_1} + C_2e^{\lambda_2t}\bf{e_2}$, then the linearization can be formulated as<br>$$\lambda^2 -(F_u+G_w)\lambda +(F_uG_w - F_wG_u)=0$$<br>Solve it we get $$\lambda_1+\lambda_2 = (F_u + G_w)$$ $$\lambda_1\lambda_2 = F_uG_w - F_wG_u$$</p>
 <ul>
 <li><strong>Stable:</strong> $\lambda_1, \lambda_2 &lt; 0$, which means $$F_u+G_w &lt; 0 \text{  and  } F_uG_w - F_wG_u&gt;0$$</li>
 <li><strong>Unstable:</strong><br>$$F_u+G_w &gt; 0 \text{  and  } F_uG_w - F_wG_u&gt;0$$</li>
 <li><strong>Saddle:</strong><br>$$F_uG_w -F_wG_u &lt; 0$$</li>
 </ul>
-<p>Another classification is by if $\lambda_1$ and $\lambda_2$ are true real numbers, checked with the sign of $(F_u+G_w)^2 - 4(F_uG_w - F_wG_u)$:</p>
+<p>Another classification is based on whether $\lambda_1$ and $\lambda_2$ are pure real numbers, determined by the sign of $(F_u+G_w)^2 - 4(F_uG_w - F_wG_u)$:</p>
 <ul>
-<li><strong>Node:</strong> $\lambda_1$ and $\lambda_2$ are true reals$$(F_u+G_w)^2 - 4(F_uG_w - F_wG_u) &gt; 0$$</li>
-<li><strong>Spiral:</strong> $\lambda_1$ and $\lambda_2$ are complex numbers$$(F_u+G_w)^2 - 4(F_uG_w - F_wG_u) &lt; 0$$<br>So put together is:<br><img src="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/stable.png" alt=""></li>
+<li><strong>Node:</strong> $\lambda_1$ and $\lambda_2$ are pure reals$$(F_u+G_w)^2 - 4(F_uG_w - F_wG_u) &gt; 0$$</li>
+<li><strong>Spiral:</strong> $\lambda_1$ and $\lambda_2$ are complex numbers$$(F_u+G_w)^2 - 4(F_uG_w - F_wG_u) &lt; 0$$<br>So put together all it’s:<br><img src="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/stable.png" alt=""></li>
 </ul>
 </li>
 </ul>
-<h1 id="2-Type-I-and-Type-II-neuron-models"><a href="#2-Type-I-and-Type-II-neuron-models" class="headerlink" title="2. Type I and Type II neuron models"></a>2. Type I and Type II neuron models</h1><p>(to be continued…)</p>
+<h1 id="2-Type-I-and-Type-II-neuron-models"><a href="#2-Type-I-and-Type-II-neuron-models" class="headerlink" title="2. Type I and Type II neuron models"></a>2. Type I and Type II neuron models</h1><p>– <em>emergence in single neurons</em></p>
+<ul>
+<li><strong>Type I</strong>: neurons with a continuous frequency-current curve(<strong>f-I curve</strong>, <strong>gain function</strong>).</li>
+<li><strong>Type II</strong>: neurons with a discontinuous f-I curve. </li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/type12.png" alt=""></p>
+<ul>
+<li><strong>Rheobase current ($I_\theta$)</strong>: the minimal constant current injection which triggers a repetive firing of neurons. In phase plane, it is called <strong>bifurcation point</strong> and $I$ is the <strong>bifurcation parameter</strong>.</li>
+</ul>
+<h2 id="2-1-Type-I-models"><a href="#2-1-Type-I-models" class="headerlink" title="2.1 Type I models"></a>2.1 Type I models</h2><p><img src="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/typeI.png" alt=""></p>
+<p>In this case, when $I=I_\theta$, the stable fixed point and the saddle point in A. merge into one point, at which the frequency is zero. If $I$ is higher a limit cycle will appear from zero frequency. Such transition at $I_\theta$ is called <strong>Saddle-Node-onto-Limit-Cycle Bifurcation</strong>.</p>
+<h2 id="2-2-Type-II-models"><a href="#2-2-Type-II-models" class="headerlink" title="2.2 Type II models"></a>2.2 Type II models</h2><p><img src="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/typeII.png" alt=""></p>
+<p>In this case, the limit cycle appears before a saddle-node bifurcation forms thus when $I=I_\theta$ and a bifurcation point is reached, the limit cylce already has some frequency. This is called <strong>Saddle-Node-off-Limit-Cycle Bifurcation</strong>.</p>
+<p>(Figures above are of reduced HH model) </p>
+<h2 id="2-3-Hopf-Bifurcation"><a href="#2-3-Hopf-Bifurcation" class="headerlink" title="2.3 Hopf Bifurcation"></a>2.3 Hopf Bifurcation</h2><ul>
+<li><p><strong>Hopf bifurcation:</strong> a scenario where there is a stability loss in combination with an emerging <strong>oscillation</strong>(eigenvalues are pure imaginary numbers). </p>
+<ul>
+<li><p><strong>Subcritical Hopf-bifurcation:</strong> </p>
+<ul>
+<li>the emerged oscillatory solution at the Hopf Bifurcation point is unstable. </li>
+<li>large-amplitude oscillations close to the bifurcation point</li>
+</ul>
+</li>
+<li><p><strong>Supercritical Hopf-bifurcation:</strong> </p>
+<ul>
+<li>the emerged oscillation solution at the Hopf Bifurcation point is stable. </li>
+<li>small-amplitude oscillations close to the bifurcation point</li>
+<li><font color="red">subthreshold oscillations, so not linked to a neuronal firing.</font>
+
+</li>
+</ul>
+<p>Conclusion: Subcritical Hopf bifurcation exhibit a gain function of type II.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="3-Threshold-and-excitability"><a href="#3-Threshold-and-excitability" class="headerlink" title="3. Threshold and excitability"></a>3. Threshold and excitability</h1><p>(to be continued…)</p>
 
       
     </div>
@@ -579,7 +619,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0-Hodgkin-Huxley-Model"><span class="nav-text">0. Hodgkin-Huxley Model</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Phase-plane-analysis"><span class="nav-text">1. Phase plane analysis</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-Reduction-to-2D"><span class="nav-text">1.1 Reduction to 2D</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-Phase-plane-analysis"><span class="nav-text">1.2 Phase plane analysis</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Type-I-and-Type-II-neuron-models"><span class="nav-text">2. Type I and Type II neuron models</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0-Hodgkin-Huxley-Model"><span class="nav-text">0. Hodgkin-Huxley Model</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Phase-plane-analysis"><span class="nav-text">1. Phase plane analysis</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-Reduction-to-2D"><span class="nav-text">1.1 Reduction to 2D</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-Phase-plane-analysis"><span class="nav-text">1.2 Phase plane analysis</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Type-I-and-Type-II-neuron-models"><span class="nav-text">2. Type I and Type II neuron models</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-Type-I-models"><span class="nav-text">2.1 Type I models</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-Type-II-models"><span class="nav-text">2.2 Type II models</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-Hopf-Bifurcation"><span class="nav-text">2.3 Hopf Bifurcation</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-Threshold-and-excitability"><span class="nav-text">3. Threshold and excitability</span></a></li></ol></div>
             
 
           </div>
