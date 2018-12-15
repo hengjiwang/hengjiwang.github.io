@@ -97,7 +97,10 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/type12.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/typeI.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/typeII.png">
-<meta property="og:updated_time" content="2018-12-15T00:14:14.444Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/type1exc.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/hopfexc.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/slowerw.png">
+<meta property="og:updated_time" content="2018-12-15T01:25:08.863Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Dynamics of Single Neurons">
 <meta name="twitter:description" content="0. Hodgkin-Huxley Model– God said: Let there be spikes: and there was Hodgkin-Huxley model.  Hodgkin-Huxley (HH) model is a starting point for detailed modeling and dynamics analysis of single neurons">
@@ -369,7 +372,7 @@
 </ul>
 <p><img src="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/HH.png" alt=""></p>
 <p>$$I=C_m\frac{du}{dt}+g_Kn^4(u-E_K)+g_{Na}m^3h(u-E_{Na})+g_L(u-E_L)$$<br>$$\frac{dn}{dt} = \alpha_n(u)(1-n) - \beta_n(u)n$$<br>$$\frac{dm}{dt} = \alpha_m(u)(1-m) - \beta_m(u)m$$<br>$$\frac{dh}{dt} = \alpha_h(u)(1-h) - \beta_h(u)h$$<br>where $\alpha_p(u)$ and $\beta_p(u)$ are related to activation and inactivation rates which are derived from Bolzmann equations (details in <a href="https://en.wikipedia.org/wiki/Hodgkin%E2%80%93Huxley_model" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Hodgkin%E2%80%93Huxley_model</a>)</p>
-<h1 id="1-Phase-plane-analysis"><a href="#1-Phase-plane-analysis" class="headerlink" title="1. Phase plane analysis"></a>1. Phase plane analysis</h1><p>– <em>analyzing in 2D</em></p>
+<h1 id="1-Phase-plane-analysis"><a href="#1-Phase-plane-analysis" class="headerlink" title="1. Phase plane analysis"></a>1. Phase plane analysis</h1><p>– <em>we as humans prefer analyzing eveything in 2D</em></p>
 <h2 id="1-1-Reduction-to-2D"><a href="#1-1-Reduction-to-2D" class="headerlink" title="1.1 Reduction to 2D"></a>1.1 Reduction to 2D</h2><ul>
 <li>The four-dimensional HH model can be reduced to a two-dimensional model (details in <a href="https://link.springer.com/article/10.1007/BF00197717" target="_blank" rel="noopener">T. B. Kepler (1992)</a>):</li>
 </ul>
@@ -425,7 +428,7 @@
 <ul>
 <li>the emerged oscillation solution at the Hopf Bifurcation point is stable. </li>
 <li>small-amplitude oscillations close to the bifurcation point</li>
-<li><font color="red">subthreshold oscillations, so not linked to a neuronal firing.</font>
+<li><font color="red">subthreshold oscillations, so not linked to neuronal firing.</font>
 
 </li>
 </ul>
@@ -434,7 +437,19 @@
 </ul>
 </li>
 </ul>
-<h1 id="3-Threshold-and-excitability"><a href="#3-Threshold-and-excitability" class="headerlink" title="3. Threshold and excitability"></a>3. Threshold and excitability</h1><p>(to be continued…)</p>
+<h1 id="3-Threshold-and-excitability"><a href="#3-Threshold-and-excitability" class="headerlink" title="3. Threshold and excitability"></a>3. Threshold and excitability</h1><p>– <em>how a spike appears?</em></p>
+<ul>
+<li><strong>Excitable systems:</strong> <em>For weak stimuli, the voltage trace returns more or less directly to the resting potentials. For stronger stimuli it makes a large detour, that is, the model emits a spike.</em></li>
+</ul>
+<p><strong>Type I:</strong></p>
+<p><img src="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/type1exc.png" alt=""></p>
+<p>For input currents which are just above threshold, the action potential occurs, however, with an extremely long delay.</p>
+<p><strong>Hopf-bifurcation:</strong></p>
+<p><img src="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/hopfexc.png" alt=""></p>
+<p>Hyperpolarization appears.</p>
+<p><strong>with slower $w$ dynamics…</strong></p>
+<p><img src="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/slowerw.png" alt=""></p>
+<p>A plateau appears because of the low dynamics of $w$.<br>We can say in this case the model has been reduced to 1D. </p>
 
       
     </div>
