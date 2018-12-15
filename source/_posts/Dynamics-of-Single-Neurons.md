@@ -26,6 +26,8 @@ where $\alpha_p(u)$ and $\beta_p(u)$ are related to activation and inactivation 
 
 # 1. Phase plane analysis
 
+-- _analyzing in 2D_
+
 ## 1.1 Reduction to 2D
 
 - The four-dimensional HH model can be reduced to a two-dimensional model (details in [T. B. Kepler (1992)](https://link.springer.com/article/10.1007/BF00197717)):
@@ -54,20 +56,59 @@ of which dynamics can be analyzed in a 2D phase plane.
   where derivatives $F_u, F_w, ...$ are evaluated at the fixed point. 
   Assume $\bf{x} = C_1e^{\lambda_1t}\bf{e_1} + C_2e^{\lambda_2t}\bf{e_2}$, then the linearization can be formulated as 
   $$\lambda^2 -(F_u+G_w)\lambda +(F_uG_w - F_wG_u)=0$$
-  Solve it we get $$\lambda_1+\lambda_2 = (F_u + G_w)$$ $$\lambda_1\lambda_2 = F_uG_w - F_wG_u$$.
+  Solve it we get $$\lambda_1+\lambda_2 = (F_u + G_w)$$ $$\lambda_1\lambda_2 = F_uG_w - F_wG_u$$
   - **Stable:** $\lambda_1, \lambda_2 < 0$, which means $$F_u+G_w < 0 \text{  and  } F_uG_w - F_wG_u>0$$
   - **Unstable:** 
     $$F_u+G_w > 0 \text{  and  } F_uG_w - F_wG_u>0$$
   - **Saddle:** 
     $$F_uG_w -F_wG_u < 0$$
 
-  Another classification is by if $\lambda_1$ and $\lambda_2$ are true real numbers, checked with the sign of $(F_u+G_w)^2 - 4(F_uG_w - F_wG_u)$:
+  Another classification is based on whether $\lambda_1$ and $\lambda_2$ are pure real numbers, determined by the sign of $(F_u+G_w)^2 - 4(F_uG_w - F_wG_u)$:
 
-  - **Node:** $\lambda_1$ and $\lambda_2$ are true reals$$(F_u+G_w)^2 - 4(F_uG_w - F_wG_u) > 0$$
+  - **Node:** $\lambda_1$ and $\lambda_2$ are pure reals$$(F_u+G_w)^2 - 4(F_uG_w - F_wG_u) > 0$$
   - **Spiral:** $\lambda_1$ and $\lambda_2$ are complex numbers$$(F_u+G_w)^2 - 4(F_uG_w - F_wG_u) < 0$$
-  So put together is: 
+  So put together all it's: 
 ![](https://raw.githubusercontent.com/hengjiwang/blog_figures/master/stable.png)
 
 # 2. Type I and Type II neuron models
 
+-- _emergence in single neurons_
+- **Type I**: neurons with a continuous frequency-current curve(**f-I curve**, **gain function**).
+- **Type II**: neurons with a discontinuous f-I curve. 
+
+![](https://raw.githubusercontent.com/hengjiwang/blog_figures/master/type12.png)
+
+- **Rheobase current ($I_\theta$)**: the minimal constant current injection which triggers a repetive firing of neurons. In phase plane, it is called **bifurcation point** and $I$ is the **bifurcation parameter**.
+
+## 2.1 Type I models
+![](https://raw.githubusercontent.com/hengjiwang/blog_figures/master/typeI.png)
+
+
+
+In this case, when $I=I_\theta$, the stable fixed point and the saddle point in A. merge into one point, at which the frequency is zero. If $I$ is higher a limit cycle will appear from zero frequency. Such transition at $I_\theta$ is called **Saddle-Node-onto-Limit-Cycle Bifurcation**.
+
+## 2.2 Type II models
+
+![](https://raw.githubusercontent.com/hengjiwang/blog_figures/master/typeII.png)
+
+In this case, the limit cycle appears before a saddle-node bifurcation forms thus when $I=I_\theta$ and a bifurcation point is reached, the limit cylce already has some frequency. This is called **Saddle-Node-off-Limit-Cycle Bifurcation**.
+
+(Figures above are of reduced HH model) 
+
+## 2.3 Hopf Bifurcation
+
+- **Hopf bifurcation:** a scenario where there is a stability loss in combination with an emerging **oscillation**(eigenvalues are pure imaginary numbers). 
+
+  - **Subcritical Hopf-bifurcation:** 
+    - the emerged oscillatory solution at the Hopf Bifurcation point is unstable. 
+    - large-amplitude oscillations close to the bifurcation point
+
+  - **Supercritical Hopf-bifurcation:** 
+    - the emerged oscillation solution at the Hopf Bifurcation point is stable. 
+    - small-amplitude oscillations close to the bifurcation point
+    - <font color=red>subthreshold oscillations, so not linked to a neuronal firing.</font>
+
+    Conclusion: Subcritical Hopf bifurcation exhibit a gain function of type II.
+
+# 3. Threshold and excitability
 (to be continued...)
