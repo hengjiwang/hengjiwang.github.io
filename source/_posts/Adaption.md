@@ -22,7 +22,7 @@ $$\tau_m \frac{du}{dt} = -(u-u_{rest}) + \Delta_T \exp(\frac{u-\vartheta_{rh}}{\
 $$\tau_w \frac{dw}{dt} = a_k(u-u_{rest}) - w + b\tau_w \sum_{t^{(f)}}\delta(t-t^{(f)})$$
 - A single adaptive term $w$
 - $a$ couples adaption to the voltage and is the source of subthreshold adaption.
-- The choice of $b$ largely determines the firing pattern of the neuron, which is based on dynamics of ion channels.
+- The choice of $a$ and $b$ largely determines the firing pattern of the neuron, which is based on dynamics of ion channels.
 
 # 2. Firing patterns
 
