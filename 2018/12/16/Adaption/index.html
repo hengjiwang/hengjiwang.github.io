@@ -83,19 +83,19 @@
 
 
 
-<meta name="description" content="1. Adaptive Exponential (AdEx) LIF model1.1 Add adaptive terms$$\tau_m \frac{du}{dt} = f(u) -R\sum_k w_k + RI(t)\\tau_k \frac{dw_k}{dt} = a_k(u-u_{rest}) - w_k + b_k\tau_k \sum_{t^{(f)}}\delta(t-t^{(f">
+<meta name="description" content="1. Adaptive Exponential (AdEx) LIF model1.1 Add adaptive terms$$\tau_m \frac{du}{dt} = f(u) -R\sum_k w_k + RI(t)$$$$\tau_k \frac{dw_k}{dt} = a_k(u-u_{rest}) - w_k + b_k\tau_k \sum_{t^{(f)}}\delta(t-t^">
 <meta name="keywords" content="neurons,dynamics,GLIF">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Adaption">
 <meta property="og:url" content="http://yoursite.com/2018/12/16/Adaption/index.html">
 <meta property="og:site_name" content="Hengji Wang&#39;s Blog">
-<meta property="og:description" content="1. Adaptive Exponential (AdEx) LIF model1.1 Add adaptive terms$$\tau_m \frac{du}{dt} = f(u) -R\sum_k w_k + RI(t)\\tau_k \frac{dw_k}{dt} = a_k(u-u_{rest}) - w_k + b_k\tau_k \sum_{t^{(f)}}\delta(t-t^{(f">
+<meta property="og:description" content="1. Adaptive Exponential (AdEx) LIF model1.1 Add adaptive terms$$\tau_m \frac{du}{dt} = f(u) -R\sum_k w_k + RI(t)$$$$\tau_k \frac{dw_k}{dt} = a_k(u-u_{rest}) - w_k + b_k\tau_k \sum_{t^{(f)}}\delta(t-t^">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/firepattern.png">
-<meta property="og:updated_time" content="2018-12-17T07:08:27.191Z">
+<meta property="og:updated_time" content="2018-12-17T07:43:57.088Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Adaption">
-<meta name="twitter:description" content="1. Adaptive Exponential (AdEx) LIF model1.1 Add adaptive terms$$\tau_m \frac{du}{dt} = f(u) -R\sum_k w_k + RI(t)\\tau_k \frac{dw_k}{dt} = a_k(u-u_{rest}) - w_k + b_k\tau_k \sum_{t^{(f)}}\delta(t-t^{(f">
+<meta name="twitter:description" content="1. Adaptive Exponential (AdEx) LIF model1.1 Add adaptive terms$$\tau_m \frac{du}{dt} = f(u) -R\sum_k w_k + RI(t)$$$$\tau_k \frac{dw_k}{dt} = a_k(u-u_{rest}) - w_k + b_k\tau_k \sum_{t^{(f)}}\delta(t-t^">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/firepattern.png">
 
 
@@ -358,11 +358,11 @@
       
 
       
-        <h1 id="1-Adaptive-Exponential-AdEx-LIF-model"><a href="#1-Adaptive-Exponential-AdEx-LIF-model" class="headerlink" title="1. Adaptive Exponential (AdEx) LIF model"></a>1. Adaptive Exponential (AdEx) LIF model</h1><h2 id="1-1-Add-adaptive-terms"><a href="#1-1-Add-adaptive-terms" class="headerlink" title="1.1 Add adaptive terms"></a>1.1 Add adaptive terms</h2><p>$$\tau_m \frac{du}{dt} = f(u) -R\sum_k w_k + RI(t)\<br>\tau_k \frac{dw_k}{dt} = a_k(u-u_{rest}) - w_k + b_k\tau_k \sum_{t^{(f)}}\delta(t-t^{(f)})$$</p>
+        <h1 id="1-Adaptive-Exponential-AdEx-LIF-model"><a href="#1-Adaptive-Exponential-AdEx-LIF-model" class="headerlink" title="1. Adaptive Exponential (AdEx) LIF model"></a>1. Adaptive Exponential (AdEx) LIF model</h1><h2 id="1-1-Add-adaptive-terms"><a href="#1-1-Add-adaptive-terms" class="headerlink" title="1.1 Add adaptive terms"></a>1.1 Add adaptive terms</h2><p>$$\tau_m \frac{du}{dt} = f(u) -R\sum_k w_k + RI(t)$$<br>$$\tau_k \frac{dw_k}{dt} = a_k(u-u_{rest}) - w_k + b_k\tau_k \sum_{t^{(f)}}\delta(t-t^{(f)})$$</p>
 <ul>
 <li>The $\delta$-term in the last equation indicates that during a firing, the <strong>adaptation currents</strong> $w_k$ are increased by an amount $b_k$</li>
 </ul>
-<h2 id="1-2-AdEx-model"><a href="#1-2-AdEx-model" class="headerlink" title="1.2 AdEx model"></a>1.2 AdEx model</h2><p>$$\tau_m \frac{du}{dt} = -(u-u_{rest}) + \Delta_T \exp(\frac{u-\vartheta_{rh}}{\Delta_T}) -Rw + RI(t)\<br>\tau_w \frac{dw}{dt} = a_k(u-u_{rest}) - w + b\tau_w \sum_{t^{(f)}}\delta(t-t^{(f)})$$</p>
+<h2 id="1-2-AdEx-model"><a href="#1-2-AdEx-model" class="headerlink" title="1.2 AdEx model"></a>1.2 AdEx model</h2><p>$$\tau_m \frac{du}{dt} = -(u-u_{rest}) + \Delta_T \exp(\frac{u-\vartheta_{rh}}{\Delta_T}) -Rw + RI(t)$$<br>$$\tau_w \frac{dw}{dt} = a_k(u-u_{rest}) - w + b\tau_w \sum_{t^{(f)}}\delta(t-t^{(f)})$$</p>
 <ul>
 <li>A single adaptive term $w$</li>
 <li>$a$ couples adaption to the voltage and is the source of subthreshold adaption.</li>
@@ -370,6 +370,25 @@
 </ul>
 <h1 id="2-Firing-patterns"><a href="#2-Firing-patterns" class="headerlink" title="2. Firing patterns"></a>2. Firing patterns</h1><p><strong>Firing patterns</strong> from AdEx model, with different parameter set and stimulated with a step current with high/low amplitude:</p>
 <p><img src="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/firepattern.png" alt=""></p>
+<h2 id="2-1-Classification-of-firing-patterns"><a href="#2-1-Classification-of-firing-patterns" class="headerlink" title="2.1 Classification of firing patterns"></a>2.1 Classification of firing patterns</h2><ul>
+<li>Initial transient<ul>
+<li><strong>tonic:</strong> $f_{init} \approx f_{rest}$</li>
+<li><strong>initial burst:</strong> $f_{init} \gg f_{rest}$</li>
+<li><strong>delay:</strong> firing starts with a delay</li>
+</ul>
+</li>
+<li>Steady state pattern<ul>
+<li><strong>tonic:</strong> regularly spaced</li>
+<li><strong>adapting:</strong> increasing interspike intervals</li>
+<li><strong>bursting:</strong> regularly alternations between short and long intervals</li>
+</ul>
+</li>
+</ul>
+<p>large $\tau_w$ small $b$ $\rightarrow$ weak but long-lasting currents  $\rightarrow$ adaptation</p>
+<p>small $\tau_w$ large $b$ $\rightarrow$ short but strong currents $\rightarrow$ tonic (with a prolongation of the refractory period)</p>
+<ul>
+<li><strong>facilitation:</strong> $b&lt;0$, the interspike interval may gradually decrease.</li>
+</ul>
 
       
     </div>
@@ -554,7 +573,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Adaptive-Exponential-AdEx-LIF-model"><span class="nav-text">1. Adaptive Exponential (AdEx) LIF model</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-Add-adaptive-terms"><span class="nav-text">1.1 Add adaptive terms</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-AdEx-model"><span class="nav-text">1.2 AdEx model</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Firing-patterns"><span class="nav-text">2. Firing patterns</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Adaptive-Exponential-AdEx-LIF-model"><span class="nav-text">1. Adaptive Exponential (AdEx) LIF model</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-Add-adaptive-terms"><span class="nav-text">1.1 Add adaptive terms</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-AdEx-model"><span class="nav-text">1.2 AdEx model</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Firing-patterns"><span class="nav-text">2. Firing patterns</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-Classification-of-firing-patterns"><span class="nav-text">2.1 Classification of firing patterns</span></a></li></ol></li></ol></div>
             
 
           </div>
