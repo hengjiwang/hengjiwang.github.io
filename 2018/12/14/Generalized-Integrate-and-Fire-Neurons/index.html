@@ -72,7 +72,7 @@
 
 
 
-  <meta name="keywords" content="neurons,dynamics,">
+  <meta name="keywords" content="neurons,dynamics,GLIF,">
 
 
 
@@ -83,21 +83,22 @@
 
 
 
-<meta name="description" content="1. Nonlinear Integrate-and-Fire Models1.1 Thresholds in nonlinear LIF model firing time $t^{(f)}$:  $$t^{(f)}: u(t^{(f)}) = \theta_{reset} \text{ and } \frac{du(t)}{dt}|_{t=t^{(f)}} &amp;gt; 0$$  general">
-<meta name="keywords" content="neurons,dynamics">
+<meta name="description" content="1 Thresholds in nonlinear LIF model firing time $t^{(f)}$:  $$t^{(f)}: u(t^{(f)}) = \theta_{reset} \text{ and } \frac{du(t)}{dt}|_{t=t^{(f)}} &amp;gt; 0$$  general nonlinear LIF model:$$\tau \frac{du}{dt}">
+<meta name="keywords" content="neurons,dynamics,GLIF">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Generalized Leaky-Integrate-and-Fire Neurons">
+<meta property="og:title" content="Nonlinear Leaky-Integrate-and-Fire Neurons">
 <meta property="og:url" content="http://yoursite.com/2018/12/14/Generalized-Integrate-and-Fire-Neurons/index.html">
 <meta property="og:site_name" content="Hengji Wang&#39;s Blog">
-<meta property="og:description" content="1. Nonlinear Integrate-and-Fire Models1.1 Thresholds in nonlinear LIF model firing time $t^{(f)}$:  $$t^{(f)}: u(t^{(f)}) = \theta_{reset} \text{ and } \frac{du(t)}{dt}|_{t=t^{(f)}} &amp;gt; 0$$  general">
+<meta property="og:description" content="1 Thresholds in nonlinear LIF model firing time $t^{(f)}$:  $$t^{(f)}: u(t^{(f)}) = \theta_{reset} \text{ and } \frac{du(t)}{dt}|_{t=t^{(f)}} &amp;gt; 0$$  general nonlinear LIF model:$$\tau \frac{du}{dt}">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/rheo.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/phasethres.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/expLIF.png">
-<meta property="og:updated_time" content="2018-12-17T04:56:39.939Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/quadrandexp.png">
+<meta property="og:updated_time" content="2018-12-17T06:26:52.215Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Generalized Leaky-Integrate-and-Fire Neurons">
-<meta name="twitter:description" content="1. Nonlinear Integrate-and-Fire Models1.1 Thresholds in nonlinear LIF model firing time $t^{(f)}$:  $$t^{(f)}: u(t^{(f)}) = \theta_{reset} \text{ and } \frac{du(t)}{dt}|_{t=t^{(f)}} &amp;gt; 0$$  general">
+<meta name="twitter:title" content="Nonlinear Leaky-Integrate-and-Fire Neurons">
+<meta name="twitter:description" content="1 Thresholds in nonlinear LIF model firing time $t^{(f)}$:  $$t^{(f)}: u(t^{(f)}) = \theta_{reset} \text{ and } \frac{du(t)}{dt}|_{t=t^{(f)}} &amp;gt; 0$$  general nonlinear LIF model:$$\tau \frac{du}{dt}">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/rheo.png">
 
 
@@ -134,7 +135,7 @@
 
 
 
-  <title>Generalized Leaky-Integrate-and-Fire Neurons | Hengji Wang's Blog</title>
+  <title>Nonlinear Leaky-Integrate-and-Fire Neurons | Hengji Wang's Blog</title>
   
 
 
@@ -278,7 +279,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Generalized Leaky-Integrate-and-Fire Neurons</h1>
+          <h1 class="post-title" itemprop="name headline">Nonlinear Leaky-Integrate-and-Fire Neurons</h1>
         
 
         <div class="post-meta">
@@ -360,7 +361,7 @@
       
 
       
-        <h1 id="1-Nonlinear-Integrate-and-Fire-Models"><a href="#1-Nonlinear-Integrate-and-Fire-Models" class="headerlink" title="1. Nonlinear Integrate-and-Fire Models"></a>1. Nonlinear Integrate-and-Fire Models</h1><h2 id="1-1-Thresholds-in-nonlinear-LIF-model"><a href="#1-1-Thresholds-in-nonlinear-LIF-model" class="headerlink" title="1.1 Thresholds in nonlinear LIF model"></a>1.1 Thresholds in nonlinear LIF model</h2><ul>
+        <h1 id="1-Thresholds-in-nonlinear-LIF-model"><a href="#1-Thresholds-in-nonlinear-LIF-model" class="headerlink" title="1 Thresholds in nonlinear LIF model"></a>1 Thresholds in nonlinear LIF model</h1><ul>
 <li><strong>firing time $t^{(f)}$:</strong></li>
 </ul>
 <p>$$t^{(f)}: u(t^{(f)}) = \theta_{reset} \text{ and } \frac{du(t)}{dt}|_{t=t^{(f)}} &gt; 0$$</p>
@@ -378,7 +379,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="1-2-Exponential-LIF-Model"><a href="#1-2-Exponential-LIF-Model" class="headerlink" title="1.2 Exponential LIF Model"></a>1.2 Exponential LIF Model</h2><p>$$\tau \frac{du}{dt} = -(u-u_{rest}) + \Delta_T \exp\left(\frac{u-\vartheta_{rh}}{\Delta_T}\right) + RI$$</p>
+<h1 id="2-Exponential-LIF-Model"><a href="#2-Exponential-LIF-Model" class="headerlink" title="2 Exponential LIF Model"></a>2 Exponential LIF Model</h1><p>$$\tau \frac{du}{dt} = -(u-u_{rest}) + \Delta_T \exp\left(\frac{u-\vartheta_{rh}}{\Delta_T}\right) + RI$$</p>
 <ul>
 <li><strong>leaky term:</strong> $-(u-u_{rest})$</li>
 <li><strong>sharpness parameter:</strong> $\Delta_T$</li>
@@ -393,13 +394,13 @@
 <li><p>If $\Delta_T \rightarrow 0$, then $\vartheta_{rh} = \vartheta$ and this model returns to a LIF model. </p>
 </li>
 <li><p><strong>refractory exponential integrate-and-fire model</strong>: an exponential integrate-and-fire model where the parameters depend on the time since the last spike. </p>
-<h3 id="1-2-1-How-do-we-choose-f-u-in-practice"><a href="#1-2-1-How-do-we-choose-f-u-in-practice" class="headerlink" title="1.2.1 How do we choose $f(u)$ in practice?"></a>1.2.1 How do we choose $f(u)$ in practice?</h3></li>
+<h2 id="2-1-How-do-we-choose-f-u-in-practice"><a href="#2-1-How-do-we-choose-f-u-in-practice" class="headerlink" title="2.1 How do we choose $f(u)$ in practice?"></a>2.1 How do we choose $f(u)$ in practice?</h2></li>
 </ul>
 <p>Fitting from experiments:<br>$$\tilde{f}(u) = \langle \frac{1}{C} I(t) - \frac{du(t)}{dt}\rangle$$<br>where $\tilde{f} = f/\tau, C=\tau/R$.<br>$I(t)$ and $\frac{du(t)}{dt}$ can be obrained from experiments, $C$ is chosen to minimize the experimental variance. </p>
-<h2 id="1-3-Quadratic-LIF-Model"><a href="#1-3-Quadratic-LIF-Model" class="headerlink" title="1.3 Quadratic LIF Model"></a>1.3 Quadratic LIF Model</h2><p>$$\tau \frac{du}{dt} = a_0 (u-u_{rest})(u-u_c) + RI$$</p>
+<h1 id="3-Quadratic-LIF-Model"><a href="#3-Quadratic-LIF-Model" class="headerlink" title="3 Quadratic LIF Model"></a>3 Quadratic LIF Model</h1><p>$$\tau \frac{du}{dt} = a_0 (u-u_{rest})(u-u_c) + RI$$</p>
 <p>where $u_c &gt; u_{rest}$ is a critical voltage for spike initiation by a short current pulse.</p>
 <ul>
-<li>This model is closely related to <strong>$\Theta$-neuron</strong>, a <strong>canonical type-I model</strong>. </li>
+<li>This model is closely related to <strong>$\Theta$-neuron</strong>, a <strong>canonical type-I model</strong>.<br><img src="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/quadrandexp.png" alt=""></li>
 <li>Near $\vartheta_{rh}$, the exponential LIF model and the quadratic LIF model become very similar.  </li>
 </ul>
 <p><strong>Pros and Cons</strong>(compared with exponential LIF model):</p>
@@ -420,6 +421,7 @@
 <li><p>Any type-I neuron model close to the bifurcation point can be approximated by a quadratic LIF model – <strong>canonical type-I LIF model</strong>.</p>
 </li>
 </ul>
+<p><font color="red"> Both exponential LIF and quadratic LIF models show a f-I curve of type I.</font></p>
 
       
     </div>
@@ -440,6 +442,8 @@
             <a href="/tags/neurons/" rel="tag"># neurons</a>
           
             <a href="/tags/dynamics/" rel="tag"># dynamics</a>
+          
+            <a href="/tags/GLIF/" rel="tag"># GLIF</a>
           
         </div>
       
@@ -569,7 +573,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -602,7 +606,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Nonlinear-Integrate-and-Fire-Models"><span class="nav-text">1. Nonlinear Integrate-and-Fire Models</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-Thresholds-in-nonlinear-LIF-model"><span class="nav-text">1.1 Thresholds in nonlinear LIF model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-Exponential-LIF-Model"><span class="nav-text">1.2 Exponential LIF Model</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-1-How-do-we-choose-f-u-in-practice"><span class="nav-text">1.2.1 How do we choose $f(u)$ in practice?</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-Quadratic-LIF-Model"><span class="nav-text">1.3 Quadratic LIF Model</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Thresholds-in-nonlinear-LIF-model"><span class="nav-text">1 Thresholds in nonlinear LIF model</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Exponential-LIF-Model"><span class="nav-text">2 Exponential LIF Model</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-How-do-we-choose-f-u-in-practice"><span class="nav-text">2.1 How do we choose $f(u)$ in practice?</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-Quadratic-LIF-Model"><span class="nav-text">3 Quadratic LIF Model</span></a></li></ol></div>
             
 
           </div>
@@ -774,7 +778,7 @@
         var disqus_config = function () {
           this.page.url = 'http://yoursite.com/2018/12/14/Generalized-Integrate-and-Fire-Neurons/';
           this.page.identifier = '2018/12/14/Generalized-Integrate-and-Fire-Neurons/';
-          this.page.title = 'Generalized Leaky-Integrate-and-Fire Neurons';
+          this.page.title = 'Nonlinear Leaky-Integrate-and-Fire Neurons';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://.disqus.com/embed.js';
