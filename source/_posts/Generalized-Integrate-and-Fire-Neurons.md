@@ -1,15 +1,15 @@
 ---
-title: Generalized Leaky-Integrate-and-Fire Neurons
+title: Nonlinear Leaky-Integrate-and-Fire Neurons
 date: 2018-12-14 17:21:27
 tags:
 - neurons
 - dynamics
+- GLIF
 categories:
 - neuronal dynamics
 ---
-# 1. Nonlinear Integrate-and-Fire Models
 
-## 1.1 Thresholds in nonlinear LIF model
+# 1 Thresholds in nonlinear LIF model
 
 - **firing time $t^{(f)}$:**
 
@@ -27,7 +27,7 @@ $$\tau \frac{du}{dt} = f(u) + R(u)I$$
 
     ![](https://raw.githubusercontent.com/hengjiwang/blog_figures/master/phasethres.png)
   
-## 1.2 Exponential LIF Model
+# 2 Exponential LIF Model
 
 $$\tau \frac{du}{dt} = -(u-u_{rest}) + \Delta_T \exp\left(\frac{u-\vartheta_{rh}}{\Delta_T}\right) + RI$$
 
@@ -47,20 +47,21 @@ should satisfy $\vartheta \gg u_{rest} + \Delta_T$ so that when $u$ is around $u
 - If $\Delta_T \rightarrow 0$, then $\vartheta_{rh} = \vartheta$ and this model returns to a LIF model. 
 
 - **refractory exponential integrate-and-fire model**: an exponential integrate-and-fire model where the parameters depend on the time since the last spike. 
-### 1.2.1 How do we choose $f(u)$ in practice?
+## 2.1 How do we choose $f(u)$ in practice?
 
 Fitting from experiments:
 $$\tilde{f}(u) = \langle \frac{1}{C} I(t) - \frac{du(t)}{dt}\rangle$$
 where $\tilde{f} = f/\tau, C=\tau/R$.
 $I(t)$ and $\frac{du(t)}{dt}$ can be obrained from experiments, $C$ is chosen to minimize the experimental variance. 
 
-## 1.3 Quadratic LIF Model
+# 3 Quadratic LIF Model
 
 $$\tau \frac{du}{dt} = a_0 (u-u_{rest})(u-u_c) + RI$$
 
 where $u_c > u_{rest}$ is a critical voltage for spike initiation by a short current pulse.
 
 - This model is closely related to **$\Theta$-neuron**, a **canonical type-I model**. 
+  ![](https://raw.githubusercontent.com/hengjiwang/blog_figures/master/quadrandexp.png)
 - Near $\vartheta_{rh}$, the exponential LIF model and the quadratic LIF model become very similar.  
 
 **Pros and Cons**(compared with exponential LIF model):
@@ -75,3 +76,5 @@ where $u_c > u_{rest}$ is a critical voltage for spike initiation by a short cur
 - By adding an injection current, $u_r^{\text{eff}}$ and $\vartheta^{\text{eff}}$ can be very close around $\vartheta_{rh}$, thus quadratic LIF model is valid in this regime.
 
 - Any type-I neuron model close to the bifurcation point can be approximated by a quadratic LIF model -- **canonical type-I LIF model**.
+
+<font color='red'> Both exponential LIF and quadratic LIF models show a f-I curve of type I.
