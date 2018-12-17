@@ -72,7 +72,7 @@
 
 
 
-  <meta name="keywords" content="neurons,dynamics,GLIF,">
+  <meta name="keywords" content="neurons,dynamics,GLIF,applied math,">
 
 
 
@@ -84,7 +84,7 @@
 
 
 <meta name="description" content="1. Adaptive Exponential (AdEx) LIF model1.1 Add adaptive terms$$\tau_m \frac{du}{dt} = f(u) -R\sum_k w_k + RI(t)$$$$\tau_k \frac{dw_k}{dt} = a_k(u-u_{rest}) - w_k + b_k\tau_k \sum_{t^{(f)}}\delta(t-t^">
-<meta name="keywords" content="neurons,dynamics,GLIF">
+<meta name="keywords" content="neurons,dynamics,GLIF,applied math">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Adaption">
 <meta property="og:url" content="http://yoursite.com/2018/12/16/Adaption/index.html">
@@ -92,7 +92,14 @@
 <meta property="og:description" content="1. Adaptive Exponential (AdEx) LIF model1.1 Add adaptive terms$$\tau_m \frac{du}{dt} = f(u) -R\sum_k w_k + RI(t)$$$$\tau_k \frac{dw_k}{dt} = a_k(u-u_{rest}) - w_k + b_k\tau_k \sum_{t^{(f)}}\delta(t-t^">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/firepattern.png">
-<meta property="og:updated_time" content="2018-12-17T07:55:24.690Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/tonicphase.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/adaptphase.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/burstphase.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/irrphase.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/transientphase.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/resetphase.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/resonator.png">
+<meta property="og:updated_time" content="2018-12-17T22:01:52.009Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Adaption">
 <meta name="twitter:description" content="1. Adaptive Exponential (AdEx) LIF model1.1 Add adaptive terms$$\tau_m \frac{du}{dt} = f(u) -R\sum_k w_k + RI(t)$$$$\tau_k \frac{dw_k}{dt} = a_k(u-u_{rest}) - w_k + b_k\tau_k \sum_{t^{(f)}}\delta(t-t^">
@@ -368,7 +375,7 @@
 <li>$a$ couples adaption to the voltage and is the source of subthreshold adaption.</li>
 <li>The choice of $a$ and $b$ largely determines the firing pattern of the neuron, which is based on dynamics of ion channels.</li>
 </ul>
-<h1 id="2-Firing-patterns"><a href="#2-Firing-patterns" class="headerlink" title="2. Firing patterns"></a>2. Firing patterns</h1><p><strong>Firing patterns</strong> from AdEx model, with different parameter set and stimulated with a step current with high/low amplitude:</p>
+<h1 id="2-Firing-patterns"><a href="#2-Firing-patterns" class="headerlink" title="2. Firing patterns"></a>2. Firing patterns</h1><p><strong>Firing patterns</strong> from AdEx model, with different parameter set and stimulated with a <font color="red">step current</font> with high/low amplitude:</p>
 <p><img src="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/firepattern.png" alt=""></p>
 <h2 id="2-1-Classification-of-firing-patterns"><a href="#2-1-Classification-of-firing-patterns" class="headerlink" title="2.1 Classification of firing patterns"></a>2.1 Classification of firing patterns</h2><ul>
 <li>Initial transient<ul>
@@ -389,6 +396,35 @@
 <ul>
 <li><strong>facilitation:</strong> $b&lt;0$, the interspike interval may gradually decrease.</li>
 </ul>
+<h2 id="2-2-Phase-Analysis-of-firing-patterns"><a href="#2-2-Phase-Analysis-of-firing-patterns" class="headerlink" title="2.2 Phase Analysis of firing patterns"></a>2.2 Phase Analysis of firing patterns</h2><p>Each time that $u=\theta_{reset}$, it will be initialized at $(u_r, w+b)$</p>
+<p>Tonic:</p>
+<p><img src="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/tonicphase.png" alt=""></p>
+<p>Adapting:</p>
+<p><img src="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/adaptphase.png" alt=""></p>
+<p>Bursting:<br>Alternations between short and long interspike intervals.</p>
+<p><img src="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/burstphase.png" alt=""></p>
+<p>Irregular:<br>Comes from chaotic reset.</p>
+<p><img src="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/irrphase.png" alt=""></p>
+<p>Transient:</p>
+<p><img src="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/transientphase.png" alt=""></p>
+<h2 id="2-3-Space-of-Reset-Parameters"><a href="#2-3-Space-of-Reset-Parameters" class="headerlink" title="2.3 Space of Reset Parameters"></a>2.3 Space of Reset Parameters</h2><p>Reset parameters: $u_r, b$</p>
+<p><img src="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/resetphase.png" alt=""></p>
+<h2 id="2-4-Space-of-Subthreshold-Parameters"><a href="#2-4-Space-of-Subthreshold-Parameters" class="headerlink" title="2.4 Space of Subthreshold Parameters"></a>2.4 Space of Subthreshold Parameters</h2><ul>
+<li>Exponential LIF looses stability via a saddle-point bifurcation.</li>
+<li>AdEx looses stability via a <ul>
+<li>Hopf bifurcation: $aR&gt;\tau_m/\tau_w$</li>
+<li>saddle-node bifurcation: $aR&lt;\tau_m/\tau_w$</li>
+</ul>
+</li>
+</ul>
+<p>– The type of bifurcation has no influence on the <font color="red">firing pattern (by step current)</font> which depends mainly on the choice of reset parameters.<br>– The subthreshold parameters do control the presence of absence of oscillations in response to a <font color="red">short pulse</font>.</p>
+<p><img src="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/resonator.png" alt=""></p>
+<ul>
+<li><strong>resonator:</strong> a model showing damped oscillations</li>
+<li><strong>integrator:</strong> a model without oscillations</li>
+</ul>
+<p>The frequency of the damped oscillation is given by:<br>$$w = \frac{4}{\tau_w}\left[aR - \frac{2\tau_w}{\tau_m}\left(1-\frac{\tau_m}{\tau_w}\right)^2\right]$$</p>
+<h1 id="3-Biophysical-Origin-of-Adaption"><a href="#3-Biophysical-Origin-of-Adaption" class="headerlink" title="3. Biophysical Origin of Adaption"></a>3. Biophysical Origin of Adaption</h1><p>(to be continued)</p>
 
       
     </div>
@@ -412,6 +448,8 @@
           
             <a href="/tags/GLIF/" rel="tag"># GLIF</a>
           
+            <a href="/tags/applied-math/" rel="tag"># applied math</a>
+          
         </div>
       
 
@@ -432,6 +470,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/17/Theories-of-Intelligence/" rel="prev" title="Theories of Intelligence">
+                Theories of Intelligence <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -518,7 +560,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -573,7 +615,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Adaptive-Exponential-AdEx-LIF-model"><span class="nav-text">1. Adaptive Exponential (AdEx) LIF model</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-Add-adaptive-terms"><span class="nav-text">1.1 Add adaptive terms</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-AdEx-model"><span class="nav-text">1.2 AdEx model</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Firing-patterns"><span class="nav-text">2. Firing patterns</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-Classification-of-firing-patterns"><span class="nav-text">2.1 Classification of firing patterns</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Adaptive-Exponential-AdEx-LIF-model"><span class="nav-text">1. Adaptive Exponential (AdEx) LIF model</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-Add-adaptive-terms"><span class="nav-text">1.1 Add adaptive terms</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-AdEx-model"><span class="nav-text">1.2 AdEx model</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Firing-patterns"><span class="nav-text">2. Firing patterns</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-Classification-of-firing-patterns"><span class="nav-text">2.1 Classification of firing patterns</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-Phase-Analysis-of-firing-patterns"><span class="nav-text">2.2 Phase Analysis of firing patterns</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-Space-of-Reset-Parameters"><span class="nav-text">2.3 Space of Reset Parameters</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-Space-of-Subthreshold-Parameters"><span class="nav-text">2.4 Space of Subthreshold Parameters</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-Biophysical-Origin-of-Adaption"><span class="nav-text">3. Biophysical Origin of Adaption</span></a></li></ol></div>
             
 
           </div>
