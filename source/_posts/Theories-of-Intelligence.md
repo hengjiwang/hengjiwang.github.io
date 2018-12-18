@@ -7,7 +7,7 @@ categories:
 - casual readings
 ---
 
-<font color=purple>_Alan Turing, [Intelligent Machinery](https://github.com/hengjiwang/casual_readings/raw/master/Alan_Turing_Intelligent_Machinery_1948.pdf), 1948._</font>
+<font color=purple>*Alan Turing, [Intelligent Machinery](https://github.com/hengjiwang/casual_readings/raw/master/Alan_Turing_Intelligent_Machinery_1948.pdf), 1948.*</font>
 
 ## Feasibility of intelligent machinery
 - Reasons that people feel intelligent machinery is impossible:
@@ -39,8 +39,46 @@ _discrete and continuous_; _controlling and active_
   - allow several randomly alternative operations at some points
   - opposite to deterministic
 
-## Unorganised machines
+- **Unorganised machines**
 
+  - largely random in their construction
+  - made up unsystematicly from some kind of standard components
+    - A-type machines: behave a complicated manner when number of units is large
+    - B-type machines: with inteference inputs
+
+## Interference with machinery
+
+- Merely infers to "_interfere by communication of information to thr machine_"
+- Machine is **modifiable**
+- Machine can **modify itself**, whenever the content of this storage was altered by the
+internal operations of the machine
+
+## Man as a machine
+
+- human is a thinking machine.
+- To build a human as thinking machine, suitable branches are:
+  - games e.g. chess, bridge, poker
+  - learning of languages
+  - translation of languages
+  - cryptography
+  - mathematics
+
+## Education of machinery
+
+- Humans are growing with education
+- For machinery we should start with little capacity to carry out elaborate operations but give a huge capacity for educating them by appropriate interference. 
+
+## The cortex as an unorganised machine
+- brain is indeterministic, thus different **trainings** result in different results
+- consider genetics and evolution 
+
+## Experiments in organizing: pleasure–pain systems
+
+- Training of human child depends largely on rewards (R) and punishments (P), which we can also use on machinery. 
+- Pain stimuli occur when
+the machine’s behaviour is wrong, pleasure stimuli when it is particularly right.
+
+## The P-type unorganised machine
 
 
 
