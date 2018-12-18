@@ -1,10 +1,10 @@
 ---
-title: Theories of Intelligence
+title: Reading summaries I -- theories of intelligence
 date: 2018-12-17 14:12:30
 tags: 
-- intelligent machinary
+- intelligent machinery
 categories:
-- casual readings
+- reading summaries
 ---
 
 <font color=purple>*Alan Turing, [Intelligent Machinery](https://github.com/hengjiwang/casual_readings/raw/master/Alan_Turing_Intelligent_Machinery_1948.pdf), 1948.*</font>
@@ -45,6 +45,7 @@ _discrete and continuous_; _controlling and active_
   - made up unsystematicly from some kind of standard components
     - A-type machines: behave a complicated manner when number of units is large
     - B-type machines: with inteference inputs
+    - P-type machines
 
 ## Interference with machinery
 
@@ -75,10 +76,15 @@ internal operations of the machine
 ## Experiments in organizing: pleasure–pain systems
 
 - Training of human child depends largely on rewards (R) and punishments (P), which we can also use on machinery. 
-- Pain stimuli occur when
-the machine’s behaviour is wrong, pleasure stimuli when it is particularly right.
+- Pain stimuli occur when the machine’s behaviour is wrong, pleasure stimuli when it is particularly right.
 
-## The P-type unorganised machine
+## Discipline and initiative
+
+- After a long time of discipline, the machine might be able to make decisions or choices, which we call it has initiative.
+
+- search for new techniques must be regarded as carried out by the human community as a whole, rather than by individuals
+
+
 
 
 
