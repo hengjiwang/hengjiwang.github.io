@@ -7,7 +7,7 @@ categories:
 - reading summaries
 ---
 
-<font color=purple>*Alan Turing, [Intelligent Machinery](https://github.com/hengjiwang/casual_readings/raw/master/Alan_Turing_Intelligent_Machinery_1948.pdf), 1948.*</font>
+# <font color=purple>*Alan Turing, [Intelligent Machinery](https://github.com/hengjiwang/casual_readings/raw/master/Alan_Turing_Intelligent_Machinery_1948.pdf), 1948.*</font>
 
 ## Feasibility of intelligent machinery
 - Reasons that people feel intelligent machinery is impossible:
@@ -38,9 +38,7 @@ _discrete and continuous_; _controlling and active_
 - Partially random and apparently partially random machines
   - allow several randomly alternative operations at some points
   - opposite to deterministic
-
 - **Unorganised machines**
-
   - largely random in their construction
   - made up unsystematicly from some kind of standard components
     - A-type machines: behave a complicated manner when number of units is large
