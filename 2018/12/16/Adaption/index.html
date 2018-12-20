@@ -99,7 +99,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/transientphase.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/resetphase.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/resonator.png">
-<meta property="og:updated_time" content="2018-12-17T22:01:52.009Z">
+<meta property="og:updated_time" content="2018-12-20T07:44:54.866Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Adaption">
 <meta name="twitter:description" content="1. Adaptive Exponential (AdEx) LIF model1.1 Add adaptive terms$$\tau_m \frac{du}{dt} = f(u) -R\sum_k w_k + RI(t)$$$$\tau_k \frac{dw_k}{dt} = a_k(u-u_{rest}) - w_k + b_k\tau_k \sum_{t^{(f)}}\delta(t-t^">
@@ -424,7 +424,36 @@
 <li><strong>integrator:</strong> a model without oscillations</li>
 </ul>
 <p>The frequency of the damped oscillation is given by:<br>$$w = \frac{4}{\tau_w}\left[aR - \frac{2\tau_w}{\tau_m}\left(1-\frac{\tau_m}{\tau_w}\right)^2\right]$$</p>
-<h1 id="3-Biophysical-Origin-of-Adaption"><a href="#3-Biophysical-Origin-of-Adaption" class="headerlink" title="3. Biophysical Origin of Adaption"></a>3. Biophysical Origin of Adaption</h1><p>(to be continued)</p>
+<h1 id="3-Biophysical-Origin-of-Adaption"><a href="#3-Biophysical-Origin-of-Adaption" class="headerlink" title="3. Biophysical Origin of Adaption"></a>3. Biophysical Origin of Adaption</h1><h2 id="3-1-by-a-single-slow-channel"><a href="#3-1-by-a-single-slow-channel" class="headerlink" title="3.1 by a single slow channel"></a>3.1 by a single slow channel</h2><ul>
+<li><p>Still model sodium channels with AdEx model.</p>
+</li>
+<li><p>Consider the potassium channel of HH type:<br>$$\tau_m \frac{du}{dt} = -(u-E_L) - R_L g_K n^p (u-E_K) + R_L I_{ext}$$</p>
+</li>
+</ul>
+<p>$$\frac{dn}{dt} = -\frac{n-n_0(u)}{\tau_n(u)}$$</p>
+<p>resting voltage $E_0$ can be analytically solved:</p>
+<p>$$E_0 = \frac{E_L + (R_L g_K)n_0(E_0)^pE_K}{1+(R_Lg_K)n_0(E_0)^p}$$</p>
+<p>Define $\beta = g_Kpn_0(E_0)^{p-1}(E_0-E_K)$;<br>Expand $n_0(u) = n_0(E_0) + n_0’(u-E_0)$;<br>Define variable $w = \beta[n-n_0(E_0)]$,<br>then we get</p>
+<p>$$\tau_n(E_0)\frac{dw}{dt} = a(u-E_0) - w$$</p>
+<p>$$\tau_m^{\text{eff}}\frac{du}{dt} = -(u-E_0)- Rw+RI_{ext}$$</p>
+<p>($R$ and $\tau_m$ rescaled)</p>
+<p>Derivations above show that each channel gives rise to an effective adaptation variable $w$. Since there are many channels, we expect many $w_k$.</p>
+<ul>
+<li><strong>spike-triggered adaption:</strong> each additional spike activate the channel further</li>
+</ul>
+<h2 id="3-2-by-passive-dendrites"><a href="#3-2-by-passive-dendrites" class="headerlink" title="3.2 by passive dendrites"></a>3.2 by passive dendrites</h2><p>$$\frac{dV^s}{dt} = \frac{1}{C^{s}}\left[-\frac{(V^{s}-u_{rest})}{R_{\text{T}}^{s}}-\frac{V^{s}-V^{d}}{R_{\text{L}}}+I(t)\right]$$</p>
+<p>$$\frac{dV^d}{dt} = \frac{1}{C^{d}}\left[-\frac{(V^{d}-E^{d})}{R_{\text{T}}^{d}}-\frac{V^{d}-V^{s}}{R_{\text{L}}}\right]$$</p>
+<p>Define $w = -(V^{d}-u_{\rm rest})/R_{\text{L}}$;<br>Assume $E^d = u_{rest}= E$,<br>then we get </p>
+<p>$$\tau^{\rm eff}\frac{dV^{s}}{dt} = -(V^{s}-E)-R^{\text{eff}}w$$</p>
+<p>$$\tau_w \frac{dw}{dt} = a(V^{s}-E)-w$$</p>
+<ol>
+<li>where $a=-[R_{\rm L}+(R^{2}<em>{\rm L}/R</em>{\rm D})]^{-1}$ is always negative, which means that passive dendrites introduce a facilitating subthreshold coupling.</li>
+<li>when $R_L$ is small, facilitation is strong</li>
+<li>timescale of the facilitation $\tau_w$ is smaller than the dendritic time constant $R^d_TC^d$, which means compared to other adaption currents, the dendritic current is a relatively fast one.</li>
+</ol>
+<ul>
+<li>The dynamics of spike-triggered currents on multiple timescales can be understood in terms of their stereotypical effect on the membrane potential</li>
+</ul>
 
       
     </div>
@@ -560,7 +589,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -615,7 +644,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Adaptive-Exponential-AdEx-LIF-model"><span class="nav-text">1. Adaptive Exponential (AdEx) LIF model</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-Add-adaptive-terms"><span class="nav-text">1.1 Add adaptive terms</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-AdEx-model"><span class="nav-text">1.2 AdEx model</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Firing-patterns"><span class="nav-text">2. Firing patterns</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-Classification-of-firing-patterns"><span class="nav-text">2.1 Classification of firing patterns</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-Phase-Analysis-of-firing-patterns"><span class="nav-text">2.2 Phase Analysis of firing patterns</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-Space-of-Reset-Parameters"><span class="nav-text">2.3 Space of Reset Parameters</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-Space-of-Subthreshold-Parameters"><span class="nav-text">2.4 Space of Subthreshold Parameters</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-Biophysical-Origin-of-Adaption"><span class="nav-text">3. Biophysical Origin of Adaption</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Adaptive-Exponential-AdEx-LIF-model"><span class="nav-text">1. Adaptive Exponential (AdEx) LIF model</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-Add-adaptive-terms"><span class="nav-text">1.1 Add adaptive terms</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-AdEx-model"><span class="nav-text">1.2 AdEx model</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Firing-patterns"><span class="nav-text">2. Firing patterns</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-Classification-of-firing-patterns"><span class="nav-text">2.1 Classification of firing patterns</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-Phase-Analysis-of-firing-patterns"><span class="nav-text">2.2 Phase Analysis of firing patterns</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-Space-of-Reset-Parameters"><span class="nav-text">2.3 Space of Reset Parameters</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-Space-of-Subthreshold-Parameters"><span class="nav-text">2.4 Space of Subthreshold Parameters</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-Biophysical-Origin-of-Adaption"><span class="nav-text">3. Biophysical Origin of Adaption</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-by-a-single-slow-channel"><span class="nav-text">3.1 by a single slow channel</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-by-passive-dendrites"><span class="nav-text">3.2 by passive dendrites</span></a></li></ol></li></ol></div>
             
 
           </div>
