@@ -132,7 +132,7 @@ $$\frac{dV^s}{dt} = \frac{1}{C^{s}}\left[-\frac{(V^{s}-u_{rest})}{R_{\text{T}}^{
 
 $$\frac{dV^d}{dt} = \frac{1}{C^{d}}\left[-\frac{(V^{d}-E^{d})}{R_{\text{T}}^{d}}-\frac{V^{d}-V^{s}}{R_{\text{L}}}\right]$$
 
-Define $w = -(V^{d}-u_{\rm rest})/R_{\text{L}}$;
+Define $w = -(V^{d}-u_{rest})/R_{\text{L}}$;
 Assume $E^d = u_{rest}= E$, 
 then we get 
 
@@ -140,7 +140,7 @@ $$\tau^{\rm eff}\frac{dV^{s}}{dt} = -(V^{s}-E)-R^{\text{eff}}w$$
 
 $$\tau_w \frac{dw}{dt} = a(V^{s}-E)-w$$
 
-1. where $a=-[R_{\rm L}+(R^{2}_{\rm L}/R_{\rm D})]^{-1}$ is always negative, which means that passive dendrites introduce a facilitating subthreshold coupling.
+1. where $a=-[R_{L}+(R^2_{L}/R_{D})]^{-1}$ is always negative, which means that passive dendrites introduce a facilitating subthreshold coupling.
 2. when $R_L$ is small, facilitation is strong
 3. timescale of the facilitation $\tau_w$ is smaller than the dendritic time constant $R^d_TC^d$, which means compared to other adaption currents, the dendritic current is a relatively fast one.
 
