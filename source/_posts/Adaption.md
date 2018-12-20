@@ -128,19 +128,19 @@ Derivations above show that each channel gives rise to an effective adaptation v
 
 ## 3.2 by passive dendrites
 
-$$\frac{dV^s}{dt} = \frac{1}{C^{s}}\,\left[-{(V^{s}-u_{\rm rest})\over R_{\text{T}}^{%
+$$\frac{dV^s}{dt} = \frac{1}{C^{s}}\left[-{(V^{s}-u_{\rm rest})\over R_{\text{T}}^{%
 s}}-{V^{s}-V^{d}\over R_{\text{L}}}+I(t)\right]$$
 
-$$\frac{dV^d}{dt} = \frac{1}{C^{d}}\,\left[-{(V^{d}-E^{d})\over R_{\text{T}}^{d}}-{V^%
+$$\frac{dV^d}{dt} = \frac{1}{C^{d}}\left[-{(V^{d}-E^{d})\over R_{\text{T}}^{d}}-{V^%
 {d}-V^{s}\over R_{\text{L}}}\right]$$
 
 Define $w = -(V^{d}-u_{\rm rest})/R_{\text{L}}$;
 Assume $E^d = u_{rest}= E$, 
 then we get 
 
-$$\tau^{\rm eff}{dV^{s}\over dt} = -(V^{s}-E)-R^{\rm eff}\,w$$
+$$\tau^{\rm eff}{dV^{s}\over dt} = -(V^{s}-E)-R^{\rm eff}w$$
 
-$$\tau_w \frac{dw}{dt} = a\,(V^{s}-E)-w$$
+$$\tau_w \frac{dw}{dt} = a(V^{s}-E)-w$$
 
 1. where $a=-[R_{\rm L}+(R^{2}_{\rm L}/R_{\rm D})]^{-1}$ is always negative, which means that passive dendrites introduce a facilitating subthreshold coupling.
 2. when $R_L$ is small, facilitation is strong
