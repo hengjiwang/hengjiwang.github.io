@@ -99,5 +99,51 @@ $$w = \frac{4}{\tau_w}\left[aR - \frac{2\tau_w}{\tau_m}\left(1-\frac{\tau_m}{\ta
 
 # 3. Biophysical Origin of Adaption
 
-(to be continued)
+## 3.1 by a single slow channel
+- Still model sodium channels with AdEx model.
 
+- Consider the potassium channel of HH type:
+$$\tau_m \frac{du}{dt} = -(u-E_L) - R_L g_K n^p (u-E_K) + R_L I_{ext}$$
+
+$$\frac{dn}{dt} = -\frac{n-n_0(u)}{\tau_n(u)}$$
+
+resting voltage $E_0$ can be analytically solved:
+
+$$E_0 = \frac{E_L + (R_L g_K)n_0(E_0)^pE_K}{1+(R_Lg_K)n_0(E_0)^p}$$
+
+Define $\beta = g_Kpn_0(E_0)^{p-1}(E_0-E_K)$; 
+Expand $n_0(u) = n_0(E_0) + n_0'(u-E_0)$;
+Define variable $w = \beta[n-n_0(E_0)]$,
+then we get
+
+$$\tau_n(E_0)\frac{dw}{dt} = a(u-E_0) - w$$
+
+$$\tau_m^{\text{eff}}\frac{du}{dt} = -(u-E_0)- Rw+RI_{ext}$$
+
+($R$ and $\tau_m$ rescaled)
+
+Derivations above show that each channel gives rise to an effective adaptation variable $w$. Since there are many channels, we expect many $w_k$.
+
+- **spike-triggered adaption:** each additional spike activate the channel further
+
+## 3.2 by passive dendrites
+
+$$\frac{dV^s}{dt} = \frac{1}{C^{s}}\,\left[-{(V^{s}-u_{\rm rest})\over R_{\text{T}}^{%
+s}}-{V^{s}-V^{d}\over R_{\text{L}}}+I(t)\right]$$
+
+$$\frac{dV^d}{dt} = \frac{1}{C^{d}}\,\left[-{(V^{d}-E^{d})\over R_{\text{T}}^{d}}-{V^%
+{d}-V^{s}\over R_{\text{L}}}\right]$$
+
+Define $w = -(V^{d}-u_{\rm rest})/R_{\text{L}}$;
+Assume $E^d = u_{rest}= E$, 
+then we get 
+
+$$\tau^{\rm eff}{dV^{s}\over dt} = -(V^{s}-E)-R^{\rm eff}\,w$$
+
+$$\tau_w \frac{dw}{dt} = a\,(V^{s}-E)-w$$
+
+1. where $a=-[R_{\rm L}+(R^{2}_{\rm L}/R_{\rm D})]^{-1}$ is always negative, which means that passive dendrites introduce a facilitating subthreshold coupling.
+2. when $R_L$ is small, facilitation is strong
+3. timescale of the facilitation $\tau_w$ is smaller than the dendritic time constant $R^d_TC^d$, which means compared to other adaption currents, the dendritic current is a relatively fast one.
+
+- The dynamics of spike-triggered currents on multiple timescales can be understood in terms of their stereotypical effect on the membrane potential
