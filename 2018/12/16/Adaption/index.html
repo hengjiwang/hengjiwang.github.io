@@ -72,7 +72,7 @@
 
 
 
-  <meta name="keywords" content="neurons,dynamics,GLIF,applied math,">
+  <meta name="keywords" content="neurons,dynamics,applied math,GLIF,">
 
 
 
@@ -84,7 +84,7 @@
 
 
 <meta name="description" content="1. Adaptive Exponential (AdEx) LIF model1.1 Add adaptive terms$$\tau_m \frac{du}{dt} = f(u) -R\sum_k w_k + RI(t)$$$$\tau_k \frac{dw_k}{dt} = a_k(u-u_{rest}) - w_k + b_k\tau_k \sum_{t^{(f)}}\delta(t-t^">
-<meta name="keywords" content="neurons,dynamics,GLIF,applied math">
+<meta name="keywords" content="neurons,dynamics,applied math,GLIF">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Adaption">
 <meta property="og:url" content="http://yoursite.com/2018/12/16/Adaption/index.html">
@@ -99,7 +99,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/transientphase.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/resetphase.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/resonator.png">
-<meta property="og:updated_time" content="2018-12-20T07:44:54.866Z">
+<meta property="og:updated_time" content="2018-12-20T07:49:06.189Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Adaption">
 <meta name="twitter:description" content="1. Adaptive Exponential (AdEx) LIF model1.1 Add adaptive terms$$\tau_m \frac{du}{dt} = f(u) -R\sum_k w_k + RI(t)$$$$\tau_k \frac{dw_k}{dt} = a_k(u-u_{rest}) - w_k + b_k\tau_k \sum_{t^{(f)}}\delta(t-t^">
@@ -443,11 +443,11 @@
 </ul>
 <h2 id="3-2-by-passive-dendrites"><a href="#3-2-by-passive-dendrites" class="headerlink" title="3.2 by passive dendrites"></a>3.2 by passive dendrites</h2><p>$$\frac{dV^s}{dt} = \frac{1}{C^{s}}\left[-\frac{(V^{s}-u_{rest})}{R_{\text{T}}^{s}}-\frac{V^{s}-V^{d}}{R_{\text{L}}}+I(t)\right]$$</p>
 <p>$$\frac{dV^d}{dt} = \frac{1}{C^{d}}\left[-\frac{(V^{d}-E^{d})}{R_{\text{T}}^{d}}-\frac{V^{d}-V^{s}}{R_{\text{L}}}\right]$$</p>
-<p>Define $w = -(V^{d}-u_{\rm rest})/R_{\text{L}}$;<br>Assume $E^d = u_{rest}= E$,<br>then we get </p>
+<p>Define $w = -(V^{d}-u_{rest})/R_{\text{L}}$;<br>Assume $E^d = u_{rest}= E$,<br>then we get </p>
 <p>$$\tau^{\rm eff}\frac{dV^{s}}{dt} = -(V^{s}-E)-R^{\text{eff}}w$$</p>
 <p>$$\tau_w \frac{dw}{dt} = a(V^{s}-E)-w$$</p>
 <ol>
-<li>where $a=-[R_{\rm L}+(R^{2}<em>{\rm L}/R</em>{\rm D})]^{-1}$ is always negative, which means that passive dendrites introduce a facilitating subthreshold coupling.</li>
+<li>where $a=-[R_{L}+(R^2_{L}/R_{D})]^{-1}$ is always negative, which means that passive dendrites introduce a facilitating subthreshold coupling.</li>
 <li>when $R_L$ is small, facilitation is strong</li>
 <li>timescale of the facilitation $\tau_w$ is smaller than the dendritic time constant $R^d_TC^d$, which means compared to other adaption currents, the dendritic current is a relatively fast one.</li>
 </ol>
@@ -475,9 +475,9 @@
           
             <a href="/tags/dynamics/" rel="tag"># dynamics</a>
           
-            <a href="/tags/GLIF/" rel="tag"># GLIF</a>
-          
             <a href="/tags/applied-math/" rel="tag"># applied math</a>
+          
+            <a href="/tags/GLIF/" rel="tag"># GLIF</a>
           
         </div>
       
