@@ -53,6 +53,8 @@ categories:
 - **Similarity no elementary law**
   - object called up may bear any logical relation whatever to the one which suggested it
   - The similarity itself between the objects has no causal agency in carrying us from one to the other. It is but a result (agent).
+  
+
 # <font color=purple>*Warren McCulloch and Walter Pitts, [A logical calculus of the ideas immanent in nervous activity](https://intelligentmachinerycourse.files.wordpress.com/2018/09/mcculloch_pitts_with_intro_1943p.pdf), 1943.*</font>
 
 - McCulloch-Pitts neuron
