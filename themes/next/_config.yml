@@ -154,7 +154,7 @@ links_layout: block
 # Sidebar Avatar
 # in theme directory(source/images): /images/avatar.gif
 # in site  directory(source/uploads): /uploads/avatar.gif
-#avatar: /images/avatar.gif
+avatar: https://raw.githubusercontent.com/hengjiwang/blog_figures/master/145799ab4507535.jpg
 
 # Table Of Contents in the Sidebar
 toc:
