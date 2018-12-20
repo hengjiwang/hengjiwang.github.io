@@ -128,17 +128,17 @@ Derivations above show that each channel gives rise to an effective adaptation v
 
 ## 3.2 by passive dendrites
 
-$$\frac{dV^s}{dt} = \frac{1}{C^{s}}\left[-{(V^{s}-u_{\rm rest})\over R_{\text{T}}^{%
-s}}-{V^{s}-V^{d}\over R_{\text{L}}}+I(t)\right]$$
+$$\frac{dV^s}{dt} = \frac{1}{C^{s}}\left[-\frac{(V^{s}-u_{\rm rest})}{R_{\text{T}}^{%
+s}}-\frac{V^{s}-V^{d}}{R_{\text{L}}}+I(t)\right]$$
 
-$$\frac{dV^d}{dt} = \frac{1}{C^{d}}\left[-{(V^{d}-E^{d})\over R_{\text{T}}^{d}}-{V^%
-{d}-V^{s}\over R_{\text{L}}}\right]$$
+$$\frac{dV^d}{dt} = \frac{1}{C^{d}}\left[-\frac{(V^{d}-E^{d})}{R_{\text{T}}^{d}}-\frac{V^%
+{d}-V^{s}}{R_{\text{L}}}\right]$$
 
 Define $w = -(V^{d}-u_{\rm rest})/R_{\text{L}}$;
 Assume $E^d = u_{rest}= E$, 
 then we get 
 
-$$\tau^{\rm eff}{dV^{s}\over dt} = -(V^{s}-E)-R^{\rm eff}w$$
+$$\tau^{\rm eff}\frac{dV^{s}}{dt} = -(V^{s}-E)-R^{\rm eff}w$$
 
 $$\tau_w \frac{dw}{dt} = a(V^{s}-E)-w$$
 
