@@ -55,7 +55,7 @@ and
 
 $${\bf{x}_t} = (I_{t-1}dt, I_{t-2}dt, \cdots, I_{t-K}dt, n_{t-1}, n_{t-2}, \cdots, n_{t-J}, 1)$$
 
-where $n_t \in \left\{0,1\right\}$ is the spike count at time $t$.
+where $n_t \in \left\\{0,1\right\\}$ is the spike count at time $t$.
 
 Then we obtain
 
@@ -71,7 +71,7 @@ $$\rho(t) = f({\bf{k\cdot x_t}})$$
 
 We denote the observed spike train data of one neuron as $D$. For $0<t\leq T$
 
-$$D = \left\{n_1, n_2, ..., n_T\right\}$$
+$$D = \left\\{n_1, n_2, ..., n_T\right\\}$$
 
 - Neural encoding problem:
 given stimulus ${\bf{x}}$, to find $p(D|{\bf{x}})$. 
@@ -100,11 +100,11 @@ We assume that the spike counts per bin follow a conditional Poisson ditribution
 
 Given a GLM or SRM model $\rho(t) = f({\bf{k\cdot x_t}})$, we have 
 
-$$p(D|X,{\bf{k}}) = \prod_t \left\{\frac{[f({\bf{k\cdot x_t}})dt]^{n_t}}{(n_t)!}\exp[-f({\bf{k\cdot x_t}})dt]\right\}$$
+$$p(D|X,{\bf{k}}) = \prod_t \left\\{\frac{[f({\bf{k\cdot x_t}})dt]^{n_t}}{(n_t)!}\exp[-f({\bf{k\cdot x_t}})dt]\right\\}$$
 
 take logarithm
 
-$$\log p(D|X,{\bf{k}}) = c_0 + \sum_t \left\{n_t\log[f({\bf{k\cdot x_t}})] - f({\bf{k\cdot x_t}})dt\right\}$$
+$$\log p(D|X,{\bf{k}}) = c_0 + \sum_t \left\\{n_t\log[f({\bf{k\cdot x_t}})] - f({\bf{k\cdot x_t}})dt\right\\}$$
 
 Two assumptions:
 
@@ -113,7 +113,7 @@ Two assumptions:
 
 Then the loglikihood is concave, which means the loglikelihood has no local maximum. 
 
-_Notice_: $D = \left\{n_t\right\}$ is not a Poisson process because $\rho(t)$ depends on past spikes, unless ${\bf{\eta}}=0$. 
+_Notice_: $D = \left\\{n_t\right\\}$ is not a Poisson process because $\rho(t)$ depends on past spikes, unless ${\bf{\eta}}=0$. 
 
 - MAP is a penalized version of MLE
 
