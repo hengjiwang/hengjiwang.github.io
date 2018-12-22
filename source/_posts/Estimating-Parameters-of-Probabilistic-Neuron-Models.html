@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Estimating-Parameters-of-Probabilistic-Neuron-Models.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: "Segoe WPC", "Segoe UI", "SFUIText-Light", "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+	font-size: 14px;
+	padding: 0 12px;
+	line-height: 22px;
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	color: #4080D0;
+	text-decoration: none;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+h1 code,
+h2 code,
+h3 code,
+h4 code,
+h5 code,
+h6 code {
+	font-size: inherit;
+	line-height: auto;
+}
+
+a:hover {
+	color: #4080D0;
+	text-decoration: underline;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left: 5px solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 14px;
+	line-height: 19px;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+.mac code {
+	font-size: 12px;
+	line-height: 18px;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+/** Theming */
+
+.vscode-light,
+.vscode-light pre code {
+	color: rgb(30, 30, 30);
+}
+
+.vscode-dark,
+.vscode-dark pre code {
+	color: #DDD;
+}
+
+.vscode-high-contrast,
+.vscode-high-contrast pre code {
+	color: white;
+}
+
+.vscode-light code {
+	color: #A31515;
+}
+
+.vscode-dark code {
+	color: #D7BA7D;
+}
+
+.vscode-light pre:not(.hljs),
+.vscode-light code > div {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre:not(.hljs),
+.vscode-dark code > div {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre:not(.hljs),
+.vscode-high-contrast code > div {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+.vscode-light blockquote,
+.vscode-dark blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.vscode-high-contrast blockquote {
+	background: transparent;
+	border-color: #fff;
+}
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family:  "Meiryo", "Segoe WPC", "Segoe UI", "SFUIText-Light", "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+</head>
+<body>
+<hr>
+<p>title: Estimating Parameters of Probabilistic Neuron Models
+date: 2018-12-20 15:29:10
+tags:</p>
+<ul>
+<li>neurons</li>
+<li>applied math</li>
+<li>GLIF</li>
+<li>statistics</li>
+<li>data analysis</li>
+</ul>
+<p>categories:</p>
+<ul>
+<li>neuronal dynamics</li>
+</ul>
+<hr>
+<p>neural data analysis problems:</p>
+<ul>
+<li>encoding: predict the spike trains of a neuron or population of neurons given an input</li>
+<li>decoding: estimate the stimulus from the spikes</li>
+</ul>
+<p>difficulties:</p>
+<ul>
+<li>neural responses are stochastic</li>
+<li>possible stimuli are many</li>
+</ul>
+<h1 id="1-parameter-optimization">1. Parameter optimization</h1>
+<ul>
+<li>desiderata for any neuron model:
+<ul>
+<li>flexible and powerful enough</li>
+<li>tractable</li>
+<li>respect known physiolgy</li>
+</ul>
+</li>
+</ul>
+<p>Question: how does a stimulus $I(t)$ encoded by the neuron?</p>
+<h2 id="11-linear-models">1.1 Linear Models</h2>
+<p>For linear model</p>
+<p>$$u(t) = \int_{0}^{\infty} \kappa(s) I(t-s)ds + u_{rest}$$</p>
+<p>Can be approximated as</p>
+<p>$$u_t = \sum_{l=1}^K k_lI_{t-l}dt + u_{rest} = {\bf{k}}\cdot{\bf{x}}<em>t + u</em>{rest}$$</p>
+<p>Looking for its parameters is a linear regression problem.</p>
+<h2 id="12-generalized-linear-models">1.2 Generalized Linear Models</h2>
+<p>For SRM</p>
+<p>$$u(t) = \int_{0}^{\infty} \eta(s) S(t-s)ds + \int_{0}^{\infty} \kappa(s) I(t-s)ds + u_{rest}$$</p>
+<p>we define</p>
+<p>$${\bf k} = (\kappa(dt), \kappa(2dt), \cdots, \kappa(Kdt), \eta(dt), \eta(2dt), \cdots, \eta(Jdt),u_{rest})$$</p>
+<p>and</p>
+<p>$${\bf x_t} = (I_{t-1}dt, I_{t-2}dt, \cdots, I_{t-K}dt, n_{t-1}, n_{t-2}, \cdots, n_{t-J}, 1)$$</p>
+<p>where $n_t \in {0,1}$ is the spike count at time $t$.</p>
+<p>Then we obtain</p>
+<p>$$u_t = \sum_{j=1}^J k_{K+j}n_{t-j} + \sum_{k=1}^{K} k_K I_{t-k}dt + u_{rest} = {\bf k\cdot x_t}$$</p>
+<p>which is still a linear regression problem.</p>
+<p>However, spiking itself is a nonlinear process.</p>
+<h1 id="2-statistical-formulation-of-encoding-models">2. Statistical formulation of encoding models</h1>
+<p>We denote the observed spike train data of one neuron as $D$. For $0&lt;t\leq T$</p>
+<p>$$D = {n_1, n_2, ..., n_T}$$</p>
+<ul>
+<li>Neural encoding problem:
+given stimulus ${\bf x}$, to find $p(D|{\bf x})$.</li>
+</ul>
+<p>Since it's not feasible to directly measure $p(D|{\bf x})$ for all ${{\bf x}, D}$, we actually are looking for</p>
+<p>$$p(D|{\bf x}, \theta)$$
+where $\theta = {{\bf k}, b}$ is the set of model parameters. i.e. estimate $\theta$ so that the model 'fits' the observed data $D$, and then approximate</p>
+<p><font color=blue>(MLE, frequencist)</font></p>
+<h2 id="21-parameter-estimation">2.1 Parameter estimation</h2>
+<ul>
+<li>How to find a good estimate for $\theta$?</li>
+</ul>
+<ol>
+<li>Introduce a model and incorporates prior knowlege $p(\theta)$</li>
+<li>Compute the likelihood $p()$</li>
+</ol>
+
+</body>
+</html>
