@@ -72,7 +72,7 @@
 
 
 
-  <meta name="keywords" content="neurons,dynamics,GLIF,">
+  <meta name="keywords" content="neurons,GLIF,dynamics,">
 
 
 
@@ -83,15 +83,20 @@
 
 
 
-<meta name="keywords" content="neurons,dynamics,GLIF">
+<meta name="description" content="In spike response model(SRM), the neuron model is interpredted in terms of   a membrane filter a function describing the shape of the spike a function for the time course of the threshold   SRM is ju">
+<meta name="keywords" content="neurons,GLIF,dynamics">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Spike Response Model">
 <meta property="og:url" content="http://yoursite.com/2018/12/19/Spike-Response-Model/index.html">
 <meta property="og:site_name" content="Hengji Wang&#39;s Blog">
+<meta property="og:description" content="In spike response model(SRM), the neuron model is interpredted in terms of   a membrane filter a function describing the shape of the spike a function for the time course of the threshold   SRM is ju">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-12-20T07:31:00.249Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/SRM.png">
+<meta property="og:updated_time" content="2018-12-25T19:59:14.851Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spike Response Model">
+<meta name="twitter:description" content="In spike response model(SRM), the neuron model is interpredted in terms of   a membrane filter a function describing the shape of the spike a function for the time course of the threshold   SRM is ju">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/SRM.png">
 
 
 
@@ -353,7 +358,76 @@
       
 
       
-        
+        <ul>
+<li><p>In <strong>spike response model(SRM)</strong>, the neuron model is interpredted in terms of </p>
+<ul>
+<li>a membrane filter</li>
+<li>a function describing the shape of the spike</li>
+<li>a function for the time course of the threshold</li>
+</ul>
+</li>
+<li><p>SRM is just a generalization of LIF model</p>
+</li>
+<li>SRM has no intrinsic firing threshold but only the sharp numerical threshold for reset. Therefore, in the SRM, we work with a sharp threshold combined with a linear voltage equation.</li>
+</ul>
+<h1 id="1-Definition-of-SRM"><a href="#1-Definition-of-SRM" class="headerlink" title="1. Definition of SRM"></a>1. Definition of SRM</h1><p><img src="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/SRM.png" alt=""></p>
+<ol>
+<li><p>Voltage response: $h(t) = \int_0^\infty \kappa(s)I^{\text{ext}}(t-s)ds$</p>
+</li>
+<li><p>The after-potential is described as $\eta$, then the evolution of $u$ is:</p>
+</li>
+</ol>
+<p>$$u(t) = \sum_f\eta(t-t^{(f)}) + \int_0^\infty\kappa(s) I^{\text{ext}}(t-s)ds + u_{rest}$$</p>
+<p>or if we define $S(t) = \sum_f\delta(t-t^{(f)})$, then</p>
+<p>$$u(t) = \int_0^{\infty}\eta(s)S(t-s)ds + \int_0^\infty\kappa(s) I^{\text{ext}}(t-s)ds + u_{rest}$$</p>
+<ul>
+<li><p>The threshold $\vartheta(t)$ is time-dependent</p>
+<p>  a standard model is<br>  $$\vartheta(t) = \vartheta_0 + \sum_f \theta_1(t-t^{(f)})$$<br>  which can be absorbed by defining<br>  $$\eta(t-t^{(f)})\rightarrow \eta^{\text{eff}}(t-t^{(f)}) = \eta(t-t^{(f)})- \theta_1(t-t^{(f)})$$ </p>
+</li>
+<li><p>If we just want to predict spike times but not the membrane potential, we can integrate $\eta$ into the dynamic threshold so that $u^{\text{eff}}(t) = h(t)$</p>
+</li>
+</ul>
+<h1 id="2-Interpretation-of-eta-and-kappa"><a href="#2-Interpretation-of-eta-and-kappa" class="headerlink" title="2. Interpretation of $\eta$ and $\kappa$"></a>2. Interpretation of $\eta$ and $\kappa$</h1><ul>
+<li>kernel $\kappa$ is the linear response of the membrane potential to an input current.</li>
+<li>$\eta$ describes the standard form of an action potential of neuron i including the <em>negative</em> overshoot which typically follows a spike (the spike afterpotential).<ul>
+<li>plays a role of reset:<br>$$\eta(t-t^{(f)}) = -\eta_0 \exp\left(-\frac{t-t^{(f)}}{\tau_{\text{recov}}}\right)$$</li>
+</ul>
+</li>
+<li>LIF model is a special case of SRM with $\eta_0=(\vartheta-u_r)$ and $\tau_{\text{recov}}= \tau_m$</li>
+<li>Absolute refractoriness can be incorporated in SRM by setting the dynamic threshold during $\Delta^{abs}$ to an extremely high value that cannot be attained.</li>
+<li>Relative <em>refractoriness</em> can be mimicked in various ways:<ul>
+<li><ol>
+<li>slow the recovery speed of $u$ after a spike</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>a transient increase of the firing threshold (mentioned above)</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>reduce the responsiveness of the neuron: making the shape of $\eta$ and $\kappa$ depend on the last spike timing $\hat{t}$:<br>$$u(t) = \sum_f\eta(t-t^{(f)}) + \int_0^\infty\kappa(t-\hat{t}, s) I^{\text{ext}}(t-s)ds + u_{rest}$$</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="3-Mapping-LIF-to-SRM"><a href="#3-Mapping-LIF-to-SRM" class="headerlink" title="3. Mapping LIF to SRM"></a>3. Mapping LIF to SRM</h1><ul>
+<li><p>Reconsider the “reset” in LIF</p>
+<ul>
+<li>suppose there is a short current $I^{out}_i = -q\delta(t)$, which remove a charge $q$ from the capacitor $C$ and lower the potential by $\Delta u=-q/C = -(\vartheta-u_r)$, so the total reset current is<br>$$I^{out}_i(t) = -C(\vartheta-u_r)\sum_f\delta(t-t^{(f)}_i)$$</li>
+<li>Thus the LIF model can be written as</li>
+</ul>
+<p>$$\tau_m \frac{du_i}{dt} = -(u_i-E_0)-R\sum_k w_k + RI_i(t) -RC(\vartheta-u_r)\sum_f\delta(t-t_i^{(f)})$$</p>
+<p>$$\tau_k \frac{dw_k}{dt} = a_k(u_i-E_0) - w_k + \tau_kb_k\sum_{t^{(f)}}\delta(t-t^{(f)})$$</p>
+<p>  Integrate in the directions of eigenvectors we get</p>
+<p>  $$u_i(t) = \sum_f \eta(t - t_i^{(f)}) + \int_0^{\infty}\kappa(s)I_i(t-s)ds$$</p>
+<p>  with kernels</p>
+<p>  $$\eta(s) = \sum_{k=0}^K \gamma_k {\bf{e}}_{k0}\exp(\lambda_ks)\Theta(s)$$</p>
+<p>  $$\kappa(s) = \sum_{k=0}^K \beta_k{\bf{e}_{k0}}\exp(\lambda_ks)\Theta(s)$$</p>
+</li>
+</ul>
+<p>SRM is the starting point for the GLIF Models in the presence of noise.</p>
+
       
     </div>
     
@@ -372,9 +446,9 @@
           
             <a href="/tags/neurons/" rel="tag"># neurons</a>
           
-            <a href="/tags/dynamics/" rel="tag"># dynamics</a>
-          
             <a href="/tags/GLIF/" rel="tag"># GLIF</a>
+          
+            <a href="/tags/dynamics/" rel="tag"># dynamics</a>
           
         </div>
       
@@ -396,6 +470,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/20/Estimating-Parameters-of-Probabilistic-Neuron-Models/" rel="prev" title="Estimating Parameters of Probabilistic Neuron Models">
+                Estimating Parameters of Probabilistic Neuron Models <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -457,8 +535,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -475,7 +562,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -497,7 +584,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -514,12 +601,27 @@
 
           
           
-
           
 
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Definition-of-SRM"><span class="nav-text">1. Definition of SRM</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Interpretation-of-eta-and-kappa"><span class="nav-text">2. Interpretation of $\eta$ and $\kappa$</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-Mapping-LIF-to-SRM"><span class="nav-text">3. Mapping LIF to SRM</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
