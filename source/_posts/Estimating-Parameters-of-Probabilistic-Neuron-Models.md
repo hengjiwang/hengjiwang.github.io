@@ -37,7 +37,7 @@ $$u(t) = \int_{0}^{\infty} \kappa(s) I(t-s)ds + u_{rest}$$
 
 Can be approximated as
 
-$$u_t = \sum_{l=1}^K k_lI_{t-l}dt + u_{rest} = {\bf{k}}\cdot{\bf{x}}_t + u_{rest}$$
+$$u_t = \sum_{l=1}^K k_lI_{t-l}dt+ u_{rest}  = {\bf{k}}\cdot{\bf{x_t}} + u_{rest}$$
 
 Looking for its parameters is a linear regression problem. 
 
@@ -53,7 +53,7 @@ $${\bf{k}} = (\kappa(dt), \kappa(2dt), \cdots, \kappa(Kdt), \eta(dt), \eta(2dt),
 
 and 
 
-$${\bf{x}_t} = (I_{t-1}dt, I_{t-2}dt, \cdots, I_{t-K}dt, n_{t-1}, n_{t-2}, \cdots, n_{t-J}, 1)$$
+$${\bf{x_t}} = (I_{t-1}dt, I_{t-2}dt, \cdots, I_{t-K}dt, n_{t-1}, n_{t-2}, \cdots, n_{t-J}, 1)$$
 
 where $n_t \in \left\\{0,1\right\\}$ is the spike count at time $t$.
 
@@ -80,7 +80,7 @@ Since it's not feasible to directly measure $p(D|{\bf{x}})$ for all ${\bf{x}}, D
 
 $$p(D|{\bf{x}}, \theta)$$
 
- where $\theta = {\bf{{k}}}, b$ is the set of model parameters. i.e. estimate $\theta$ so that the model 'fits' the observed data $D$, and then approximate
+ where $\theta = {\bf{k}}, b$ is the set of model parameters. i.e. estimate $\theta$ so that the model 'fits' the observed data $D$, and then approximate
 
 $$p(D|{\bf{x}}) \approx p(D|{\bf{x}}, \theta)$$
 
@@ -138,6 +138,6 @@ $$\rho_i(t) = f\left({\bf{k}_i\cdot x_t} + \sum_{i'\neq i, j} \epsilon_{i',j}n_{
 
 ![](https://raw.githubusercontent.com/hengjiwang/blog_figures/master/RMSEnn.png)
 
-$$\text{RMSER} = \frac{\text{RMSE}_{nn}}{\text{RMSE}_{nm}}$$
+$$\text{RMSER} = \frac{RMSE_{nn}}{RMSE_{nm}}$$
 
 ## 3.2 Spike train likelihood
