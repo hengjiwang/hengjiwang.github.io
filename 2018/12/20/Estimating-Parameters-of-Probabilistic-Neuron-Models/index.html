@@ -93,7 +93,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/RMSEnm.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/RMSEnn.png">
-<meta property="og:updated_time" content="2018-12-25T20:43:27.912Z">
+<meta property="og:updated_time" content="2018-12-25T21:59:02.869Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Estimating Parameters of Probabilistic Neuron Models">
 <meta name="twitter:description" content="neural data analysis problems:  encoding: predict the spike trains of a neuron or population of neurons given an input decoding: estimate the stimulus from the spikes   difficulties:  neural responses">
@@ -402,7 +402,7 @@
 </ul>
 <p>Since it’s not feasible to directly measure $p(D|{\bf{x}})$ for all ${\bf{x}}, D$, we actually are looking for </p>
 <p>$$p(D|{\bf{x}}, \theta)$$</p>
-<p> where $\theta = {\bf{k}}, b$ is the set of model parameters. i.e. estimate $\theta$ so that the model ‘fits’ the observed data $D$, and then approximate</p>
+<p> where $\theta =\left\{ {\bf{k}}, b\right\}$ is the set of model parameters. i.e. estimate $\theta$ so that the model ‘fits’ the observed data $D$, and then approximate</p>
 <p>$$p(D|{\bf{x}}) \approx p(D|{\bf{x}}, \theta)$$</p>
 <h2 id="2-1-Parameter-estimation"><a href="#2-1-Parameter-estimation" class="headerlink" title="2.1 Parameter estimation"></a>2.1 Parameter estimation</h2><p>Given observed data $D$, model parameter ${\bf{k}}$ and observed stimuli $X$, there are two ways to estimate the optimized ${\bf{k}}$:</p>
 <ul>
@@ -442,7 +442,8 @@
 <p><img src="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/RMSEnm.png" alt=""></p>
 <p><img src="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/RMSEnn.png" alt=""></p>
 <p>$$\text{RMSER} = \frac{RMSE_{nn}}{RMSE_{nm}}$$</p>
-<h2 id="3-2-Spike-train-likelihood"><a href="#3-2-Spike-train-likelihood" class="headerlink" title="3.2 Spike train likelihood"></a>3.2 Spike train likelihood</h2>
+<h2 id="3-2-Spike-train-likelihood"><a href="#3-2-Spike-train-likelihood" class="headerlink" title="3.2 Spike train likelihood"></a>3.2 Spike train likelihood</h2><p>(to be continued … )</p>
+
       
     </div>
     
@@ -489,6 +490,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/25/Variability-of-Spike-Trains-and-Neural-Codes/" rel="prev" title="Statistics of Spike Trains and Neural Encoding">
+                Statistics of Spike Trains and Neural Encoding <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -577,7 +582,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
