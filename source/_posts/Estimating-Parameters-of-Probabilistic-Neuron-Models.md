@@ -80,7 +80,7 @@ Since it's not feasible to directly measure $p(D|{\bf{x}})$ for all ${\bf{x}}, D
 
 $$p(D|{\bf{x}}, \theta)$$
 
- where $\theta = {\bf{k}}, b$ is the set of model parameters. i.e. estimate $\theta$ so that the model 'fits' the observed data $D$, and then approximate
+ where $\theta =\left\\{ {\bf{k}}, b\right\\}$ is the set of model parameters. i.e. estimate $\theta$ so that the model 'fits' the observed data $D$, and then approximate
 
 $$p(D|{\bf{x}}) \approx p(D|{\bf{x}}, \theta)$$
 
@@ -141,3 +141,5 @@ $$\rho_i(t) = f\left({\bf{k}_i\cdot x_t} + \sum_{i'\neq i, j} \epsilon_{i',j}n_{
 $$\text{RMSER} = \frac{RMSE_{nn}}{RMSE_{nm}}$$
 
 ## 3.2 Spike train likelihood
+
+(to be continued ... )
