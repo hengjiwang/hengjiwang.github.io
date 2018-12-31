@@ -115,13 +115,13 @@ where $\langle\cdot\rangle_t$ denotes an average over time $t$.
 
 - **power spectrum (noise spectrum)**
 
-$$\mathcal{P}_T (w) = \frac{1}{T}\left|\int_{-T/2}^{T/2} S_i(t) e^{-iwt}dt\right|^2$$
+$$\mathcal{P}\_T (w) = \frac{1}{T}\left|\int_{-T/2}^{T/2} S_i(t)e^{-iwt}dt \right|^2$$
 
 $$\mathcal{P}(w) = \lim_{T\rightarrow\infty} \mathcal{P}_T(w)$$
 
 The power spectrum $\mathcal{P}(w)$ of a spike train is equal to the Fourier transform of $C_{ii}(s)$
 
-$$\hat{C}_{ii}(w) = \int_{-\infty}^{\infty} \langle S_i(t)S_i(t+s)\rangle_t e^{-iws}ds$$
+$$\hat{C}\_{ii}(w) = \int_{-\infty}^{\infty} \langle S_i(t)S_i(t+s)\rangle_t e^{-iws}ds$$
 
 $$=\lim_{T\rightarrow \infty}\frac{1}{T}\left|\int_{-T/2}^{T/2} S_i(t)e^{-iwt}dt\right|^2 = \mathcal{P}(w)$$
 
