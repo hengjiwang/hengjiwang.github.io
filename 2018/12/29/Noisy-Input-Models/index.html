@@ -72,7 +72,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="neurons,">
 
 
 
@@ -83,14 +83,18 @@
 
 
 
+<meta name="description" content="1. Noise input$$I(t) = I^{\text{det}}(t) + I^{\text{noise}}(t)$$ Then  $$\tau_m \frac{du}{dt} = f(u) + RI^{\text{det}}(t) + RI^{\text{noise}}(t)$$ 1.1 White noiseAssume $R I^{\text{noise}}(t)=\xi(t)$,">
+<meta name="keywords" content="neurons">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Noisy Input Models">
 <meta property="og:url" content="http://yoursite.com/2018/12/29/Noisy-Input-Models/index.html">
 <meta property="og:site_name" content="Hengji Wang&#39;s Blog">
+<meta property="og:description" content="1. Noise input$$I(t) = I^{\text{det}}(t) + I^{\text{noise}}(t)$$ Then  $$\tau_m \frac{du}{dt} = f(u) + RI^{\text{det}}(t) + RI^{\text{noise}}(t)$$ 1.1 White noiseAssume $R I^{\text{noise}}(t)=\xi(t)$,">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-12-29T09:01:04.739Z">
+<meta property="og:updated_time" content="2019-01-01T06:51:53.813Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Noisy Input Models">
+<meta name="twitter:description" content="1. Noise input$$I(t) = I^{\text{det}}(t) + I^{\text{noise}}(t)$$ Then  $$\tau_m \frac{du}{dt} = f(u) + RI^{\text{det}}(t) + RI^{\text{noise}}(t)$$ 1.1 White noiseAssume $R I^{\text{noise}}(t)=\xi(t)$,">
 
 
 
@@ -293,6 +297,28 @@
           </span>
 
           
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/neuronal-dynamics/" itemprop="url" rel="index">
+                    <span itemprop="name">neuronal dynamics</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -330,7 +356,92 @@
       
 
       
-        
+        <h1 id="1-Noise-input"><a href="#1-Noise-input" class="headerlink" title="1. Noise input"></a>1. Noise input</h1><p>$$I(t) = I^{\text{det}}(t) + I^{\text{noise}}(t)$$</p>
+<p>Then </p>
+<p>$$\tau_m \frac{du}{dt} = f(u) + RI^{\text{det}}(t) + RI^{\text{noise}}(t)$$</p>
+<h2 id="1-1-White-noise"><a href="#1-1-White-noise" class="headerlink" title="1.1 White noise"></a>1.1 White noise</h2><p>Assume $R I^{\text{noise}}(t)=\xi(t)$, then for a white noise we should have</p>
+<p>$$\langle \xi(t)\rangle = 0$$</p>
+<p>and</p>
+<p>$$\langle \xi(t)\xi(t’)\rangle = \sigma^2 \tau_m \delta(t-t’)$$</p>
+<p>The power spectrum of white noise is the Fourier transform of $\langle \xi(t)\xi(t’)\rangle$, which is flat, i.e., the noise is equally strong at all frequencies.</p>
+<ul>
+<li><strong>Langevin equation</strong>:</li>
+</ul>
+<p>$$\tau_m \frac{du(t)}{dt} = f(u(t)) + RI^{\text{det}}(t) + \xi(t)$$</p>
+<p>which can be formulated as </p>
+<p>$$du = f(u)\frac{dt}{\tau_m} + RI^{\text{det}}(t)\frac{dt}{\tau_m} + \sigma dW_t$$</p>
+<p>where $dW_t$ are increments of the Wiener process in a short time $dt$: $dW_t = \sigma \sqrt{dt}\mathcal{N}(0,1)$ </p>
+<p>White noise which is Gaussian distributed is called <strong>Gaussian white noise</strong>. </p>
+<ul>
+<li><strong>Noisy LIF equation</strong>:</li>
+</ul>
+<p>$$\tau_m \frac{du(t)}{dt} = -u(t) + RI^{\text{det}}(t) + \xi(t)$$</p>
+<p>is an <strong>Ornstrin-Uhlenbeck process</strong></p>
+<p>Analytically solve it we get</p>
+<p>$$u(t) = {R\over\tau_{m}}\int_{0}^{t-\hat{t}}e^{-s/\tau_{m}}\,I^{(\rm det)}(t-s){\text{d}}s\,+{1\over{\tau_{m}}}\int_{0}^{t-\hat{t}}\,e^{-s/\tau_{m}}\,\xi(t-s)\,{\text{d}}s$$</p>
+<p>The expected trajectort of the membrane potential is </p>
+<p>$$u_{0}(t)=\langle u(t|\hat{t})\rangle={R\over\tau_{m}}\int_{0}^{t-\hat{t}}e^{-s/\tau_{m}}\,I^{(\rm det)}(t-s)\,{\text{d}}s\,$$</p>
+<p>For a constant input $I^{(\rm det)}(t)\equiv I_{0}$ we have </p>
+<p>$$u_{0}(t)=u_{\infty}\,\left[1-e^{-(t-\hat{t})/\tau_{m}}\right]\,$$</p>
+<p>So in the absence of a threshold, the <strong>expected trajectory</strong> is that of the noiseless model.</p>
+<p>The variance $\langle\Delta u^{2}\rangle=\langle[u(t|\hat{t})-u_{0}(t)]^{2}\rangle$ can be solved as </p>
+<p>$$\langle\Delta u^{2}(t)\rangle={1\over 2}\,{\sigma^{2}}\,\left[1-e^{-2(t-\hat{t})/\tau_{m}}\right]\,$$</p>
+<p>which means the noise causes the membrane trajectory drift away from the expected trajectory, and also</p>
+<p>$$\sqrt{\langle\Delta u^{2}_{\infty}\rangle}={1\over\sqrt{2}}\,{\sigma}.$$</p>
+<h2 id="1-2-Colored-noise"><a href="#1-2-Colored-noise" class="headerlink" title="1.2 Colored noise"></a>1.2 Colored noise</h2><ul>
+<li><strong>colored noise</strong>: noise of which the power spectrum is not flat</li>
+<li>colored noise can be generated from white noise by suitable filtering. e.g. <strong>low-pass filtering</strong></li>
+</ul>
+<p>$$\tau_s \frac{dI^{\text{noise}}(t)}{dt} = -I^{\text{noise}}(t) + \xi(t)$$</p>
+<p>which is also an Ornstrin-Uhlenbeck process. Solve it we get</p>
+<p>$$I^{\rm noise}(t)=\int_{0}^{\infty}\kappa(s)\,\xi(t-s)\,{\text{d}}s$$</p>
+<p>where $\kappa(s)$ is an exponential low-pass filter with time constant $\tau_s$. The autocorrelation function is therefore</p>
+<p>$$\langle I^{\rm noise}(t)I^{\rm noise}(t^{\prime})\rangle=\int_{0}^{\infty}\int_{0}^{\infty}\kappa(s)\,\kappa(s^{\prime})\,\langle\xi(t-s)\,\xi(t^{\prime}-s^{\prime})\rangle\,\,{\text{d}}s^{\prime}{\text{d}}s$$</p>
+<p>$$ = a\,\exp(-{|t-t^{\prime}|\over\tau_{s}})$$</p>
+<p>Therefore, knowledge of the input current at time t gives us a hint about the input current shortly afterward, as long as $|t’-t|\ll \tau_s$</p>
+<p>The noise spectrum is the Fourier transform of $\langle I^{\rm noise}(t)I^{\rm noise}(t^{\prime})\rangle$. It’s flat for $w \ll 1/\tau_s$ and falls off for $w&gt;1/\tau_s$. $1/\tau_s$ is called <strong>cut-off frequency</strong>.</p>
+<h1 id="2-Stochastic-spike-arrival"><a href="#2-Stochastic-spike-arrival" class="headerlink" title="2. Stochastic spike arrival"></a>2. Stochastic spike arrival</h1><p>For a neuron in a large network</p>
+<p>$$\frac{\text{d}}{\text{d}t}u_{i},={f(u_{i})\over\tau_{m}}+{1\over C}I^{\rm<br>ext}(t)+\sum_{j}\sum_{t_{j}^{(f)}}w_{ij}\,\delta(t-t_{j}^{(f)})\,+\sum_{k}\sum_{t_{k}^{(f)}}w_{ik}\,\delta(t-t_{k}^{(f)})\,$$</p>
+<p>where $w_{ij}$ is the coupling strength from a presynaptic neuron $j$ to neuron $i$; $w_{ik}$ is the weight of input from a background neuron $k$.</p>
+<ul>
+<li><strong>Stein’s model</strong></li>
+</ul>
+<p>Drop the neurons $j$ from the network and drop the index $i$; assume $f(u) = -u$:</p>
+<p>$$\frac{\text{d}}{\text{d}t}u=-{u\over\tau_{m}}+{1\over C}I^{\rm ext}(t)+%<br>\sum_{k}\sum_{t_{k}^{(f)}}w_{k}\,\delta(t-t_{k}^{(f)})\,$$</p>
+<p>Solve it we get</p>
+<p>$$u(t|\hat{t})=u_{r}\,\exp(-{t-\hat{t}\over\tau_{m}})+{1\over C}\int_{0}^{t-\hat{t}}\exp(-{s\over\tau_{m}})\,I(t-s)\,{\text{d}}s+\sum_{k=1}^{N}\sum_{t_{k}^{(f)}}w_{k}\epsilon(t-t_{k}^{(f)})$$</p>
+<p>where $\epsilon(s)=e^{-s/\tau_{m}}\,\Theta(s)$ is a contribution from each input spike.  </p>
+<h2 id="2-1-Membrane-potential-fluctuations-caused-by-spike-arrivals"><a href="#2-1-Membrane-potential-fluctuations-caused-by-spike-arrivals" class="headerlink" title="2.1 Membrane potential fluctuations caused by spike arrivals"></a>2.1 Membrane potential fluctuations caused by spike arrivals</h2><p>Ignore the weights of the input spikes in Stein’s model, then the total input spike train is </p>
+<p>$$S(t) = \sum_{k=1}^N\sum_{t_k^{(f)}}\delta(t-t_k^{(f)})$$</p>
+<p>Assume the input statistics as Poisson, then </p>
+<p>$$\langle S(t) \rangle = \nu_0$$</p>
+<p>and autocorrelation</p>
+<p>$$\langle S(t)S(t’)\rangle = \nu_0^2 + \nu_0\delta(t-t’)$$</p>
+<ul>
+<li>The solution of Stein’s model can be rewritten as</li>
+</ul>
+<p>$$u(t)={1\over C}\int_{0}^{\infty}\exp(-{s\over\tau_{m}})\,I(t-s)\,{\text{d}}s+w%<br><em>{0}\int</em>{0}^{\infty}\epsilon(s)\,S(t-s)\,{\text{d}}s\,$$</p>
+<ul>
+<li>The mean potential is </li>
+</ul>
+<p>$$u_{0}(t)={1\over C}\int_{0}^{\infty}\exp(-{s\over\tau_{m}})\,I(t-s)\,{\text{d}}s+w_{0}\,\nu_{0}\,\int_{0}^{\infty}\epsilon(s)\,{\text{d}}s$$</p>
+<ul>
+<li>The variance is </li>
+</ul>
+<p>$$\langle \Delta u^2\rangle \displaystyle=w_{0}^{2}\,\nu_{0}\int_{0}^{\infty}\epsilon^{2}(s)\,{\text{d}}s\,$$</p>
+<h2 id="2-2-Subthreshold-vs-superthreshold-regime"><a href="#2-2-Subthreshold-vs-superthreshold-regime" class="headerlink" title="2.2 Subthreshold vs. superthreshold regime"></a>2.2 Subthreshold vs. superthreshold regime</h2><ul>
+<li><strong>subthreshold(superthreshold) stimuli</strong>: stimuli that generates a membrane potential below(above) the firing threshold in the absence of noise</li>
+<li>In the superthreshold regime, diffusive noise has little influence except for braodening the interspike interval distribution.</li>
+<li>For the subthreshold regime, noise can turn a quiescent neuron into a spiking one. </li>
+</ul>
+<h2 id="2-3-Interval-distribution-in-the-superthreshold-regime"><a href="#2-3-Interval-distribution-in-the-superthreshold-regime" class="headerlink" title="2.3 Interval distribution in the superthreshold regime"></a>2.3 Interval distribution in the superthreshold regime</h2><p>If noise has a small amplitude $0&lt;\sigma\ll u_{\infty}-\vartheta$, then the interval distribution has a mean $s_0$, variance can be estimated from $\langle \Delta u^2_\infty\rangle = \frac{1}{\sqrt{2}}\sigma$.</p>
+<p>The scaling factor between the distribution of $u(t)$ and interval is $u_0’(t)$ evaluated at $t=s_0$. Since the distribution of $u(t)$ is a Gaussian distribution, the interval distribution is</p>
+<p>$$P_{0}(t|0)={1\over\sqrt{\pi}}{u_{0}^{\prime}\over\sigma}\exp\left[-{(u_{0}^{\prime})^{2}\,(t-s_{0})^{2}\over\sigma^{2}}\right]\,$$</p>
+<h1 id="3-Fokker-Plank-equation"><a href="#3-Fokker-Plank-equation" class="headerlink" title="3. Fokker-Plank equation"></a>3. Fokker-Plank equation</h1><ul>
+<li>For $t &gt; \hat{t}$, the <strong>probability density of the membrane potential</strong> is denoted as $p(u,t)$, which satisfy <strong>Fokker-Plank equation</strong></li>
+</ul>
+<p>$$\displaystyle\tau_{m}{\partial\over\partial t}p(u,t) = \displaystyle-{\partial\over\partial u}\left[-u+\tau_{m}\sum_{k}\nu_{k}(t)\,w_{k}\right]\,p(u,t) + {1\over 2}\,\left[\tau_{m}\sum_{k}\nu_{k}(t)\,w_{k}^{2}\right]\,{\partial^{2}\over\partial u^{2}}p(u,t)$$</p>
+
       
     </div>
     
@@ -344,6 +455,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/neurons/" rel="tag"># neurons</a>
+          
+        </div>
       
 
       
@@ -428,8 +545,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -490,6 +616,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Noise-input"><span class="nav-text">1. Noise input</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-White-noise"><span class="nav-text">1.1 White noise</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-Colored-noise"><span class="nav-text">1.2 Colored noise</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Stochastic-spike-arrival"><span class="nav-text">2. Stochastic spike arrival</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-Membrane-potential-fluctuations-caused-by-spike-arrivals"><span class="nav-text">2.1 Membrane potential fluctuations caused by spike arrivals</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-Subthreshold-vs-superthreshold-regime"><span class="nav-text">2.2 Subthreshold vs. superthreshold regime</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-Interval-distribution-in-the-superthreshold-regime"><span class="nav-text">2.3 Interval distribution in the superthreshold regime</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-Fokker-Plank-equation"><span class="nav-text">3. Fokker-Plank equation</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
