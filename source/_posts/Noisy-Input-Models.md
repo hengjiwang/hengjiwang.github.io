@@ -151,7 +151,7 @@ The scaling factor between the distribution of $u(t)$ and interval is $u_0'(t)$ 
 
 $$P_{0}(t|0)={1\over\sqrt{\pi}}{u_{0}^{\prime}\over\sigma}\exp\left[-{(u_{0}^{\prime})^{2}\,(t-s_{0})^{2}\over\sigma^{2}}\right]\,$$
 
-# 3. Fokker-Plank equation
+## 2.4 Fokker-Plank equation
 
 - For $t > \hat{t}$, the **probability density of the membrane potential** is denoted as $p(u,t)$, which satisfy **Fokker-Plank equation**
 
