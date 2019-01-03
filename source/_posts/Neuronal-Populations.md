@@ -39,7 +39,7 @@ $$A(t)={\rm lim}_{\Delta t\to 0}\,{1\over\Delta t}\,{n_{\rm act}(t;t+\Delta t)\o
 
 - Homogeneous population of LIF neurons:
 
-$$\tau_{m}{{\text{d}}\over{\text{d}}t}u_{i}=-u_{i}+R\,I_{i}(t)\quad{\rm for~{}}u_{i}<\vartheta$$  
+$$\tau_{m}{\text{d}\over{\text{d}}t}u_{i}=-u_{i}+R\,I_{i}(t)\quad{\rm for~{}}u_{i}<\vartheta$$  
 
 where 
 
