@@ -50,3 +50,43 @@ for homogeneous network
 $$I(t)=w_{0}\,N\int_{0}^{\infty}\alpha(s)\,A(t-s)\,{\text{d}}s+I^{\rm ext}(t)\,$$
 
 ## 2.2 Heterogeneous networks
+
+If there is a strong heterogeneity in the network, then we should split the population into two populations until homogeneous groups remain.
+
+## 2.3 Connectivity Schemes
+
+- **scaling behavior:** a change in the number $N$ of neurons that participate in the population
+  - $N$ is relative constant in adulthood for biology
+  - For saving time we can simulate 20000 neurons with like 4000 neurons and a 4 times larger connection strength
+
+### 2.3.1 Full connectivity
+
+- **All-to-all connectivity** is the simplest coupling scheme for a population where all connections have the same strength 
+  
+  $$w_{ij} = \frac{J_0}{N}$$ 
+  
+  If $N\rightarrow \infty$ then there is no fluctuation (which is nonphysical). 
+  - a more intricate version is $w_{ij}\sim \mathcal{N}(J_0/N, \sigma_0^2/N)$
+
+### 2.3.2 Random coupling: fixed coupling probability
+
+- fix a **connction probability $p$**, then for a postsynaptic neuron the number of presynaptic input links has a mean $\langle C_j \rangle = pN$, of which the fluctuation is $p(1-p)N$. 
+- Or we can fix $C = pN$ and randomly choose $C$ presynaptic neurons for any postsynaptic neuron $j$: $C_j=C$. Then the connection strength is 
+
+$$w_{ij} = \frac{J_0}{C} = \frac{J_0}{pN}$$
+
+### 2.3.3 Random coupling: fixed number of presynaptic partners
+
+- $C$ is fixed which is independent with the scaling number $N$
+
+### 2.3.4 Balanced excitation and inhibition
+
+- **balanced network:** a population that total amount of excitation and inhibition cancel each other. We can scale synaptic weights so as to control specifically the amount of fluctuations of the input current around zero. An appropriate choice is 
+
+$$w_{ij}={J_{0}\over\sqrt{C}}={J_{0}\over\sqrt{pN}}\,$$
+
+### 2.3.5 Interacting populations
+
+- three different types: excitatory, fastspiking inhibitory, and non-fastspiking interneurons
+- It is convenient to visualize the neurons as being arranged in spatially separate pools, but this is not necesssary.
+- 
