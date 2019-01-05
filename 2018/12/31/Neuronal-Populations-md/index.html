@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="neurons,dynamics,populations,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1. Columnar organization Neighboring neurons in the visual cortex have similar receptive fields (similar prefered orientations) In auditory cortex, each neuron has its preferred tone frequency. Recept">
+<meta name="keywords" content="neurons,dynamics,populations">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Neuronal Populations">
+<meta property="og:url" content="http://yoursite.com/2018/12/31/Neuronal-Populations-md/index.html">
+<meta property="og:site_name" content="Hengji Wang&#39;s Blog">
+<meta property="og:description" content="1. Columnar organization Neighboring neurons in the visual cortex have similar receptive fields (similar prefered orientations) In auditory cortex, each neuron has its preferred tone frequency. Recept">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/graphA.png">
+<meta property="og:updated_time" content="2019-01-05T18:18:35.645Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Neuronal Populations">
+<meta name="twitter:description" content="1. Columnar organization Neighboring neurons in the visual cortex have similar receptive fields (similar prefered orientations) In auditory cortex, each neuron has its preferred tone frequency. Recept">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/graphA.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/12/31/Neuronal-Populations-md/">
+
+
+
+
+
+  <title>Neuronal Populations | Hengji Wang's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hengji Wang's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">More is different</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/31/Neuronal-Populations-md/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Hengji Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/145799ab4507535.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hengji Wang's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Neuronal Populations</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-31T22:54:49-08:00">
+                2018-12-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/neuronal-dynamics/" itemprop="url" rel="index">
+                    <span itemprop="name">neuronal dynamics</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/12/31/Neuronal-Populations-md/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/12/31/Neuronal-Populations-md/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="1-Columnar-organization"><a href="#1-Columnar-organization" class="headerlink" title="1. Columnar organization"></a>1. Columnar organization</h1><ul>
+<li>Neighboring neurons in the <em>visual cortex</em> have similar <strong>receptive fields</strong> (similar prefered orientations)</li>
+<li>In <em>auditory cortex</em>, each neuron has its preferred tone frequency.</li>
+<li>Receptive fields also used in retinal ganglion cells, thelamic cells, olfractory cells or insect sensory systems</li>
+<li><strong>Cortical maps</strong> – the exact characteristics of the receptive ﬁelds change slightly as one moves parallel to the cortical surface.</li>
+<li>All neurons in the same column (with similar intrinsic properties) can be considered as a single population of neurons.</li>
+<li>Localized populations of neurons can be grouped together into populations. However a population does not require neurons need to form local groups but can distribute in different areas.</li>
+</ul>
+<h1 id="2-Identical-neurons"><a href="#2-Identical-neurons" class="headerlink" title="2. Identical neurons"></a>2. Identical neurons</h1><ul>
+<li><strong>population activity:</strong></li>
+</ul>
+<p>$$A(t)={\rm lim}<em>{\Delta t\to 0}\,{1\over\Delta t}\,{n</em>{\rm act}(t;t+\Delta t)\over N}={1\over N}\sum_{j=1}^{N}\sum_{f}\delta(t-t_{j}^{(f)})\,$$</p>
+<ul>
+<li>Requirements:<ul>
+<li>large populations</li>
+<li>homogeneeous populations</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-1-Homogeneous-networks"><a href="#2-1-Homogeneous-networks" class="headerlink" title="2.1 Homogeneous networks"></a>2.1 Homogeneous networks</h2><ul>
+<li><p>homogeneous:</p>
+<ul>
+<li>all neurons $1 \leq i \leq N$ are identical</li>
+<li>all neurons receive the same external input</li>
+<li>the interaction strength $w_{ij}$ for the connections is <strong>statistically uniform</strong>: $w_{ij} \approx w_0$<ul>
+<li>$w_0 = 0:$ independent </li>
+<li>$w_0 &lt; 0:$ inhibitory</li>
+<li>$w_0 &gt; 0:$ excitatory</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Homogeneous population of LIF neurons:</p>
+</li>
+</ul>
+<p>$$\tau_{m}{\text{d}\over{\text{d}}t}u_{i}=-u_{i}+R\,I_{i}(t)\quad{\rm for~{}}u_{i}&lt;\vartheta$$  </p>
+<p>where </p>
+<p>$$I_{i}=\sum_{j=1}^{N}\sum_{f}w_{ij}\alpha(t-t_{j}^{(f)})+I^{\rm ext}(t)\,$$</p>
+<p>for homogeneous network</p>
+<p>$$I(t)=w_{0}\,N\int_{0}^{\infty}\alpha(s)\,A(t-s)\,{\text{d}}s+I^{\rm ext}(t)\,$$</p>
+<h2 id="2-2-Heterogeneous-networks"><a href="#2-2-Heterogeneous-networks" class="headerlink" title="2.2 Heterogeneous networks"></a>2.2 Heterogeneous networks</h2><p>If there is a strong heterogeneity in the network, then we should split the population into two populations until homogeneous groups remain.</p>
+<h1 id="3-Connectivity-Schemes"><a href="#3-Connectivity-Schemes" class="headerlink" title="3. Connectivity Schemes"></a>3. Connectivity Schemes</h1><ul>
+<li><strong>scaling behavior:</strong> a change in the number $N$ of neurons that participate in the population<ul>
+<li>$N$ is relative constant in adulthood for biology</li>
+<li>For saving time we can simulate 20000 neurons with like 4000 neurons and a 4 times larger connection strength</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-1-Full-connectivity"><a href="#3-1-Full-connectivity" class="headerlink" title="3.1 Full connectivity"></a>3.1 Full connectivity</h2><ul>
+<li><p><strong>All-to-all connectivity</strong> is the simplest coupling scheme for a population where all connections have the same strength </p>
+<p>$$w_{ij} = \frac{J_0}{N}$$ </p>
+<p>If $N\rightarrow \infty$ then there is no fluctuation (which is nonphysical). </p>
+<ul>
+<li>a more intricate version is $w_{ij}\sim \mathcal{N}(J_0/N, \sigma_0^2/N)$</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-2-Random-coupling-fixed-coupling-probability"><a href="#3-2-Random-coupling-fixed-coupling-probability" class="headerlink" title="3.2 Random coupling: fixed coupling probability"></a>3.2 Random coupling: fixed coupling probability</h2><ul>
+<li>fix a <strong>connction probability $p$</strong>, then for a postsynaptic neuron the number of presynaptic input links has a mean $\langle C_j \rangle = pN$, of which the fluctuation is $p(1-p)N$. </li>
+<li>Or we can fix $C = pN$ and randomly choose $C$ presynaptic neurons for any postsynaptic neuron $j$: $C_j=C$. Then the connection strength is </li>
+</ul>
+<p>$$w_{ij} = \frac{J_0}{C} = \frac{J_0}{pN}$$</p>
+<h2 id="3-3-Random-coupling-fixed-number-of-presynaptic-partners"><a href="#3-3-Random-coupling-fixed-number-of-presynaptic-partners" class="headerlink" title="3.3 Random coupling: fixed number of presynaptic partners"></a>3.3 Random coupling: fixed number of presynaptic partners</h2><ul>
+<li>$C$ is fixed which is independent with the scaling number $N$</li>
+</ul>
+<h2 id="3-4-Balanced-excitation-and-inhibition"><a href="#3-4-Balanced-excitation-and-inhibition" class="headerlink" title="3.4 Balanced excitation and inhibition"></a>3.4 Balanced excitation and inhibition</h2><ul>
+<li><strong>balanced network:</strong> a population that total amount of excitation and inhibition cancel each other. We can scale synaptic weights so as to control specifically the amount of fluctuations of the input current around zero. An appropriate choice is </li>
+</ul>
+<p>$$w_{ij}={J_{0}\over\sqrt{C}}={J_{0}\over\sqrt{pN}}\,$$</p>
+<h2 id="3-5-Interacting-populations"><a href="#3-5-Interacting-populations" class="headerlink" title="3.5 Interacting populations"></a>3.5 Interacting populations</h2><ul>
+<li>Three different types: excitatory, fastspiking inhibitory, and non-fastspiking interneurons</li>
+<li>It is convenient to visualize the neurons as being arranged in spatially separate pools, but this is not necesssary.</li>
+<li>The activity of neurons in pool $n$ is </li>
+</ul>
+<p>$$A_n(t) = \frac{1}{N_n}\sum_{j\in \Gamma_n}\sum_f \delta(t-t_j^{(f)})$$</p>
+<h1 id="4-Population-activity"><a href="#4-Population-activity" class="headerlink" title="4. Population activity"></a>4. Population activity</h1><p> If we are only interested in the stationary activity in a network of neurons without worrying about the temporal aspects of population activity, then f-I curve is enough. </p>
+<ul>
+<li><strong>Asynchronous firing</strong>: a macroscopic firing state with constant activity $A(t) = A_0$, which can be derived by the gain function $g(I_0)$ of a single neuron and a coupling parameter $J_0$.</li>
+</ul>
+<h2 id="4-1-Stationary-activity-as-single-neuron-firing-rate"><a href="#4-1-Stationary-activity-as-single-neuron-firing-rate" class="headerlink" title="4.1 Stationary activity as single-neuron firing rate"></a>4.1 Stationary activity as single-neuron firing rate</h2><p>For a homogeneous network with $N\rightarrow \infty$</p>
+<p>$$A_0 := \frac{N^{sp}}{NT} = \nu_i$$</p>
+<p>where $\nu_i$ is the firing rate of a single neuron $i$</p>
+<p>For a finite $N$, $\langle A_0 \rangle = \nu_i$, where </p>
+<p>$$\nu_i = g_\sigma (I_0)$$</p>
+<p>where a $\sigma$ denotes the existence of noise; in the absence of noise $\sigma=0$</p>
+<ul>
+<li>Notations of population activity<ul>
+<li>$A(t)$: direct experimental/simulational result</li>
+<li>$\langle A(t) \rangle$: theoretical result</li>
+<li>$\bar{A}(t)$: filtered population activity from expirical measurements in a simulation or experiment</li>
+</ul>
+</li>
+</ul>
+<h2 id="4-2-Activity-of-a-fully-connected-network"><a href="#4-2-Activity-of-a-fully-connected-network" class="headerlink" title="4.2 Activity of a fully connected network"></a>4.2 Activity of a fully connected network</h2><p>For a stationary population, $\int_{0}^{\infty}\alpha(s)\,A(t-s)\,{\text{d}}s=A_{0}$, so</p>
+<p>$$I_0 = w_0 N A_0 + I_0^{\text{ext}}$$</p>
+<p>together with $A_0 = g_0(I_0)$ and $J_0 = w_0N$ we have </p>
+<p>$$A_0 = g_0(J_0 A_0+I_0^{\text{ext}})$$</p>
+<p>which means we can calculate out $A_0$ if we know $J_0$ and $g_0$</p>
+<p><img src="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/graphA.png" alt=""></p>
+<h2 id="4-3-Acticity-of-a-randomly-connected-network"><a href="#4-3-Acticity-of-a-randomly-connected-network" class="headerlink" title="4.3 Acticity of a randomly connected network"></a>4.3 Acticity of a randomly connected network</h2><p> If all neurons fire at a rate $\nu$ then the mean input current to neuron $i$ generated by its $C_{pre}$ presynaptic partners is</p>
+<p> $$\langle I_0 \rangle = C_{pre}q w \nu + I_0^{\text{ext}}$$</p>
+<p> where $q = \int_{-\infty}^{\infty}\alpha(s)ds$ can be interpreted as the total electric charge delivered by a single input spike.</p>
+<p> The fluctuation is </p>
+<p> $$\sigma^2_{I} = C_{pre}w^2 q_2 \nu$$</p>
+<p> where $q_2 = \int_{-\infty}^{\infty} \alpha^2(s) ds$</p>
+<p> Insert above $I_0, \sigma_I$ into the gain function $\nu = g_\sigma(I_0)$ then we get the (theoretical) mean population activity $\langle A_0 \rangle = \nu$.</p>
+<p> Above results are valid for any specific neuron model.</p>
+<ul>
+<li><strong>Brunel network: excitatory and inhibitory populations</strong></li>
+</ul>
+<p>Suppose an excitatory population with $N_E$ neurons and an inhibitory population with $N_I$ neurons following LIF model with the same parameters $\vartheta, \tau_m, R, u_r$. Each neuron receives $C_E$ synapses from excitatory neurons with $w_E &gt; 0$ and $C_I$ synapses from inhibitory neurons with $w_I &lt; 0$. An excitatory presynaptic neuron contributes $\Delta u_E = w_E qR/\tau_m$ and an inhibitory one contributes $\Delta u_I = \Delta u_E w_I/w_E$. </p>
+<p>Define</p>
+<p>$$\gamma={C_{I}\over C_{E}}\quad\text{ and }\quad g=-{w_{I}\over w_{E}}=-{\Delta u_{I}\over\Delta u_{E}}\,$$</p>
+<p>Then the total input current is </p>
+<p>$$I_0 = \displaystyle I^{\rm ext}+q\,\sum_{j}\nu_{j}\,w_{j} = I_{0}^{\rm ext}+q\,\nu\,w_{E}\,C_{E}\,[1-\gamma\,g]\,$$</p>
+<p>The variance is </p>
+<p>$$\sigma^2 = \displaystyle\sum_{j}\nu_{j}\,\tau\,(\Delta u_{j}^{2}) = \displaystyle\nu\,(\Delta u_{E})^{2}\,C_{E}\,[1+\gamma\,g^{2}]\,$$</p>
+<p>The stationary firing rate is </p>
+<p>$$A_{0}=\nu=g_{\sigma}(I_{0})={1\over\tau_{m}}\left{\sqrt{\pi}\int_{u_{r}-RI_{0}\over\sigma}^{\vartheta-RI_{0}\over\sigma}\,\exp\left({x}^{2}\right)\,\left[1+{\rm erf}(x)\right]\,\text{d}x\right}^{-1}\,$$</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/neurons/" rel="tag"># neurons</a>
+          
+            <a href="/tags/dynamics/" rel="tag"># dynamics</a>
+          
+            <a href="/tags/populations/" rel="tag"># populations</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/31/Reading-summaries-IX-synthesis/" rel="next" title="Reading summaries IX -- synthesis">
+                <i class="fa fa-chevron-left"></i> Reading summaries IX -- synthesis
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/145799ab4507535.jpg" alt="Hengji Wang">
+            
+              <p class="site-author-name" itemprop="name">Hengji Wang</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Columnar-organization"><span class="nav-text">1. Columnar organization</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Identical-neurons"><span class="nav-text">2. Identical neurons</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-Homogeneous-networks"><span class="nav-text">2.1 Homogeneous networks</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-Heterogeneous-networks"><span class="nav-text">2.2 Heterogeneous networks</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-Connectivity-Schemes"><span class="nav-text">3. Connectivity Schemes</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-Full-connectivity"><span class="nav-text">3.1 Full connectivity</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-Random-coupling-fixed-coupling-probability"><span class="nav-text">3.2 Random coupling: fixed coupling probability</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-Random-coupling-fixed-number-of-presynaptic-partners"><span class="nav-text">3.3 Random coupling: fixed number of presynaptic partners</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-4-Balanced-excitation-and-inhibition"><span class="nav-text">3.4 Balanced excitation and inhibition</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-5-Interacting-populations"><span class="nav-text">3.5 Interacting populations</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-Population-activity"><span class="nav-text">4. Population activity</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-Stationary-activity-as-single-neuron-firing-rate"><span class="nav-text">4.1 Stationary activity as single-neuron firing rate</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-Activity-of-a-fully-connected-network"><span class="nav-text">4.2 Activity of a fully connected network</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-3-Acticity-of-a-randomly-connected-network"><span class="nav-text">4.3 Acticity of a randomly connected network</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hengji Wang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2018/12/31/Neuronal-Populations-md/';
+          this.page.identifier = '2018/12/31/Neuronal-Populations-md/';
+          this.page.title = 'Neuronal Populations';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
