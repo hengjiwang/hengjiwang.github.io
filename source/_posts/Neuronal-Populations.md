@@ -168,4 +168,4 @@ $$\sigma^2 = \displaystyle\sum_{j}\nu_{j}\,\tau\,(\Delta u_{j}^{2}) = \displayst
 
 The stationary firing rate is 
 
-$$A_{0}=\nu=g_{\sigma}(I_{0})={1\over\tau_{m}}\left\{{\sqrt{\pi}}\int_{{u_{r}-RI_{0}\over\sigma}}^{{\vartheta-RI_{0}\over\sigma}}\,\exp\left({x}^{2}\right)\,\left[1+{\rm erf}(x)\right]\,{\text{d}}x\right\}^{-1}\,$$
+$$A_{0}=\nu=g_{\sigma}(I_{0})={1\over\tau_{m}}\left\{\sqrt{\pi}\int_{u_{r}-RI_{0}\over\sigma}^{\vartheta-RI_{0}\over\sigma}\,\exp\left({x}^{2}\right)\,\left[1+{\rm erf}(x)\right]\,\text{d}x\right\}^{-1}\,$$
