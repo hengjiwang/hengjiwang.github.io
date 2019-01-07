@@ -101,8 +101,7 @@ where $w_{ij}$ is the coupling strength from a presynaptic neuron $j$ to neuron 
 
 Drop the neurons $j$ from the network and drop the index $i$; assume $f(u) = -u$:
   
-$$\frac{\text{d}}{\text{d}t}u=-{u\over\tau_{m}}+{1\over C}I^{\rm ext}(t)+%
-\sum_{k}\sum_{t_{k}^{(f)}}w_{k}\,\delta(t-t_{k}^{(f)})\,$$
+$$\frac{\text{d}}{\text{d}t}u=-{u\over\tau_{m}}+{1\over C}I^{\rm ext}(t)+\sum_{k}\sum_{t_{k}^{(f)}}w_{k}\,\delta(t-t_{k}^{(f)})\,$$
 
 Solve it we get
 
