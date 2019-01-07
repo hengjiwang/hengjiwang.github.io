@@ -91,7 +91,7 @@
 <meta property="og:site_name" content="Hengji Wang&#39;s Blog">
 <meta property="og:description" content="1. Noise input$$I(t) = I^{\text{det}}(t) + I^{\text{noise}}(t)$$ Then  $$\tau_m \frac{du}{dt} = f(u) + RI^{\text{det}}(t) + RI^{\text{noise}}(t)$$ 1.1 White noiseAssume $R I^{\text{noise}}(t)=\xi(t)$,">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-01-01T06:54:07.661Z">
+<meta property="og:updated_time" content="2019-01-06T01:43:42.433Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Noisy Input Models">
 <meta name="twitter:description" content="1. Noise input$$I(t) = I^{\text{det}}(t) + I^{\text{noise}}(t)$$ Then  $$\tau_m \frac{du}{dt} = f(u) + RI^{\text{det}}(t) + RI^{\text{noise}}(t)$$ 1.1 White noiseAssume $R I^{\text{noise}}(t)=\xi(t)$,">
@@ -407,7 +407,7 @@
 <li><strong>Stein’s model</strong></li>
 </ul>
 <p>Drop the neurons $j$ from the network and drop the index $i$; assume $f(u) = -u$:</p>
-<p>$$\frac{\text{d}}{\text{d}t}u=-{u\over\tau_{m}}+{1\over C}I^{\rm ext}(t)+%<br>\sum_{k}\sum_{t_{k}^{(f)}}w_{k}\,\delta(t-t_{k}^{(f)})\,$$</p>
+<p>$$\frac{\text{d}}{\text{d}t}u=-{u\over\tau_{m}}+{1\over C}I^{\rm ext}(t)+\sum_{k}\sum_{t_{k}^{(f)}}w_{k}\,\delta(t-t_{k}^{(f)})\,$$</p>
 <p>Solve it we get</p>
 <p>$$u(t|\hat{t})=u_{r}\,\exp(-{t-\hat{t}\over\tau_{m}})+{1\over C}\int_{0}^{t-\hat{t}}\exp(-{s\over\tau_{m}})\,I(t-s)\,{\text{d}}s+\sum_{k=1}^{N}\sum_{t_{k}^{(f)}}w_{k}\epsilon(t-t_{k}^{(f)})$$</p>
 <p>where $\epsilon(s)=e^{-s/\tau_{m}}\,\Theta(s)$ is a contribution from each input spike.  </p>
@@ -572,7 +572,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -594,7 +594,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>

@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="neurons,dynamics,network,populaion,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1. Continuity equation For $N\rightarrow\infty$, the fraction of neurons with $u_0 &amp;lt; u_i(t) \leq u_1$ is    $${n(u_{0};u_{1})\over N}=\int_{u_{0}}^{u_{1}}p(u^{\prime},t)\,{\text{d}}u^{\prime}\,.$$">
+<meta name="keywords" content="neurons,dynamics,network,populaion">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Time-dependent Neuronal Populations and Networks">
+<meta property="og:url" content="http://yoursite.com/2019/01/05/Time-dependent-Neural-Networks/index.html">
+<meta property="og:site_name" content="Hengji Wang&#39;s Blog">
+<meta property="og:description" content="1. Continuity equation For $N\rightarrow\infty$, the fraction of neurons with $u_0 &amp;lt; u_i(t) \leq u_1$ is    $${n(u_{0};u_{1})\over N}=\int_{u_{0}}^{u_{1}}p(u^{\prime},t)\,{\text{d}}u^{\prime}\,.$$">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/syn.png">
+<meta property="og:updated_time" content="2019-01-07T00:43:01.647Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Time-dependent Neuronal Populations and Networks">
+<meta name="twitter:description" content="1. Continuity equation For $N\rightarrow\infty$, the fraction of neurons with $u_0 &amp;lt; u_i(t) \leq u_1$ is    $${n(u_{0};u_{1})\over N}=\int_{u_{0}}^{u_{1}}p(u^{\prime},t)\,{\text{d}}u^{\prime}\,.$$">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/syn.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/01/05/Time-dependent-Neural-Networks/">
+
+
+
+
+
+  <title>Time-dependent Neuronal Populations and Networks | Hengji Wang's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hengji Wang's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">More is different</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/05/Time-dependent-Neural-Networks/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Hengji Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/145799ab4507535.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hengji Wang's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Time-dependent Neuronal Populations and Networks</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-05T11:27:01-08:00">
+                2019-01-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/01/05/Time-dependent-Neural-Networks/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/01/05/Time-dependent-Neural-Networks/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="1-Continuity-equation"><a href="#1-Continuity-equation" class="headerlink" title="1. Continuity equation"></a>1. Continuity equation</h1><ul>
+<li><p>For $N\rightarrow\infty$, the fraction of neurons with $u_0 &lt; u_i(t) \leq u_1$ is </p>
+<p>  $${n(u_{0};u_{1})\over N}=\int_{u_{0}}^{u_{1}}p(u^{\prime},t)\,{\text{d}}u^{\prime}\,.$$</p>
+<p>  where $p(u,t)$ is <strong>membrane potential density</strong> for a single neuron which satisfies $\int_{-\infty}^{\theta_{\rm reset}}p(u,t)\,{\text{d}}u=1\,.$</p>
+</li>
+<li><strong>flux $J(u,t)$</strong>: the net fraction of trajectories per unit time that crosses the value $u$.<ul>
+<li>$NJ(u_0,t)\Delta t$ describes the number of trajectories that cross in the interval $\Delta t$ the boundary $u_0$ from below minus those from above.</li>
+</ul>
+</li>
+<li><p><strong>continuity equation</strong>: (derived from conservation of the number of trajectories)<br>  $$\qquad{\partial\over\partial t}p(u,t)=-{\partial\over\partial u}J(u,t)\quad{\rm~{}for~{}}u_r&lt;u&lt;\theta_{\text{reset}}\,$$</p>
+<p>  generally is</p>
+<p>  $$\qquad{\partial\over\partial t}p(u,t)=-{\partial\over\partial u}J(u,t)+A(t)\,\delta(u-u_{r})-A(t)\,\delta(u-\theta_{\rm reset})\,$$</p>
+<p>  where the terms containing the population activity $A(t)$ represent as the source(end) of new trajectories.</p>
+<ul>
+<li><p>By definition we have</p>
+<p>$$A(t) = J(\theta_{\rm reset}, t)$$</p>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="2-Stochastic-spike-arrival"><a href="#2-Stochastic-spike-arrival" class="headerlink" title="2. Stochastic spike arrival"></a>2. Stochastic spike arrival</h1><h2 id="2-1-Flux"><a href="#2-1-Flux" class="headerlink" title="2.1 Flux"></a>2.1 Flux</h2><p>For a homogeneous population, we assume that all neurons in the population receive the same driving current $I^{ext}$. In addition each neuron receives stochastic background input with jump size $w_k$ and spike arrival rate $\nu_k$ for type $k$ synapse. We seperate the flux into two contributions</p>
+<p>$$J(u_{0},t)=J_{\rm drift}(u_{0},t)+J_{\rm jump}(u_{0},t)\,$$</p>
+<p>where </p>
+<p>$$J_{\rm jump}(u_{0},t)=\sum_{k}\nu_{k}\,\int_{u_{0}-w_{k}}^{u_{0}}p(u,t)\,{\text{d}}u\,$$</p>
+<p>denotes the flux contributed by spike arrivals.</p>
+<p>$$J_{\rm drift}(u_{0},t)=\left.{\text{d}u\over{\text{d}}t}\right|_{u_{0}}p(u_{0},t)={1\over\tau_{m}}\,[f(u_{0})+R\,I^{\rm ext}(t)]\,p(u_{0},t)\,$$</p>
+<p>denotes the flux contributed by the finite input current $I^{\rm ext}$</p>
+<h2 id="2-2-Population-activity"><a href="#2-2-Population-activity" class="headerlink" title="2.2 Population activity"></a>2.2 Population activity</h2><ul>
+<li><p>total flux at the threshold (population activity)</p>
+<p>  $$A(t)={1\over\tau_{m}}\,[f(\theta_{\rm reset})+R\,I^{\rm ext}(t)]\,p(\theta_{\rm reset},t)+\sum_{k}\nu_{k}\,\int_{\theta_{\rm reset}-w_{k}}^{\theta_{\rm reset}}p(u,t)\,{\text{d}}u\,$$</p>
+</li>
+<li><p>population density (insert $J_{\rm jump}, J_{\rm drift}$ to the continuity equation)</p>
+<p>  $$\displaystyle{\partial\over\partial t}p(u,t) = \displaystyle-{1\over\tau_{m}}\,{\partial\over\partial u}\left(\left[f(u)+R\,I^{\rm ext}(t)\right]\,p(u,t)\right)$$</p>
+<p>  $$\displaystyle+\sum_{k}\nu_{k}(t)\,\left[p(u-w_{k},t)-p(u,t)\right]$$</p>
+<p>  $$\displaystyle+A(t)\,\delta(u-u_{r})-A(t)\,\delta(u-\theta_{\rm reset})\,$$</p>
+</li>
+<li><p>the dynamics of $p(u,t)$ in a population of LIF neurons is nearly identical to that of a single LIF neuron <em>with stochastic spike arrival</em>.</p>
+</li>
+</ul>
+<h1 id="3-Fokker-Planck-equation"><a href="#3-Fokker-Planck-equation" class="headerlink" title="3. Fokker-Planck equation"></a>3. Fokker-Planck equation</h1><p><em>valid condition</em>: neurons in the population receive many inputs that each cause a small change of the membrane potential.</p>
+<ul>
+<li><strong>Fokker-plank equation</strong> is a Tylar expansion form of the population density equation of last section:</li>
+</ul>
+<p>$$\tau_m\displaystyle{\partial\over\partial t}p(u,t) = \displaystyle-{\partial\over\partial u}\left(\left[f(u)+R\,I^{\rm ext}(t)+\tau_{m}\sum_{k}\nu_{k}(t)\,w_{k}\right]\,p(u,t)\right)$$</p>
+<p>$$\displaystyle+{1\over 2}\,\left[\tau_{m}\sum_{k}\nu_{k}(t)\,w_{k}^{2}\right]\,{\partial^{2}\over\partial u^{2}}p(u,t)$$</p>
+<p>$$\displaystyle+\tau_{m}\,A(t)\,\delta(u-u_{r})-\tau_{m}\,A(t)\,\delta(u-\theta_{\rm reset})+{\mathcal{O}}(\omega_{k}^{3})\,.$$</p>
+<p>it can be described in three parts:</p>
+<ol>
+<li>The total ‘drive’ in voltage units</li>
+</ol>
+<p>$$\mu(t)=R\,I^{\rm ext}(t)+\tau_{m}\sum_{k}\nu_{k}(t)\,w_{k}$$</p>
+<ol start="2">
+<li>The amount of diffusive noise</li>
+</ol>
+<p>$$\sigma^{2}(t)=\tau_{m}\sum_{k}\nu_{k}(t)\,w_{k}^{2}\,$$</p>
+<ol start="3">
+<li>The firing threshold acts as an absorbing boundary so that the density at threshold vanishes:</li>
+</ol>
+<p>$$p(\theta_{\rm reset},t)=0\,$$</p>
+<p>Insert the noise and do integration at $\theta_{reset}$ then we get</p>
+<p>$$A(t)={\sigma^{2}(t)\over 2\tau_{m}}{\partial p(u=\theta_{\rm reset},t)\over\partial u}\,$$</p>
+<h1 id="4-Networks-of-LIF-neurons"><a href="#4-Networks-of-LIF-neurons" class="headerlink" title="4. Networks of LIF neurons"></a>4. Networks of LIF neurons</h1><h2 id="4-1-Multiple-populations"><a href="#4-1-Multiple-populations" class="headerlink" title="4.1 Multiple populations"></a>4.1 Multiple populations</h2><p>Consider $K$ populations where population $k$ contains $N_k$ neurons and its activity is $A_k$. Then the number of spikes emitted by population $k$ in $\Delta t$ is $N_kA_k(t)\Delta t$. </p>
+<p>Suppose population $k$ send spikes to population $n$, then the spike arrival rate from population $k$ to $n$ is $\nu_k(t) = N_kA_k(t)$ (fully connectivity) or $\nu_{k}(t)=C_{nk}\,A_{k}(t)$(random connectivity with a connection probability $p_{nk}=C_{nk}/N_{k}$). Assume all connections have the same weight $w_{nk}$.</p>
+<ul>
+<li><p>The Fokker-Planck equation for population $n$ in the network with LIF neurons is </p>
+<p>  $$\displaystyle\tau_{n}{\partial\over\partial t}p_{n}(u,t) = \displaystyle-{\partial\over\partial u}\left(\left[-u+R_{n}\,I_{n}^{\rm ext}(t)+\tau_{n}\sum_{k}C_{nk}A_{k}(t)\,w_{nk}\right]\,p_{n}(u,t)\right)$$</p>
+<p>  $$\displaystyle+{1\over 2}\,\left[\tau_{n}\sum_{k}C_{nk}A_{k}(t)\,w_{nk}^{2}\right]\,{\partial^{2}\over\partial u^{2}}p_{n}(u,t)$$</p>
+<p>  $$\displaystyle+\tau_{n}\,A_{n}(t)\,\delta(u-u_{r}^{n})-\tau_{n}\,A_{n}(t)\,\delta(u-\vartheta_{n})\,$$</p>
+</li>
+<li><p>Population activity is </p>
+<p>  $$A_{n}(t)=-{1\over 2}\,\left[\sum_{k}C_{nk}A_{k}(t)\,w_{nk}^{2}\right]\,{\left({\partial p_{n}(u=\vartheta_{n},t)\over\partial u}\right)}\,$$</p>
+</li>
+<li><p>Diffusive noise:</p>
+<p>  $$\sigma_{n}^{2}(t)=\tau_{n}\,\left[\sum_{k}C_{nk}A_{k}(t)\,w_{nk}^{2}\right]\propto 1/N_k\,$$</p>
+</li>
+</ul>
+<p>Some times it’s useful to focus a single population and treat the input from other populations as background input. </p>
+<h2 id="4-2-Synchrony-oscillations-and-irregularity"><a href="#4-2-Synchrony-oscillations-and-irregularity" class="headerlink" title="4.2 Synchrony, oscillations and irregularity"></a>4.2 Synchrony, oscillations and irregularity</h2><p>Suppose a network with two populations: a population of $N_E$ excitatory neurons coupled to a population with $N_I=N_E/4$ inhibitory neurons. There are $C_E$ connections from $E$ to $I$ and $C_I = C_E/4$ connections from $I$ to $E$. Weights are $w_{EE}=w_{IE}=w_{0}$ and $w_{EI}=w_{II}=-g\,w_{0}$.</p>
+<ul>
+<li>Four states of a population:<ul>
+<li><strong>asynchronous irregular (AI):</strong> fire at different times and the distribution of interspike intervals is fairly broad <ul>
+<li>it corresponds to the stationary activity</li>
+</ul>
+</li>
+<li><strong>synchronous rregular (SR):</strong> periodic oscillations of the population activity and a sharply peaked interval distribution of individual neurons</li>
+<li><strong>synchronous irregular (SI)</strong><ul>
+<li><strong>SI fast</strong></li>
+<li><strong>SI slow</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/syn.png" alt=""></p>
+<h1 id="5-Networks-of-nonlinear-LIF-neurons"><a href="#5-Networks-of-nonlinear-LIF-neurons" class="headerlink" title="5. Networks of nonlinear LIF neurons"></a>5. Networks of nonlinear LIF neurons</h1><p>In a stationary state, the continuity equation becomes </p>
+<p>$${\partial\over\partial u}J(u,t)=A(t)\,\delta(u-u_{r})-A(t)\,\delta(u-\theta_{\rm reset})\,$$</p>
+<p>…</p>
+<h1 id="6-Neuronal-adaption-and-synaptic-conductance"><a href="#6-Neuronal-adaption-and-synaptic-conductance" class="headerlink" title="6. Neuronal adaption and synaptic conductance"></a>6. Neuronal adaption and synaptic conductance</h1><p>Consider a network consisting of $K$ populations. The dynamics of neuron $i$ in the network with adaption is </p>
+<p>$$\tau_m \frac{du_i}{dt} = \displaystyle f(u_{i})-R\,\sum_{k}w_{k,i}+R\,I_{i}(t)$$</p>
+<p>$$\tau_k \frac{dw_{k,i}}{dt} = \displaystyle a_{k}\,(u-u_{\rm rest})-w_{k,i}+{b_{k}\tau_{k}}\sum_{t^{(f)}}\delta(t-t_{i}^{(f)})\,$$</p>
+<p>where $f(u)=-(u-u_{\rm rest})+{\Delta_{T}}\,\exp\left({u-\vartheta_{rh}\over\Delta_{T}}\right)$ and </p>
+<p>$$I_{i}(t)=\sum_{j}\sum_{f}g_{ij}(t-t_{j}^{(f)})\,(u_{i}-E_{ij}^{\rm syn})\,$$</p>
+<p>where $j$ denotes other neurons.</p>
+<h2 id="6-1-Adaptation-currents"><a href="#6-1-Adaptation-currents" class="headerlink" title="6.1 Adaptation currents"></a>6.1 Adaptation currents</h2><p>Consider a AdEx model and drop the index $i$, with a stochastic spike arrival $\mu(t) + \xi(t)$ where $\mu(t)=R\,\langle I(t)\rangle$</p>
+<p>$$\tau_m \frac{du}{dt} = \displaystyle-(u-u_{\rm rest})+{\Delta_{T}}\,\exp\left({u-\vartheta_{rh}\over\Delta_{T}}\right)-R\,w+\mu(t)+\xi(t)$$</p>
+<p>$$\tau_w \frac{dw}{dt} = \displaystyle a\,(u-u_{\rm rest})-w+{b\tau_{w}}\sum_{t^{(f)}}\delta(t-t^{(f)})$$</p>
+<h2 id="6-2-Embedding-in-a-network"><a href="#6-2-Embedding-in-a-network" class="headerlink" title="6.2 Embedding in a network"></a>6.2 Embedding in a network</h2><ol>
+<li><p>Determine the stationary state $A_0$ self-consistently – use $g_\sigma(I_0)$ where $I_0 = \mu/R$ and $\sigma$ depend on $A_0$</p>
+</li>
+<li><p>Determine modulations $\hat{G}<em>\mu (\omega)$ and $\hat{G}</em>\sigma(\omega)$</p>
+</li>
+<li><p>Use the inverse Fourier transform to find $G_\mu(s)$ and $G_\sigma(s)$, then we get </p>
+<p> $$A(t)=A_{0}+\int_{0}^{\infty}G_{\mu}(s)\,\Delta I(t-s)\,{\text{d}}s+\int_{0}^{\infty}G_{\sigma}(s)\,\Delta\sigma(t-s)\,{\text{d}}s\,$$</p>
+</li>
+<li><p>Use the fact that both $I(t)$ and $\sigma(t)$ are propotional to $A(t)$:</p>
+<p> $$\Delta A(t)=\int_{0}^{\infty}[J_{\mu}\,G_{\mu}(s)+J_{\sigma}\,G_{\sigma}(s)]\,\Delta A(t-s)\,{\text{d}}s$$</p>
+</li>
+<li><p>Search for solutions $\Delta A(t)=\epsilon\,\exp[\lambda(\omega)t]\cos(\omega t)$. If there exists a frequency for which $\lambda(\omega)&gt;0$ then the stationary state of asynchronous firing with activity $A_0$ is unstable. </p>
+</li>
+</ol>
+<h2 id="6-3-Conductance-input-vs-current-input"><a href="#6-3-Conductance-input-vs-current-input" class="headerlink" title="6.3 Conductance input vs. current input"></a>6.3 Conductance input vs. current input</h2><ul>
+<li>conductance input is more accurate<br>  $$I_{i}(t)=\sum_{j}\sum_{f}w_{ij}g_{ij}(t-t_{j}^{(f)})\,(u_{i}(t)-E_{\rm syn})$$</li>
+</ul>
+<p>For a homogeneous population with $N_E$ excitatory and $N_I$ inhibitory LIF neurons in the subthreshold regime</p>
+<p>$$C{\text{d}u\over{\text{d}}t}=-g_{L}\,(u-E_{L})-g_{E}(t)\,(u-E_{E})-g_{I}(t)\,(u-E_{I})$$</p>
+<p>We assume </p>
+<p>$$g_{E}(t)=\Delta g_{E}\,\sum_{j}\sum_{f}\exp[-(t-t_{j}^{(f)})/\tau_{E}]{\mathcal{H}}(t-t_{j}^{(f)})$$</p>
+<p>For spike arrival rates $\nu_E, \nu_I$, the mean excitatory conductance is </p>
+<p>$$g_{E,0}=\Delta g_{E}\,\nu_{E}\,\tau_{E}\,$$</p>
+<p>The variance of conductance is </p>
+<p>$$\sigma_{E}^{2}=0.5(\Delta g_{E})^{2}\,\nu_{E}\,\tau_{E}$$</p>
+<p>Define $g_{E,f}(t)=g_{E}(t)-g_{E,0}$, then</p>
+<p>$$C{\text{d}u\over{\text{d}}t}=-g_{0}\,(u-\mu)-g_{E,f}(t)\,(u-E_{E})-g_{I,f}(t%<br>)(u-E_{I})$$</p>
+<p>where $g_{0}=g_{L}+g_{E,0}+g_{I,0}$ and $\mu={g_{L}\,E_{L}+g_{E,0}\,E_{E}+g_{I,0}\,E_{I}\over g_{0}}\,.$</p>
+<p>The <strong>effective membrane time constant</strong> is </p>
+<p>$$\tau_{\rm eff}={C\over g_{0}}={C\over g_{L}+g_{E,0}+g_{I,0}}$$</p>
+<p>The fluctuating part of the dynamics equation can be approximated as </p>
+<p>$$g_{E,f}(t)\,(u-E_{E})=g_{E,f}(t)\,(\mu-E_{E})+g_{E,f}(t)\,(u-\mu)$$</p>
+<p>$$\approx g_{E,f}(t)\,(\mu-E_{E})$$</p>
+<p>which doesn’t depend on $u(t)$ and can be regarded as the summed effects of postsynaptic current pulses. So <em>in the stationary state, a conductance-based synapse model is well approximated by a current-based model of synaptic input.</em></p>
+<h2 id="6-4-Colored-noise"><a href="#6-4-Colored-noise" class="headerlink" title="6.4 Colored noise"></a>6.4 Colored noise</h2><p>White-noise approximation is valid only when $\tau_E$ and $\tau_I$ is short. If they are slow then the fluctuations of inputs will have temporal correlations, and a colored noise should be considered. </p>
+<p>A mean input to a neuron $i$ in population $n$ from population $k$ is</p>
+<p>$$I_{i}(t)=\sum_{k}C_{nk}w_{nk}\int_{0}^{\infty}\alpha_{nk}(s)\,A(t-s)\,{\text{d}}s\,$$</p>
+<p>just focus on one single population coupled to itself and suppose $\alpha(s)=(q/\tau_{q})\,\exp(-s/\tau_{q})$, insert it to the above equation we have </p>
+<p>$${\text{d}I_{i}\over{\text{d}}t}=-{I_{i}\over\tau_{q}}+C_{nn}\,w_{nn}{q\over\tau_{q}}\,A_{n}(t)$$</p>
+<p>where $A_n(t) = \mu(t) + \xi_i(t)$</p>
+<p>Combined with</p>
+<p>$$\tau_{m}\,\frac{\text{d}u_{i}}{\text{d}t}=f(u_{i})+R\,I_{i}(t)\,$$</p>
+<p>and the rest condition – if $u=θ_{reset}$ then $u=u_r$. Since we now have two coupled differential equations, the momentary state of a population of $N$ neurons is described by a two-dimensional density $p(u,I)$.</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/neurons/" rel="tag"># neurons</a>
+          
+            <a href="/tags/dynamics/" rel="tag"># dynamics</a>
+          
+            <a href="/tags/network/" rel="tag"># network</a>
+          
+            <a href="/tags/populaion/" rel="tag"># populaion</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/31/Neuronal-Populations-md/" rel="next" title="Neuronal Populations">
+                <i class="fa fa-chevron-left"></i> Neuronal Populations
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://raw.githubusercontent.com/hengjiwang/blog_figures/master/145799ab4507535.jpg" alt="Hengji Wang">
+            
+              <p class="site-author-name" itemprop="name">Hengji Wang</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Continuity-equation"><span class="nav-text">1. Continuity equation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Stochastic-spike-arrival"><span class="nav-text">2. Stochastic spike arrival</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-Flux"><span class="nav-text">2.1 Flux</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-Population-activity"><span class="nav-text">2.2 Population activity</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-Fokker-Planck-equation"><span class="nav-text">3. Fokker-Planck equation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-Networks-of-LIF-neurons"><span class="nav-text">4. Networks of LIF neurons</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-Multiple-populations"><span class="nav-text">4.1 Multiple populations</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-Synchrony-oscillations-and-irregularity"><span class="nav-text">4.2 Synchrony, oscillations and irregularity</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-Networks-of-nonlinear-LIF-neurons"><span class="nav-text">5. Networks of nonlinear LIF neurons</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-Neuronal-adaption-and-synaptic-conductance"><span class="nav-text">6. Neuronal adaption and synaptic conductance</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#6-1-Adaptation-currents"><span class="nav-text">6.1 Adaptation currents</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-2-Embedding-in-a-network"><span class="nav-text">6.2 Embedding in a network</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-3-Conductance-input-vs-current-input"><span class="nav-text">6.3 Conductance input vs. current input</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-4-Colored-noise"><span class="nav-text">6.4 Colored noise</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hengji Wang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2019/01/05/Time-dependent-Neural-Networks/';
+          this.page.identifier = '2019/01/05/Time-dependent-Neural-Networks/';
+          this.page.title = 'Time-dependent Neuronal Populations and Networks';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
