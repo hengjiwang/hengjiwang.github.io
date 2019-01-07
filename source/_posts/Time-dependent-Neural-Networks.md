@@ -1,11 +1,13 @@
 ---
-title: Time-dependent Neuronal Populations and Networks
+title: Dynamics of Populations and Networks
 date: 2019-01-05 11:27:01
 tags:
 - neurons
 - network
 - populaion
 - dynamics
+categories:
+- neuronal dynamics
 ---
 # 1. Continuity equation
 
