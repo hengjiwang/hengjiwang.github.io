@@ -16,7 +16,7 @@ categories:
 
 - **Hodgkin-Huxley (HH)** model is a starting point for detailed modeling and dynamics analysis of single neurons. 
 
-![](https://raw.githubusercontent.com/hengjiwang/blog_figures/master/HH.png)
+![](https://github.com/hengjiwang/hengjiwang.github.io/blob/hexo/blog_figures/HH.png)
 
 $$I=C_m\frac{du}{dt}+g_Kn^4(u-E_K)+g_{Na}m^3h(u-E_{Na})+g_L(u-E_L)$$
 $$\frac{dn}{dt} = \alpha_n(u)(1-n) - \beta_n(u)n$$
@@ -43,7 +43,7 @@ of which dynamics can be analyzed in a 2D phase plane.
 
 - **Fixed point:** The points in the phase plane with $\dot{u} = \dot{w} = 0$, which is the intersection of u-nullcline and w-nullcline. 
 
-![](https://raw.githubusercontent.com/hengjiwang/blog_figures/master/phaseplane.png)
+![](https://github.com/hengjiwang/hengjiwang.github.io/blob/hexo/blog_figures/phaseplane.png)
 
 - **Stability of Fixed points**
   Move back to HH model. For a fixed point $(u_0, w_0)$, define $\bf{x} = (u-u_0, w-w_0)^T$, then the linearization is:
@@ -68,7 +68,7 @@ of which dynamics can be analyzed in a 2D phase plane.
   - **Node:** $\lambda_1$ and $\lambda_2$ are pure reals$$(F_u+G_w)^2 - 4(F_uG_w - F_wG_u) > 0$$
   - **Spiral:** $\lambda_1$ and $\lambda_2$ are complex numbers$$(F_u+G_w)^2 - 4(F_uG_w - F_wG_u) < 0$$
   So put together all it's: 
-![](https://raw.githubusercontent.com/hengjiwang/blog_figures/master/stable.png)
+![](https://github.com/hengjiwang/hengjiwang.github.io/blob/hexo/blog_figures/stable.png)
 
 # 2. Type I and Type II neuron models
 
@@ -76,12 +76,12 @@ of which dynamics can be analyzed in a 2D phase plane.
 - **Type I**: neurons with a continuous frequency-current curve(**f-I curve**, **gain function**).
 - **Type II**: neurons with a discontinuous f-I curve. 
 
-![](https://raw.githubusercontent.com/hengjiwang/blog_figures/master/type12.png)
+![](https://github.com/hengjiwang/hengjiwang.github.io/blob/hexo/blog_figures/type12.png)
 
 - **Rheobase current ($I_\theta$)**: the minimal constant current injection which triggers a repetive firing of neurons. In phase plane, it is called **bifurcation point** and $I$ is the **bifurcation parameter**.
 
 ## 2.1 Type I models
-![](https://raw.githubusercontent.com/hengjiwang/blog_figures/master/typeI.png)
+![](https://github.com/hengjiwang/hengjiwang.github.io/blob/hexo/blog_figures/typeI.png)
 
 
 
@@ -89,7 +89,7 @@ In this case, when $I=I_\theta$, the stable fixed point and the saddle point in 
 
 ## 2.2 Type II models
 
-![](https://raw.githubusercontent.com/hengjiwang/blog_figures/master/typeII.png)
+![](https://github.com/hengjiwang/hengjiwang.github.io/blob/hexo/blog_figures/typeII.png)
 
 In this case, the limit cycle appears before a saddle-node bifurcation forms thus when $I=I_\theta$ and a bifurcation point is reached, the limit cylce already has some frequency. This is called **Saddle-Node-off-Limit-Cycle Bifurcation**.
 
@@ -118,19 +118,19 @@ In this case, the limit cycle appears before a saddle-node bifurcation forms thu
 
 **Type I:**
 
-![](https://raw.githubusercontent.com/hengjiwang/blog_figures/master/type1exc.png)
+![](https://github.com/hengjiwang/hengjiwang.github.io/blob/hexo/blog_figures/type1exc.png)
 
 For input currents which are just above threshold, the action potential occurs, however, with an extremely long delay.
 
 **Hopf-bifurcation:**
 
-![](https://raw.githubusercontent.com/hengjiwang/blog_figures/master/hopfexc.png)
+![](https://github.com/hengjiwang/hengjiwang.github.io/blob/hexo/blog_figures/hopfexc.png)
 
 Hyperpolarization appears.
 
 **with slower $w$ dynamics...**
 
-![](https://raw.githubusercontent.com/hengjiwang/blog_figures/master/slowerw.png)
+![](https://github.com/hengjiwang/hengjiwang.github.io/blob/hexo/blog_figures/slowerw.png)
 
 A plateau appears because of the low dynamics of $w$.
 We can say in this case the model has been reduced to 1D. 

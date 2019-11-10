@@ -140,7 +140,7 @@ $$A_0 = g_0(J_0 A_0+I_0^{\text{ext}})$$
 
 which means we can calculate out $A_0$ if we know $J_0$ and $g_0$
 
-![](https://raw.githubusercontent.com/hengjiwang/blog_figures/master/graphA.png)
+![](https://github.com/hengjiwang/hengjiwang.github.io/blob/hexo/blog_figures/graphA.png)
 
 ## 4.3 Acticity of a randomly connected network
 

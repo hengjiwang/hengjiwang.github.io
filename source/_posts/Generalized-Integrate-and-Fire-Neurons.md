@@ -18,14 +18,14 @@ $$t^{(f)}: u(t^{(f)}) = \theta_{reset} \text{ and } \frac{du(t)}{dt}|_{t=t^{(f)}
 - general nonlinear LIF model:
 $$\tau \frac{du}{dt} = f(u) + R(u)I$$
     - when $u$ reaches $\theta_{reset}$, the dynamics stops and restarts at time $t^{(f)}+\Delta^{abs}$ with initial condition $u_r$. 
-    ![](https://raw.githubusercontent.com/hengjiwang/blog_figures/master/rheo.png)
+    ![](https://github.com/hengjiwang/hengjiwang.github.io/blob/hexo/blog_figures/rheo.png)
     - $\theta_{reset}$ is **firing threshold**. Usually it's just a manually defined numerical value, that if $u$ reaches $\theta_{reset}$ we conclude that there is a spike and reset $u$ to $u_r$; otherwise not.
 
     - $\vartheta$ serves as a **critical voltage** for spike initiation by a short current pulse. It is an unstable fixed point when $I=0$, which means if $u$ reaches $\vartheta$, even if we immediately change $I$ to zero, $u$ will still keep increasing until it reaches $\theta_{reset}$.
  
     - $\vartheta_{rh}$ is **rheobase threshold** for repetive firing, where the stable fixed point disappears. $I_c = \vartheta_{rh}/R$ is called the **rheobase current**. A stationary voltage $u>\vartheta_{rh}$ is impossible. However, for pulse inputs or time-dependent currents, volatge transients into the regime $\vartheta_{rh} < u(t) < \vartheta$ routinely occur without initiating a spike. 
 
-    ![](https://raw.githubusercontent.com/hengjiwang/blog_figures/master/phasethres.png)
+    ![](https://github.com/hengjiwang/hengjiwang.github.io/blob/hexo/blog_figures/phasethres.png)
   
 # 2 Exponential LIF Model
 
@@ -36,7 +36,7 @@ $$\tau \frac{du}{dt} = -(u-u_{rest}) + \Delta_T \exp\left(\frac{u-\vartheta_{rh}
   
 (typically the **absolute refractory time $0< \Delta^{abs}< 5ms$**)
 
-![](https://raw.githubusercontent.com/hengjiwang/blog_figures/master/expLIF.png)
+![](https://github.com/hengjiwang/hengjiwang.github.io/blob/hexo/blog_figures/expLIF.png)
 
 - The right-hand side function when $I=0$: 
 $$f(u) = -(u-u_{rest}) + \Delta_T \exp\left(\frac{u-\vartheta_{rh}}{\Delta_T}\right)$$
@@ -61,7 +61,7 @@ $$\tau \frac{du}{dt} = a_0 (u-u_{rest})(u-u_c) + RI$$
 where $u_c > u_{rest}$ is a critical voltage for spike initiation by a short current pulse.
 
 - This model is closely related to **$\Theta$-neuron**, a **canonical type-I model**. 
-  ![](https://raw.githubusercontent.com/hengjiwang/blog_figures/master/quadrandexp.png)
+  ![](https://github.com/hengjiwang/hengjiwang.github.io/blob/hexo/blog_figures/quadrandexp.png)
 - Near $\vartheta_{rh}$, the exponential LIF model and the quadratic LIF model become very similar.  
 
 **Pros and Cons**(compared with exponential LIF model):

@@ -67,7 +67,7 @@ Neuronal dynamics can be conceived as an integration process combined with a tri
 
 ## 3.1 Model
 
-![Integration-And-Fire model](https://raw.githubusercontent.com/hengjiwang/blog_figures/master/intgrate_and_fire_model.png)
+![Integration-And-Fire model](https://github.com/hengjiwang/hengjiwang.github.io/blob/hexo/blog_figures/intgrate_and_fire_model.png)
 
 $$I(t) = I_R + I_C = \frac{u(t) - u_{rest}}{R} + C\frac{du}{dt}$$
 Then we get
@@ -75,7 +75,7 @@ $$RC \frac{du}{dt} = -(u(t) - u_{rest}) + RI(t)$$
 
  - When u(t) reaches a threshold, we will assume there is a $\delta$ pulse and then immediately reset u(t) to a value $u_r$:
 
-![](https://raw.githubusercontent.com/hengjiwang/blog_figures/master/LIF.png)
+![](https://github.com/hengjiwang/hengjiwang.github.io/blob/hexo/blog_figures/LIF.png)
 
 This turns to a time stepping problem that can be solved with python (use package **brian2** here):
 

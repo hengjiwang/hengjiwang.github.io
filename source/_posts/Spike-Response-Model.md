@@ -19,7 +19,7 @@ categories:
 
 # 1. Definition of SRM
 
-![](https://raw.githubusercontent.com/hengjiwang/blog_figures/master/SRM.png)
+![](https://github.com/hengjiwang/hengjiwang.github.io/blob/hexo/blog_figures/SRM.png)
 
 1. Voltage response: $h(t) = \int_0^\infty \kappa(s)I^{\text{ext}}(t-s)ds$
 

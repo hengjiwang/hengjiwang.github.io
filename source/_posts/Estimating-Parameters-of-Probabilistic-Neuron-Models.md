@@ -134,9 +134,9 @@ $$\rho_i(t) = f\left({\bf{k}_i\cdot x_t} + \sum_{i'\neq i, j} \epsilon_{i',j}n_{
 -- goodness-of-fit of subthreshold membrane potential should be considered separately from that of the spike times. 
 
 
-![](https://raw.githubusercontent.com/hengjiwang/blog_figures/master/RMSEnm.png)
+![](https://github.com/hengjiwang/hengjiwang.github.io/blob/hexo/blog_figures/RMSEnm.png)
 
-![](https://raw.githubusercontent.com/hengjiwang/blog_figures/master/RMSEnn.png)
+![](https://github.com/hengjiwang/hengjiwang.github.io/blob/hexo/blog_figures/RMSEnn.png)
 
 $$\text{RMSER} = \frac{RMSE_{nn}}{RMSE_{nm}}$$
 
