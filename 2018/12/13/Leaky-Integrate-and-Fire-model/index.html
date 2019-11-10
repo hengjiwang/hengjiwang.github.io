@@ -91,13 +91,13 @@
 <meta property="og:site_name" content="Hengji Wang&#39;s Blog">
 <meta property="og:description" content="1 Elements of Neuronal Systems We will consider: spiking neurons  We will neglect: glia cells, non-spiking neurons   1.1 The Ideal Spiking Neuron A neuron has three functional parts:  dendrites: ‘inpu">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://github.com/hengjiwang/hengjiwang.github.io/blob/hexo/blog_figures/intgrate_and_fire_model.png">
-<meta property="og:image" content="https://github.com/hengjiwang/hengjiwang.github.io/blob/hexo/blog_figures/LIF.png">
-<meta property="og:updated_time" content="2019-11-10T18:34:59.169Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/hengjiwang/hengjiwang.github.io/hexo/blog_figures/intgrate_and_fire_model.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/hengjiwang/hengjiwang.github.io/hexo/blog_figures/LIF.png">
+<meta property="og:updated_time" content="2019-11-10T18:40:14.643Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leaky-Integrate-and-Fire Neurons">
 <meta name="twitter:description" content="1 Elements of Neuronal Systems We will consider: spiking neurons  We will neglect: glia cells, non-spiking neurons   1.1 The Ideal Spiking Neuron A neuron has three functional parts:  dendrites: ‘inpu">
-<meta name="twitter:image" content="https://github.com/hengjiwang/hengjiwang.github.io/blob/hexo/blog_figures/intgrate_and_fire_model.png">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/hengjiwang/hengjiwang.github.io/hexo/blog_figures/intgrate_and_fire_model.png">
 
 
 
@@ -265,7 +265,7 @@
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Hengji Wang">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://github.com/hengjiwang/hengjiwang.github.io/blob/hexo/blog_figures/145799ab4507535.jpg">
+      <meta itemprop="image" content="https://raw.githubusercontent.com/hengjiwang/hengjiwang.github.io/hexo/blog_figures/145799ab4507535.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
@@ -417,12 +417,12 @@
 <li>When membrane potential of a neuron reaches a <strong>threshold</strong> there will be a spike. </li>
 </ul>
 <h1 id="3-Leaky-Integrate-And-Fire-Models-LIF"><a href="#3-Leaky-Integrate-And-Fire-Models-LIF" class="headerlink" title="3 Leaky-Integrate-And-Fire Models (LIF)"></a>3 Leaky-Integrate-And-Fire Models (LIF)</h1><p>Neuronal dynamics can be conceived as an integration process combined with a triggering-spike mechanism. </p>
-<h2 id="3-1-Model"><a href="#3-1-Model" class="headerlink" title="3.1 Model"></a>3.1 Model</h2><p><img src="https://github.com/hengjiwang/hengjiwang.github.io/blob/hexo/blog_figures/intgrate_and_fire_model.png" alt="Integration-And-Fire model"></p>
+<h2 id="3-1-Model"><a href="#3-1-Model" class="headerlink" title="3.1 Model"></a>3.1 Model</h2><p><img src="https://raw.githubusercontent.com/hengjiwang/hengjiwang.github.io/hexo/blog_figures/intgrate_and_fire_model.png" alt="Integration-And-Fire model"></p>
 <p>$$I(t) = I_R + I_C = \frac{u(t) - u_{rest}}{R} + C\frac{du}{dt}$$<br>Then we get<br>$$RC \frac{du}{dt} = -(u(t) - u_{rest}) + RI(t)$$</p>
 <ul>
 <li>When u(t) reaches a threshold, we will assume there is a $\delta$ pulse and then immediately reset u(t) to a value $u_r$:</li>
 </ul>
-<p><img src="https://github.com/hengjiwang/hengjiwang.github.io/blob/hexo/blog_figures/LIF.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/hengjiwang/hengjiwang.github.io/hexo/blog_figures/LIF.png" alt=""></p>
 <p>This turns to a time stepping problem that can be solved with python (use package <strong>brian2</strong> here):</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">%matplotlib inline</span><br><span class="line"><span class="keyword">import</span> brian2 <span class="keyword">as</span> b2</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> neurodynex.leaky_integrate_and_fire <span class="keyword">import</span> LIF</span><br><span class="line"><span class="keyword">from</span> neurodynex.tools <span class="keyword">import</span> input_factory, plot_tools</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">LIF.getting_started()</span><br><span class="line">LIF.print_default_parameters()</span><br></pre></td></tr></table></figure>
 <p>details and exercises here: <a href="https://neuronaldynamics-exercises.readthedocs.io/en/latest/exercises/leaky-integrate-and-fire.html" target="_blank" rel="noopener">https://neuronaldynamics-exercises.readthedocs.io/en/latest/exercises/leaky-integrate-and-fire.html</a></p>
@@ -569,7 +569,7 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="https://github.com/hengjiwang/hengjiwang.github.io/blob/hexo/blog_figures/145799ab4507535.jpg" alt="Hengji Wang">
+              <img class="site-author-image" itemprop="image" src="https://raw.githubusercontent.com/hengjiwang/hengjiwang.github.io/hexo/blog_figures/145799ab4507535.jpg" alt="Hengji Wang">
             
               <p class="site-author-name" itemprop="name">Hengji Wang</p>
               <p class="site-description motion-element" itemprop="description"></p>

@@ -91,15 +91,15 @@
 <meta property="og:site_name" content="Hengji Wang&#39;s Blog">
 <meta property="og:description" content="1 Thresholds in nonlinear LIF model firing time $t^{(f)}$:  $$t^{(f)}: u(t^{(f)}) = \theta_{reset} \text{ and } \frac{du(t)}{dt}|_{t=t^{(f)}} &amp;gt; 0$$  general nonlinear LIF model:$$\tau \frac{du}{dt}">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://github.com/hengjiwang/hengjiwang.github.io/blob/hexo/blog_figures/rheo.png">
-<meta property="og:image" content="https://github.com/hengjiwang/hengjiwang.github.io/blob/hexo/blog_figures/phasethres.png">
-<meta property="og:image" content="https://github.com/hengjiwang/hengjiwang.github.io/blob/hexo/blog_figures/expLIF.png">
-<meta property="og:image" content="https://github.com/hengjiwang/hengjiwang.github.io/blob/hexo/blog_figures/quadrandexp.png">
-<meta property="og:updated_time" content="2019-11-10T18:34:58.733Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/hengjiwang/hengjiwang.github.io/hexo/blog_figures/rheo.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/hengjiwang/hengjiwang.github.io/hexo/blog_figures/phasethres.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/hengjiwang/hengjiwang.github.io/hexo/blog_figures/expLIF.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/hengjiwang/hengjiwang.github.io/hexo/blog_figures/quadrandexp.png">
+<meta property="og:updated_time" content="2019-11-10T18:40:14.024Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Nonlinear Leaky-Integrate-and-Fire Neurons">
 <meta name="twitter:description" content="1 Thresholds in nonlinear LIF model firing time $t^{(f)}$:  $$t^{(f)}: u(t^{(f)}) = \theta_{reset} \text{ and } \frac{du(t)}{dt}|_{t=t^{(f)}} &amp;gt; 0$$  general nonlinear LIF model:$$\tau \frac{du}{dt}">
-<meta name="twitter:image" content="https://github.com/hengjiwang/hengjiwang.github.io/blob/hexo/blog_figures/rheo.png">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/hengjiwang/hengjiwang.github.io/hexo/blog_figures/rheo.png">
 
 
 
@@ -267,7 +267,7 @@
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Hengji Wang">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://github.com/hengjiwang/hengjiwang.github.io/blob/hexo/blog_figures/145799ab4507535.jpg">
+      <meta itemprop="image" content="https://raw.githubusercontent.com/hengjiwang/hengjiwang.github.io/hexo/blog_figures/145799ab4507535.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
@@ -368,13 +368,13 @@
 <ul>
 <li><p>general nonlinear LIF model:<br>$$\tau \frac{du}{dt} = f(u) + R(u)I$$</p>
 <ul>
-<li>when $u$ reaches $\theta_{reset}$, the dynamics stops and restarts at time $t^{(f)}+\Delta^{abs}$ with initial condition $u_r$.<br><img src="https://github.com/hengjiwang/hengjiwang.github.io/blob/hexo/blog_figures/rheo.png" alt=""></li>
+<li>when $u$ reaches $\theta_{reset}$, the dynamics stops and restarts at time $t^{(f)}+\Delta^{abs}$ with initial condition $u_r$.<br><img src="https://raw.githubusercontent.com/hengjiwang/hengjiwang.github.io/hexo/blog_figures/rheo.png" alt=""></li>
 <li><p>$\theta_{reset}$ is <strong>firing threshold</strong>. Usually it’s just a manually defined numerical value, that if $u$ reaches $\theta_{reset}$ we conclude that there is a spike and reset $u$ to $u_r$; otherwise not.</p>
 </li>
 <li><p>$\vartheta$ serves as a <strong>critical voltage</strong> for spike initiation by a short current pulse. It is an unstable fixed point when $I=0$, which means if $u$ reaches $\vartheta$, even if we immediately change $I$ to zero, $u$ will still keep increasing until it reaches $\theta_{reset}$.</p>
 </li>
 <li><p>$\vartheta_{rh}$ is <strong>rheobase threshold</strong> for repetive firing, where the stable fixed point disappears. $I_c = \vartheta_{rh}/R$ is called the <strong>rheobase current</strong>. A stationary voltage $u&gt;\vartheta_{rh}$ is impossible. However, for pulse inputs or time-dependent currents, volatge transients into the regime $\vartheta_{rh} &lt; u(t) &lt; \vartheta$ routinely occur without initiating a spike. </p>
-<p><img src="https://github.com/hengjiwang/hengjiwang.github.io/blob/hexo/blog_figures/phasethres.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/hengjiwang/hengjiwang.github.io/hexo/blog_figures/phasethres.png" alt=""></p>
 </li>
 </ul>
 </li>
@@ -385,7 +385,7 @@
 <li><strong>sharpness parameter:</strong> $\Delta_T$</li>
 </ul>
 <p>(typically the <strong>absolute refractory time $0&lt; \Delta^{abs}&lt; 5ms$</strong>)</p>
-<p><img src="https://github.com/hengjiwang/hengjiwang.github.io/blob/hexo/blog_figures/expLIF.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/hengjiwang/hengjiwang.github.io/hexo/blog_figures/expLIF.png" alt=""></p>
 <ul>
 <li><p>The right-hand side function when $I=0$:<br>$$f(u) = -(u-u_{rest}) + \Delta_T \exp\left(\frac{u-\vartheta_{rh}}{\Delta_T}\right)$$<br>should satisfy $\vartheta \gg u_{rest} + \Delta_T$ so that when $u$ is around $u_{rest}$ the exponential term becomes negligiby small. </p>
 </li>
@@ -400,7 +400,7 @@
 <h1 id="3-Quadratic-LIF-Model"><a href="#3-Quadratic-LIF-Model" class="headerlink" title="3 Quadratic LIF Model"></a>3 Quadratic LIF Model</h1><p>$$\tau \frac{du}{dt} = a_0 (u-u_{rest})(u-u_c) + RI$$</p>
 <p>where $u_c &gt; u_{rest}$ is a critical voltage for spike initiation by a short current pulse.</p>
 <ul>
-<li>This model is closely related to <strong>$\Theta$-neuron</strong>, a <strong>canonical type-I model</strong>.<br><img src="https://github.com/hengjiwang/hengjiwang.github.io/blob/hexo/blog_figures/quadrandexp.png" alt=""></li>
+<li>This model is closely related to <strong>$\Theta$-neuron</strong>, a <strong>canonical type-I model</strong>.<br><img src="https://raw.githubusercontent.com/hengjiwang/hengjiwang.github.io/hexo/blog_figures/quadrandexp.png" alt=""></li>
 <li>Near $\vartheta_{rh}$, the exponential LIF model and the quadratic LIF model become very similar.  </li>
 </ul>
 <p><strong>Pros and Cons</strong>(compared with exponential LIF model):</p>
@@ -544,7 +544,7 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="https://github.com/hengjiwang/hengjiwang.github.io/blob/hexo/blog_figures/145799ab4507535.jpg" alt="Hengji Wang">
+              <img class="site-author-image" itemprop="image" src="https://raw.githubusercontent.com/hengjiwang/hengjiwang.github.io/hexo/blog_figures/145799ab4507535.jpg" alt="Hengji Wang">
             
               <p class="site-author-name" itemprop="name">Hengji Wang</p>
               <p class="site-description motion-element" itemprop="description"></p>
