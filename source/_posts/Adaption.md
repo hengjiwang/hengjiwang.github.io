@@ -29,7 +29,7 @@ $$\tau_w \frac{dw}{dt} = a_k(u-u_{rest}) - w + b\tau_w \sum_{t^{(f)}}\delta(t-t^
 
 **Firing patterns** from AdEx model, with different parameter set and stimulated with a <font color=red>step current</font> with high/low amplitude:
 
-![](https://github.com/hengjiwang/hengjiwang.github.io/blob/hexo/blog_figures/firepattern.png)
+![](https://raw.githubusercontent.com/hengjiwang/hengjiwang.github.io/hexo/blog_figures/firepattern.png)
 
 ## 2.1 Classification of firing patterns
 
@@ -53,31 +53,31 @@ Each time that $u=\theta_{reset}$, it will be initialized at $(u_r, w+b)$
 
 Tonic:
 
-![](https://github.com/hengjiwang/hengjiwang.github.io/blob/hexo/blog_figures/tonicphase.png)
+![](https://raw.githubusercontent.com/hengjiwang/hengjiwang.github.io/hexo/blog_figures/tonicphase.png)
 
 Adapting:
 
-![](https://github.com/hengjiwang/hengjiwang.github.io/blob/hexo/blog_figures/adaptphase.png)
+![](https://raw.githubusercontent.com/hengjiwang/hengjiwang.github.io/hexo/blog_figures/adaptphase.png)
 
 Bursting:
 Alternations between short and long interspike intervals.
 
-![](https://github.com/hengjiwang/hengjiwang.github.io/blob/hexo/blog_figures/burstphase.png)
+![](https://raw.githubusercontent.com/hengjiwang/hengjiwang.github.io/hexo/blog_figures/burstphase.png)
 
 Irregular:
 Comes from chaotic reset.
 
-![](https://github.com/hengjiwang/hengjiwang.github.io/blob/hexo/blog_figures/irrphase.png)
+![](https://raw.githubusercontent.com/hengjiwang/hengjiwang.github.io/hexo/blog_figures/irrphase.png)
 
 Transient:
 
-![](https://github.com/hengjiwang/hengjiwang.github.io/blob/hexo/blog_figures/transientphase.png)
+![](https://raw.githubusercontent.com/hengjiwang/hengjiwang.github.io/hexo/blog_figures/transientphase.png)
 
 ## 2.3 Space of Reset Parameters
 
 Reset parameters: $u_r, b$
 
-![](https://github.com/hengjiwang/hengjiwang.github.io/blob/hexo/blog_figures/resetphase.png)
+![](https://raw.githubusercontent.com/hengjiwang/hengjiwang.github.io/hexo/blog_figures/resetphase.png)
 
 ## 2.4 Space of Subthreshold Parameters
 
@@ -89,7 +89,7 @@ Reset parameters: $u_r, b$
 -- The type of bifurcation has no influence on the <font color=red>firing pattern (by step current)</font> which depends mainly on the choice of reset parameters.
 -- The subthreshold parameters do control the presence of absence of oscillations in response to a <font color=red>short pulse</font>.
 
-![](https://github.com/hengjiwang/hengjiwang.github.io/blob/hexo/blog_figures/resonator.png)
+![](https://raw.githubusercontent.com/hengjiwang/hengjiwang.github.io/hexo/blog_figures/resonator.png)
 
 - **resonator:** a model showing damped oscillations
 - **integrator:** a model without oscillations

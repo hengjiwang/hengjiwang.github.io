@@ -133,7 +133,7 @@ Suppose a network with two populations: a population of $N_E$ excitatory neurons
     - **SI fast**
     - **SI slow**
 
-![](https://github.com/hengjiwang/hengjiwang.github.io/blob/hexo/blog_figures/syn.png)
+![](https://raw.githubusercontent.com/hengjiwang/hengjiwang.github.io/hexo/blog_figures/syn.png)
 
 # 5. Networks of nonlinear LIF neurons
 

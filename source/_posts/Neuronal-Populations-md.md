@@ -65,7 +65,7 @@ If there is a strong heterogeneity in the network, then we should split the popu
   
   $$w_{ij} = \frac{J_0}{N}$$ 
   
-  If $N\rightarrow \infty$ then there is no fluctuation (which is nonphysical). 
+  If $N\rightarrow \infty$ then there is no fluctuation (which is nonphysical).
   - a more intricate version is $w_{ij}\sim \mathcal{N}(J_0/N, \sigma_0^2/N)$
 
 ## 3.2 Random coupling: fixed coupling probability
@@ -99,13 +99,13 @@ $$A_n(t) = \frac{1}{N_n}\sum_{j\in \Gamma_n}\sum_f \delta(t-t_j^{(f)})$$
 
     $$\displaystyle= \sum_{m}J_{nm}\int_{0}^{\infty}\alpha_{nm}(s)\,\sum_{j\in\Gamma_{m}}\sum_{f}{\delta(t-t_{j}^{(f)}-s)\over N_{m}}ds\,$$
 
-    where $\alpha_{nm}(t-t_{j}^{(f)})$ denotes the time course of a postsynaptic current caused by neuron $j$ in population $m$ firing at time $t^{(f)}_j$. 
+    where $\alpha_{nm}(t-t_{j}^{(f)})$ denotes the time course of a postsynaptic current caused by neuron $j$ in population $m$ firing at time $t^{(f)}_j$.
 
     $$I_{n}=\sum_{m}J_{nm}\int_{0}^{\infty}\alpha(s)\,A_{m}(t-s)\,{\text{d}}s\,$$
 
 # 4. Population activity
 
- If we are only interested in the stationary activity in a network of neurons without worrying about the temporal aspects of population activity, then f-I curve is enough. 
+ If we are only interested in the stationary activity in a network of neurons without worrying about the temporal aspects of population activity, then f-I curve is enough.
 
 - **Asynchronous firing**: a macroscopic firing state with constant activity $A(t) = A_0$, which can be derived by the gain function $g(I_0)$ of a single neuron and a coupling parameter $J_0$.
 
@@ -117,7 +117,7 @@ $$A_0 := \frac{N^{sp}}{NT} = \nu_i$$
 
 where $\nu_i$ is the firing rate of a single neuron $i$
 
-For a finite $N$, $\langle A_0 \rangle = \nu_i$, where 
+For a finite $N$, $\langle A_0 \rangle = \nu_i$, where
 
 $$\nu_i = g_\sigma (I_0)$$
 
@@ -140,7 +140,7 @@ $$A_0 = g_0(J_0 A_0+I_0^{\text{ext}})$$
 
 which means we can calculate out $A_0$ if we know $J_0$ and $g_0$
 
-![](https://github.com/hengjiwang/hengjiwang.github.io/blob/hexo/blog_figures/graphA.png)
+![](https://raw.githubusercontent.com/hengjiwang/hengjiwang.github.io/hexo/blog_figures/graphA.png)
 
 ## 4.3 Acticity of a randomly connected network
 
