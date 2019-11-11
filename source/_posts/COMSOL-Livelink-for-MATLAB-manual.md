@@ -1,13 +1,13 @@
 ---
-title: COMSOL Livelink for MATLAB mannual
+title: COMSOL Livelink for MATLAB manual
 date: 2019-11-11 11:50:30
 tags:
 - COMSOL
 - MATLAB
 categories:
-- Mannual
+- Manual
 ---
-A mannual for COMSOL Livelink for MATLAB on Ubuntu 18.04.3 LTS.
+A manual for COMSOL Livelink for MATLAB on Ubuntu 18.04.3 LTS.
 <!-- more -->
 
 # Get Started
