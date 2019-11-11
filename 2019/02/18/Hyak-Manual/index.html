@@ -91,7 +91,7 @@
 <meta property="og:site_name" content="Hengji Wang&#39;s Blog">
 <meta property="og:description" content="Get startedLog into Hyak: $ ssh username@mox.hyak.uw.edu Now you are in home directory, of which the path is  $ pwd /usr/lusers/hengjw Since home directory only has 10GB for storage, maybe you want to">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-11-11T19:07:09.630Z">
+<meta property="og:updated_time" content="2019-11-11T19:35:48.452Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hyak Manual">
 <meta name="twitter:description" content="Get startedLog into Hyak: $ ssh username@mox.hyak.uw.edu Now you are in home directory, of which the path is  $ pwd /usr/lusers/hengjw Since home directory only has 10GB for storage, maybe you want to">
@@ -366,68 +366,46 @@
 </code></pre><p>The files in <strong>home</strong> directory will never be deleted, but the files in <strong>work</strong> directory will be cleaned in 30 days after the last modification time. </p>
 <h1 id="File-transfer"><a href="#File-transfer" class="headerlink" title="File transfer"></a>File transfer</h1><p>There are two methods to upload/download files between local directory and Hyak. Both of them should be operated on local directory. </p>
 <h2 id="1-scp"><a href="#1-scp" class="headerlink" title="1. scp"></a>1. scp</h2><p>Upload files into Hyak</p>
-<pre><code>$ scp myfile username@mox.hyak.uw.edu:path/of/destination
-</code></pre><p>Download files from Hyak</p>
-<pre><code>$ scp user@mox.hyak.uw.edu:path/of/remote/file
-</code></pre><h2 id="2-sftp"><a href="#2-sftp" class="headerlink" title="2. sftp"></a>2. sftp</h2><p>First off, connect a local directory to Hyak</p>
-<pre><code>$ sftp user@mox.hyak.uw.edu
-</code></pre><p>Upload file into Hyak</p>
-<pre><code>$ put filename
-</code></pre><p>Upload folder into Hyak</p>
-<pre><code>$ put -r foldername
-</code></pre><p>Download file from Hyak</p>
-<pre><code>$ get filename
-</code></pre><p>Download folder from Hyak</p>
-<pre><code>$ get -r foldername
-</code></pre><p>List files in Hyak directory</p>
-<pre><code>$ ls
-</code></pre><p>List files in local directory </p>
-<pre><code>$ lls
-</code></pre><h1 id="Before-running-scripts"><a href="#Before-running-scripts" class="headerlink" title="Before running scripts"></a>Before running scripts</h1><p>Check how many nodes are available</p>
-<pre><code>$ hyakalloc stf
-</code></pre><p>or check which users are running or waiting</p>
-<pre><code>$ squeue -p stf
-</code></pre><p>If there is no available nodes in <strong>stf</strong>, you can check another partition <strong>stf-int</strong></p>
-<pre><code>$ hyakalloc stf-int
-</code></pre><h1 id="Run-scripts"><a href="#Run-scripts" class="headerlink" title="Run scripts"></a>Run scripts</h1><p>Two methods for running a script in Hyak.</p>
+<p><code>$ scp myfile username@mox.hyak.uw.edu:path/of/destination</code></p>
+<p>Download files from Hyak</p>
+<p><code>$ scp user@mox.hyak.uw.edu:path/of/remote/file .</code></p>
+<h2 id="2-sftp"><a href="#2-sftp" class="headerlink" title="2. sftp"></a>2. sftp</h2><p>First off, connect a local directory to Hyak</p>
+<p><code>$ sftp user@mox.hyak.uw.edu</code></p>
+<p>Upload file into Hyak</p>
+<p><code>$ put filename</code></p>
+<p>Upload folder into Hyak</p>
+<p><code>$ put -r foldername</code></p>
+<p>Download file from Hyak</p>
+<p><code>$ get filename</code></p>
+<p>Download folder from Hyak</p>
+<p><code>$ get -r foldername</code></p>
+<p>List files in Hyak directory</p>
+<p><code>$ ls</code></p>
+<p>List files in local directory </p>
+<p><code>$ lls</code></p>
+<h1 id="Before-running-scripts"><a href="#Before-running-scripts" class="headerlink" title="Before running scripts"></a>Before running scripts</h1><p>Check how many nodes are available</p>
+<p><code>$ hyakalloc stf</code></p>
+<p>or check which users are running or waiting</p>
+<p><code>$ squeue -p stf</code></p>
+<p>If there is no available nodes in <strong>stf</strong>, you can check another partition <strong>stf-int</strong></p>
+<p><code>$ hyakalloc stf-int</code></p>
+<h1 id="Run-scripts"><a href="#Run-scripts" class="headerlink" title="Run scripts"></a>Run scripts</h1><p>Two methods for running a script in Hyak.</p>
 <h2 id="1-srun"><a href="#1-srun" class="headerlink" title="1. srun"></a>1. srun</h2><p>If you only plan to use one node</p>
-<pre><code>$ srun -p stf -A stf --time=1:00:00 --mem=10G --pty /bin/bash 
-</code></pre><p>The maximum of memory in one memory is around 120GB, some GB should be left for operating system; setting smaller memory may increase your priority in partition <strong>stf-int</strong>. </p>
+<p><code>$ srun -p stf -A stf --time=1:00:00 --mem=10G --pty /bin/bash</code></p>
+<p>The maximum of memory in one memory is around 120GB, some GB should be left for operating system; setting smaller memory may increase your priority in partition <strong>stf-int</strong>.</p>
 <h2 id="2"><a href="#2" class="headerlink" title="2."></a>2.</h2><p>Create a bash script in <strong>home</strong> directory (mine is named <strong>myslurm</strong>). Save the following texts in it:</p>
-<pre><code>#!/bin/bash
-
-#SBATCH --job-name=test_nodes
-
-#SBATCH --account=stf
-
-#SBATCH --partition=stf
-
-#SBATCH --nodes=1
-
-#SBATCH --ntasks-per-node=28
-
-#SBATCH --time=0:02:00
-
-#SBATCH --mem=10G
-
-#SBATCH --workdir=/gscratch/stf/username
-
-#SBATCH --mail-type=ALL
-
-#SBATCH --mail-user=username@uw.edu
-
-python filename.py
-</code></pre><p>Each time to run a script, just change the numbers after <code>#SBATCH --nodes=</code> to the nodes number you want and <code>#SBATCH --mem=</code> to the memory you want to use, and replace the last line to another run command. </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line">#SBATCH --job-name=test_nodes</span><br><span class="line"></span><br><span class="line">#SBATCH --account=stf</span><br><span class="line"></span><br><span class="line">#SBATCH --partition=stf</span><br><span class="line"></span><br><span class="line">#SBATCH --nodes=1</span><br><span class="line"></span><br><span class="line">#SBATCH --ntasks-per-node=28</span><br><span class="line"></span><br><span class="line">#SBATCH --time=0:02:00</span><br><span class="line"></span><br><span class="line">#SBATCH --mem=10G</span><br><span class="line"></span><br><span class="line">#SBATCH --workdir=/gscratch/stf/username</span><br><span class="line"></span><br><span class="line">#SBATCH --mail-type=ALL</span><br><span class="line"></span><br><span class="line">#SBATCH --mail-user=username@uw.edu</span><br><span class="line"></span><br><span class="line">python filename.py</span><br></pre></td></tr></table></figure>
+<p>Each time to run a script, just change the numbers after <code>#SBATCH --nodes=</code> to the nodes number you want and <code>#SBATCH --mem=</code> to the memory you want to use, and replace the last line to another run command. </p>
 <h1 id="Check-node-usage"><a href="#Check-node-usage" class="headerlink" title="Check node usage"></a>Check node usage</h1><p>To enter the current node from a new terminal </p>
-<pre><code>$ ssh nodeid
-</code></pre><p>Check the usage status of node</p>
-<pre><code>$ top -u username
-</code></pre><p>Press <code>q</code> to quit.</p>
+<p><code>$ ssh nodeid</code></p>
+<p>Check the usage status of node</p>
+<p><code>$ top -u username</code></p>
+<p>Press <code>q</code> to quit.</p>
 <p>To check free memory in current node</p>
-<pre><code>$ free -g
-</code></pre><p>To check disk space of current node</p>
-<pre><code>$ dh -f
-</code></pre>
+<p><code>$ free -g</code></p>
+<p>To check disk space of current node</p>
+<p><code>$ dh -f</code></p>
+
       
     </div>
     
