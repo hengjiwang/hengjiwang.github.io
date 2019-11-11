@@ -102,31 +102,31 @@ The maximum of memory in one memory is around 120GB, some GB should be left for 
 
 Create a bash script in **home** directory (mine is named **myslurm**). Save the following texts in it:
 
-```[shell]
-#!/bin/bash
+    ```shell
+    #!/bin/bash
 
-#SBATCH --job-name=test_nodes
+    #SBATCH --job-name=test_nodes
 
-#SBATCH --account=stf
+    #SBATCH --account=stf
 
-#SBATCH --partition=stf
+    #SBATCH --partition=stf
 
-#SBATCH --nodes=1
+    #SBATCH --nodes=1
 
-#SBATCH --ntasks-per-node=28
+    #SBATCH --ntasks-per-node=28
 
-#SBATCH --time=0:02:00
+    #SBATCH --time=0:02:00
 
-#SBATCH --mem=10G
+    #SBATCH --mem=10G
 
-#SBATCH --workdir=/gscratch/stf/username
+    #SBATCH --workdir=/gscratch/stf/username
 
-#SBATCH --mail-type=ALL
+    #SBATCH --mail-type=ALL
 
-#SBATCH --mail-user=username@uw.edu
+    #SBATCH --mail-user=username@uw.edu
 
-python filename.py
-```
+    python filename.py
+    ```
 
 Each time to run a script, just change the numbers after ```#SBATCH --nodes=``` to the nodes number you want and ```#SBATCH --mem=``` to the memory you want to use, and replace the last line to another run command. 
 
