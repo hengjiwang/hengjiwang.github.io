@@ -2,10 +2,12 @@
 title: Hyak Manual
 date: 2019-02-18 21:59:53
 tags:
-- hyak
+- Hyak
 categories:
-- tutorials
+- Mannual
 ---
+A mannual for using Hyak cluster.
+<!-- more -->
 
 # Get started
 
