@@ -72,7 +72,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="COMSOL,MATLAB,">
 
 
 
@@ -83,14 +83,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="tags">
-<meta property="og:url" content="http://imhengji.wang/tags/index.html">
+<meta name="description" content="A manual for COMSOL Livelink for MATLAB on Ubuntu 18.04.3 LTS.">
+<meta name="keywords" content="COMSOL,MATLAB">
+<meta property="og:type" content="article">
+<meta property="og:title" content="COMSOL Livelink for MATLAB manual">
+<meta property="og:url" content="http://imhengji.wang/2019/11/11/COMSOL-Livelink-for-MATLAB-manual/index.html">
 <meta property="og:site_name" content="Hengji Wang&#39;s Blog">
+<meta property="og:description" content="A manual for COMSOL Livelink for MATLAB on Ubuntu 18.04.3 LTS.">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-11-11T19:07:09.632Z">
+<meta property="og:updated_time" content="2019-11-11T20:28:20.044Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="tags">
+<meta name="twitter:title" content="COMSOL Livelink for MATLAB manual">
+<meta name="twitter:description" content="A manual for COMSOL Livelink for MATLAB on Ubuntu 18.04.3 LTS.">
 
 
 
@@ -120,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://imhengji.wang/tags/">
+  <link rel="canonical" href="http://imhengji.wang/2019/11/11/COMSOL-Livelink-for-MATLAB-manual/">
 
 
 
 
 
-  <title>tags | Hengji Wang's Blog</title>
+  <title>COMSOL Livelink for MATLAB manual | Hengji Wang's Blog</title>
   
 
 
@@ -241,40 +245,192 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://imhengji.wang/2019/11/11/COMSOL-Livelink-for-MATLAB-manual/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Hengji Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://raw.githubusercontent.com/hengjiwang/hengjiwang.github.io/hexo/blog_figures/145799ab4507535.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hengji Wang's Blog">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">tags</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body han-init-context">
         
         
-          <div class="tag-cloud">
-            <div class="tag-cloud-title">
-                3 tags in total
-            </div>
-            <div class="tag-cloud-tags">
-              <a href="/tags/COMSOL/" style="font-size: 12px; color: #ccc">COMSOL</a> <a href="/tags/Hyak/" style="font-size: 12px; color: #ccc">Hyak</a> <a href="/tags/MATLAB/" style="font-size: 12px; color: #ccc">MATLAB</a>
-            </div>
-          </div>
+          <h1 class="post-title" itemprop="name headline">COMSOL Livelink for MATLAB manual</h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-11T11:50:30-08:00">
+                2019-11-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Manual/" itemprop="url" rel="index">
+                    <span itemprop="name">Manual</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/11/11/COMSOL-Livelink-for-MATLAB-manual/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/11/11/COMSOL-Livelink-for-MATLAB-manual/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
       
       
+
+      
+        <p>A manual for COMSOL Livelink for MATLAB on Ubuntu 18.04.3 LTS.<br><a id="more"></a></p>
+<h1 id="Get-Started"><a href="#Get-Started" class="headerlink" title="Get Started"></a>Get Started</h1><p>In Terminal, open COMSOL Server</p>
+<pre><code>$ comsol server
+</code></pre><p>After it displays</p>
+<pre><code>COMSOL Multiphysics server 5.3a (Build: 180) started listening on port 2036
+Use the console command &apos;close&apos; to exit the program
+</code></pre><p>Open a new Terminal, then open matlab</p>
+<pre><code>$ matlab
+</code></pre><p>In MATLAB Command Window</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; addpath(<span class="string">'/usr/local/comsol53a/multiphysics/mli'</span>);</span><br><span class="line">&gt;&gt; mphstart;</span><br></pre></td></tr></table></figure>
+<p>Then it should display</p>
+<pre><code>MATLAB is now connected to a COMSOL Multiphysics Server at localhost:2036
+
+Run the commands below to access the COMSOL ModelUtil commands:
+import com.comsol.model.util.*
+</code></pre>
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/COMSOL/" rel="tag"># COMSOL</a>
+          
+            <a href="/tags/MATLAB/" rel="tag"># MATLAB</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/18/Hyak-Manual/" rel="next" title="Hyak Manual">
+                <i class="fa fa-chevron-left"></i> Hyak Manual
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -317,8 +473,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -379,6 +544,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Get-Started"><span class="nav-text">Get Started</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -536,9 +717,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://imhengji.wang/tags/index.html';
-          this.page.identifier = 'tags/index.html';
-          this.page.title = 'tags';
+          this.page.url = 'http://imhengji.wang/2019/11/11/COMSOL-Livelink-for-MATLAB-manual/';
+          this.page.identifier = '2019/11/11/COMSOL-Livelink-for-MATLAB-manual/';
+          this.page.title = 'COMSOL Livelink for MATLAB manual';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://.disqus.com/embed.js';
