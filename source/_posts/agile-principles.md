@@ -1,8 +1,10 @@
 ---
-title: Agile Software development principles
+title: Agile Software Development Principles
 date: 2019-12-01 20:17:10
-tags: software engineering
-categories: computer science
+tags: 
+- Software Engineering
+categories: 
+- Computer Science
 ---
 Twelve principles of _Manifesto for Agile Software Development_
 <!-- more -->
