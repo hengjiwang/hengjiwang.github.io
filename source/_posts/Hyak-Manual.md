@@ -4,7 +4,7 @@ date: 2019-02-18 21:59:53
 tags:
 - Hyak
 categories:
-- Mannual
+- Manual
 ---
 A mannual for using Hyak cluster.
 <!-- more -->

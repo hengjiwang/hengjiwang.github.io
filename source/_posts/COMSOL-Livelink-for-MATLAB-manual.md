@@ -1,5 +1,5 @@
 ---
-title: COMSOL Livelink for MATLAB manual
+title: COMSOL Livelink for MATLAB Manual
 date: 2019-11-11 11:50:30
 tags:
 - COMSOL
