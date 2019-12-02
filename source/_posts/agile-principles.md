@@ -5,6 +5,7 @@ tags: software engineering
 categories: computer science
 ---
 Twelve principles of _Manifesto for Agile Software Development_
+<!-- more -->
 
 1. Customer satisfaction by early and continuous delivery of valuable software.
 2. Welcome changing requirements, even in late development.
