@@ -83,6 +83,6 @@ deploy:
   branch: master
 
 sitemap:
-    path: sitemap.xml
-    template: ./sitemap_template.xml
-    rel: false
+  path: http://imhengji.wang/sitemap.xml
+  template: ./sitemap.xml
+  rel: false
